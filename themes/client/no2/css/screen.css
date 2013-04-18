@@ -1,0 +1,948 @@
+/* Reset
+---------------------------------------------------------------------------------------- */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+caption, th {
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+abbr, acronym {
+    border: 0;
+}
+
+:focus {
+    outline-style: none;
+}
+
+/* Typography
+---------------------------------------------------------------------------------------- */
+body {
+    font: 12px 'Segoe UI', 'Lucida Sans Unicode', Verdana, sans-serif;
+    background: #fff url(../images/layout/bg_body.gif) repeat-x top;
+    color: #666;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link, a:visited {
+    color: #000;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+h4 {
+    font-size: 1.4em;
+}
+
+h5 {
+    font-size: 1.2em;
+}
+
+h6 {
+    font-size: 1.0em;
+}
+
+/* Positioning - Layout
+---------------------------------------------------------------------------------------- */
+.clear {
+    clear: both;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.vm {
+    vertical-align: middle;
+}
+
+.block {
+    display: block;
+}
+
+.tleft {
+    text-align: left;
+}
+
+.tright {
+    text-align: right;
+}
+
+/* Header
+---------------------------------------------------------------------------------------- */
+.header {
+    height: 78px;
+    position: relative;
+}
+
+.header .logo {
+    margin-top: 20px;
+}
+
+.nav_user_left {
+    background: url(../images/layout/nav_user_left.gif) no-repeat;
+    height: 30px;
+    width: 16px;
+}
+
+.nav_user_right {
+    background: url(../images/layout/nav_user_right.gif) no-repeat;
+    height: 30px;
+    width: 16px;
+}
+
+.nav_user_repeat {
+    background: url(../images/layout/nav_user_repeat.gif) repeat-x;
+    height: 26px;
+    padding: 2px 0;
+}
+
+.nav_user_repeat li {
+    margin: 0 5px;
+}
+
+.nav_user_repeat li, .nav_user_repeat a {
+    color: #fff;
+}
+
+a.btn_giris_yapin {
+    background: url(../images/layout/ico_giris_yapin.png) no-repeat left center;
+    margin-right: 15px;
+}
+
+a.btn_musteri_kaydi {
+    background: url(../images/layout/ico_musteri_kaydi.png) no-repeat left;
+    margin-left: 15px;
+}
+
+a.btn_giris_yapin, a.btn_musteri_kaydi {
+    padding: 2px 0 0 20px;
+    display: block;
+    float: left;
+    color: #fff;
+}
+
+.nav {
+    margin-top: 45px;
+}
+
+.nav li, .nav li a {
+    float: left;
+}
+
+.nav li a {
+    display: block;
+    color: #fff;
+    padding: 2px 15px 5px 25px;
+    font-weight: bold;
+    background-image: url(../images/layout/sprite_nav.png);
+}
+
+.nav li a.n_destek {
+    background-position: 0 -8px;
+}
+
+.nav li a.n_bilgilerim {
+    background-position: 0 -84px;
+}
+
+.nav li a.n_siparislerim {
+    background-position: 0 -158px;
+}
+
+.nav li a.n_finans {
+    background-position: 0 -231px;
+}
+
+.nav li a.n_sepetim {
+    background-position: 0 -306px;
+}
+
+.nav li a.n_bilgi_bankasi {
+    background-position: 0 -380px;
+}
+
+.nav li a.n_dosya_merkezi {
+    background-position: 0 -454px;
+}
+
+/* left */
+.section {
+    width: 700px;
+}
+
+.article {
+    background: #fff url(../images/layout/bg_pack_box.gif) repeat-x top;
+    border: 1px solid #dadada;
+    border-top: 0;
+    padding: 10px;
+    overflow: hidden;
+}
+
+/* right */
+.sidebar {
+    width: 240px;
+}
+
+.sidebar_nav a {
+    background: #efefef url(../images/layout/bg_box_li_a.gif) repeat-x top;
+    padding: 10px;
+    display: block;
+    border: 1px solid #dadada;
+    border-top: 0;
+    min-height: 15px;
+    height: auto !important;
+    height: 15px;
+}
+
+.sidebar_nav_2 li {
+}
+
+.sidebar_nav_2 li a {
+    background: #efefef url(../images/layout/bg_box_li_a.gif) repeat-x top;
+    padding: 10px;
+    display: block;
+    border: 1px solid #dadada;
+    border-top: 0;
+    font-weight: bold;
+}
+
+.sidebar_nav_2 li a:hover {
+    text-decoration: underline;
+}
+
+.sidebar_nav_2 li li a {
+    background: none;
+    padding: 5px 20px;
+    color: #666;
+    font-weight: normal;
+    min-height: 15px;
+    height: auto !important;
+    height: 15px;
+}
+
+.s_ug li {
+    line-height: 20px;
+}
+
+.s_ug label {
+    display: block;
+    float: left;
+    padding-top: 5px;
+    width: 80px;
+}
+
+/* */
+.header, .content, .banner_alani div.ba_div {
+    width: 960px;
+    margin: auto;
+}
+
+.content {
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+/* home.tpl - duyuru */
+ul.duyurular li {
+    overflow: hidden;
+    width: 50%;
+}
+
+ul.duyurular h2 {
+    font-size: 14px;
+    color: #000;
+    padding: 7px 0 0 10px;
+}
+
+.date {
+    background: url(../images/layout/bg_date.png);
+    height: 34px;
+    width: 46px;
+}
+
+.d_ay_yil {
+    font-size: 10px;
+    color: #fff;
+    padding-top: 1px;
+}
+
+.d_gun {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+
+.d_ay_yil, .d_gun {
+    display: block;
+    text-align: center;
+}
+
+/* Index
+---------------------------------------------------------------------------------------- */
+.banner_alani {
+    background: url(../images/layout/bg_banner_alani.gif) repeat-x top;
+}
+
+.banner_alani div.ba_div {
+    background: url(../images/layout/bg_banner_alani2.gif) repeat-x top;
+    width: 960px;
+    height: 200px;
+    padding: 20px 0;
+}
+
+.domain_sorgulama {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.domain_sorgulama ul {
+    background: #c1c8d0;
+    overflow: hidden;
+    padding-bottom: 5px;
+}
+
+.domain_sorgulama ul li label {
+    padding: 0 5px;
+}
+
+.domain_sorgulama .reklam {
+    background: url(../images/layout/bg_main_table_thead.gif) repeat-x scroll center top #101010;
+    color: #FFFFFF;
+    height: 41px;
+    padding: 10px 10px 0 0;
+    text-align: right;
+    width: 120px;
+}
+
+/* paketler */
+.pack_box {
+    width: 220px;
+    overflow: hidden;
+    float: left;
+    min-height: 200px;
+    margin-bottom: 10px;
+}
+
+.pb_top {
+    margin-bottom: 10px;
+    line-height: 1.8em;
+}
+
+.pb_content ul {
+    margin: 10px 0;
+}
+
+.pb_content li {
+    line-height: 20px;
+}
+
+.pb_content .fiyat {
+    position: relative;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.pb_content .fiyat .price {
+    font-size: 24px;
+    line-height: 24px;
+    color: #000;
+    font-weight: bold;
+    letter-spacing: -2px;
+    display: block;
+}
+
+.pb_content .fiyat .price2 {
+    font-size: 12px;
+    color: #999;
+    text-decoration: line-through;
+    position: absolute;
+    top: 0px;
+    left: 0;
+}
+
+.pb_content .fiyat .ptext {
+    color: #999;
+    padding-left: 5px;
+    line-height: 11px;
+}
+
+.pack_box .onsale {
+    position: absolute;
+    right: 0;
+}
+
+.onsale {
+    background: #FF7A00;
+    color: #833F0A;
+    font-size: 14px;
+    padding: 0 2px;
+    font-weight: bold;
+}
+
+/* paketlerin arasina bosluk vermek icin */
+.orta {
+    margin: 0 20px;
+}
+
+/* domain sorgulama */
+.da_tarea {
+    width: 658px;
+    max-width: 658px;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    padding: 10px;
+}
+
+.domain_uzantilari li {
+    float: left;
+    padding: 5px;
+}
+
+.domain_uzantilari li input {
+    vertical-align: middle;
+    margin-right: 2px;
+}
+
+/* Footer
+---------------------------------------------------------------------------------------- */
+#footer {
+    text-align: center;
+    color: #ccc;
+    overflow: hidden;
+}
+
+#footer a:link, #footer a:visited {
+    color: #4b4b4b;
+}
+
+#footer .fnav li {
+    float: left;
+    padding: 5px 5px 0;
+}
+
+.s_details {
+    background: #333;
+    border: 1px solid #000;
+    padding: 10px;
+    line-height: 1.8em;
+    overflow: hidden;
+    color: #fff;
+    min-height: 54px;
+    height: auto !important;
+    height: 54px;
+}
+
+.s_details .durum {
+    color: #0a6cdf;
+    font-weight: bold;
+}
+
+.s_details a {
+    color: #eee;
+}
+
+.s_tabb {
+    padding: 10px;
+    overflow: hidden;
+    background: #f5f5f5 url(images/s_tabb_back.png) repeat-x bottom;
+    border: 1px solid #e5e5e5;
+    margin: 10px 0;
+    min-height: 25px;
+    height: auto !important;
+    height: 25px;
+}
+
+.s_tabb li {
+    float: left
+}
+
+.s_tabb a {
+    padding: 5px;
+    margin-right: 5px;
+    display: block;
+    float: left;
+    background: #eee;
+}
+
+.s_tabb a.selected, .s_tabb a:hover {
+    margin-right: 5px;
+    background: url(../images/layout/bg_button_2.png) repeat-x top;
+    display: inline-block;
+    border: 0;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* genel tablo stili */
+.main_table {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.main_table tbody td, .main_table tbody th {
+    padding: 4px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.main_table tbody th {
+    font-weight: bold;
+    color: #000;
+}
+
+.main_table thead td {
+    background: #101010 url(../images/layout/bg_main_table_thead.gif) repeat-x top;
+    border: 1px solid #030303;
+}
+
+.main_table thead td h3 {
+    color: #fff;
+    font-size: 110%;
+    padding: 8px 5px;
+}
+
+/* Form - Button - Radius - Message
+---------------------------------------------------------------------------------------- */
+.main_form li {
+    padding: 2px 0;
+    display: block;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.main_form li label {
+    display: block;
+    float: left;
+    width: 100px;
+    padding-top: 6px;
+}
+
+.main_ol_content {
+    padding: 0 10px;
+}
+
+.main_ol_content li, .payment_ol li {
+    padding: 5px 0;
+    display: block;
+    overflow: hidden;
+}
+
+.main_ol_content li label {
+    display: block;
+    float: left;
+    width: 130px;
+    font-weight: bold;
+}
+
+.payment_ol li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.payment_ol .po_tur {
+    padding: 10px;
+    background: #f5f5f5;
+    border: 0;
+}
+
+.payment_ol .po_tur label {
+    display: block;
+    width: 100%;
+    padding: 2px 0;
+}
+
+.tinput {
+    border: 1px solid #898d93;
+    padding: 5px;
+    background: #fff url(../images/layout/bg_input.gif) repeat-x top;
+    margin-bottom: 5px;
+}
+
+/* button */
+a.button, input.button {
+    background: #040000 url(../images/layout/bg_button_2.png) repeat-x top;
+    display: inline-block;
+    border: 1px solid #000;
+    padding: 3px 7px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    text-shadow: 1px 1px #000;
+}
+
+div.button {
+    background: #040000 url(../images/layout/bg_button_2.png) repeat-x top;
+    display: inline-block;
+    border: 1px solid #000;
+    padding: 3px 7px;
+    text-align: center;
+    text-shadow: 1px 1px #000;
+}
+
+div.button input {
+    border: 0;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* radius */
+.br_5, .s_tabb a {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.br_t_5, .title1, .title2 {
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.br_b_5, .tabs-container, .article {
+    -moz-border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}
+
+.br_10 {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.br_l_10 {
+    -moz-border-radius: 10px 0 0 10px;
+    -webkit-border-radius: 10px 0 0 10px;
+    border-radius: 10px 0 0 10px;
+}
+
+.br_r_10 {
+    -moz-border-radius: 0 10px 10px 0;
+    -webkit-border-radius: 0 10px 10px 0;
+    border-radius: 0 10px 10px 0;
+}
+
+/* success message */
+.success_message {
+    background: #dbf3d6;
+    border: 1px solid #93db83;
+    color: #296e1a;
+}
+
+/* error message */
+.error_message {
+    background: #fdcccc;
+    border: 1px solid #f86666;
+    color: #721010;
+}
+
+/* attention message */
+.attention_message {
+    background: #fdeccc;
+    border: 1px solid #f8c566;
+    color: #815400;
+}
+
+.success_message, .error_message, .attention_message {
+    display: block;
+    margin: 10px 0;
+    padding: 5px 10px;
+}
+
+/* content ana baslik stilleri*/
+.title1 {
+    background: #ff7a00 url(../images/layout/bg_box_title.gif) repeat-x top;
+    font-size: 18px;
+    border: 1px solid #833f0a;
+    color: #000;
+    padding: 5px;
+    letter-spacing: -1px;
+    overflow: hidden;
+}
+
+.title2 {
+    font-size: 18px;
+}
+
+.title3 {
+    font-size: 14px;
+}
+
+.title2, .title3 {
+    background: #efefef url(../images/layout/bg_box_li_a.gif) repeat-x top;
+    padding: 5px 10px;
+    display: block;
+    border: 1px solid #dadada;
+    color: #000;
+    overflow: hidden;
+    letter-spacing: -1px;
+}
+
+/* authentication.tpl
+---------------------------------------------------------------------------------------- */
+.si_su {
+    width: 680px;
+    margin: auto;
+    line-height: 2em;
+}
+
+/* sf_category.tpl
+---------------------------------------------------------------------------------------- */
+.title_topic {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.hl li {
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.hl li li {
+    float: left;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.hl li li.hl_img {
+    padding: 2%;
+    border: 1px solid #ccc;
+    margin-top: 1%;
+}
+
+.hl li li.hl_price {
+    float: right;
+    line-height: 1.5em;
+    text-align: center;
+    font-size: 13px;
+    color: #000;
+    font-weight: bold;
+    width: 20%;
+}
+
+.hl li li.hl_price .button {
+    margin-top: 10px;
+}
+
+.hl li li.hl_title, .hl li li.hl_details {
+    display: block;
+    width: 65%;
+    margin-left: 3%;
+    line-height: 18px;
+}
+
+.hl li li.hl_title {
+    margin: 0 0 5px 3%;
+    line-height: 24px;
+}
+
+/* announcements.tpl */
+.announcement_list li {
+    overflow: hidden;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 5px 0;
+}
+
+.announcement_list li #title {
+    margin-left: 55px;
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+/* authentication.tpl */
+.announcements li {
+    overflow: hidden;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 10px 0;
+    line-height: 18px;
+}
+
+.announcements #title {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.announcements #date {
+    font-style: italic;
+    color: #999;
+}
+
+/* cart_product.tpl */
+.cart_product ul {
+    margin-bottom: 20px; /*padding-bottom:20px; border-bottom:1px solid #eee;*/
+}
+
+.cart_product ul li {
+    padding: 3px 0;
+}
+
+/* urun detay */
+.s_title {
+    color: #000;
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+.service_info {
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+
+.s_img {
+    width: 154px;
+}
+
+.si_main {
+    border: 1px solid #eee;
+    padding: 1px;
+}
+
+.si_sub li {
+    float: left;
+}
+
+.s_info {
+    width: 510px;
+}
+
+.s_info td {
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+/* tab */
+@media print {
+    .tabs-nav {
+        display: none;
+    }
+}
+
+@media projection, screen {
+    .tabs-hide {
+        display: none;
+    }
+}
+
+.tabs-nav {
+    list-style: none;
+    margin: 0;
+    padding: 1px 0;
+}
+
+.tabs-nav:after {
+    display: block;
+    clear: both;
+    content: " ";
+}
+
+.tabs-nav li {
+    float: left;
+    height: 16px;
+    margin: 0 2px 0 0;
+}
+
+.tabs-nav a {
+    position: relative;
+    top: 1px;
+    z-index: 2;
+    text-align: center;
+    font-weight: 700;
+    color: #666;
+    background: #EFEFEF url(../images/layout/bg_box_li_a.gif) repeat-x bottom;
+    border: 1px solid #eee;
+    border-bottom: 0;
+    padding: 5px;
+}
+
+.tabs-nav .tabs-selected a {
+    color: #000;
+    background: #fff;
+}
+
+.tabs-nav .tabs-selected a:link, .tabs-nav .tabs-selected a:visited, .tabs-nav .tabs-disabled a:link, .tabs-nav .tabs-disabled a:visited {
+    cursor: text;
+}
+
+.tabs-nav a:hover, .tabs-nav a:focus, .tabs-nav a:active {
+    cursor: pointer;
+    background: #040000 url(../images/layout/bg_button_2.png) repeat-x top;
+    color: #fff;
+    text-decoration: none;
+}
+
+.tabs-nav .tabs-disabled {
+    opacity: .4;
+}
+
+.tabs-container {
+    border: 1px solid #eee;
+    background: #fff;
+    padding: 1em 8px;
+}
+
+.tabs-loading em {
+    background: url(loading.gif) no-repeat 0 50%;
+    padding: 0 0 0 20px;
+}
+
+a.copyright_vizra {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: #000;
+    /* tüm tarayıcılar icin transparan özelligi */
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+}

@@ -1,0 +1,122 @@
+[General]
+mod_1=Ayarlar
+mod_2=Destek
+mod_3=Müşteriler
+mod_4=Siparişler
+mod_5=Finans
+mod_6=Araçlar
+mod_7=Raporlar
+
+page_110=Yöneticiler
+page_111=Yönetici Detayları
+page_112=Kişisel Ayarlar
+page_115=Servisler
+page_116=Servis Detayları
+page_117=Servis Grupları
+page_120=Servis Özellikleri
+page_125=Sunucular
+page_130=Sayfalar
+page_135=Email Şablonları
+page_140=Genel
+page_145=Domainler
+page_150=Sunucu Monitör
+page_165=Kurlar
+page_170=Modüller
+page_175=Departmanlar
+page_176=Departman Detayları
+page_177=Kuponlar
+page_178=Kupon Detayları
+page_180=Ekstra Alanlar
+page_185=Shop
+
+page_210=Biletler
+page_211=Bilet Arama
+page_212=Bilet Detayları
+page_215=Yönetici Chat
+page_220=Bilgi Bankası
+page_225=Duyurular
+page_230=Dosya Merkezi
+
+page_310=Müşteriler
+page_311=Müşteri Detayları 
+page_312=Müşteri Ekle
+
+page_410=Sipariş Listesi
+page_411=Sipariş Detayları
+page_412=Sipariş Ekle
+page_415=Eklenti Detayları
+page_420=Alan Adları
+
+page_510=Ödemeler
+page_511=Ödeme Detayları
+page_515=Borçlar
+page_516=Borç Detayları
+
+page_610=Sistem Logları
+page_615=Kuyruk İşleri
+page_620=cPanel Import
+page_625=PLESK Import
+page_630=DirectI Import
+page_631=Domain Import
+page_635=Lisans Bilgisi
+page_640=Toplu Mail Gönderimi
+
+page_710=TIB CSV Raporu
+
+
+
+
+[SetupGeneral]
+compinfo=Şirket Bilgileri
+Company Name=Şirket İsmi
+Company Email=Şirket Maili
+
+security=Güvenlik
+portal=Portal
+    
+tickets=Destek
+
+
+notify=Uyarılar
+
+commset=İletişim 
+SMTP Server=SMTP Sunucusu
+SMTP Username=Kullanıcı Adı
+SMTP Password=Şifre
+SMTP Port=Port
+SMTP SSL Enabled=SSL Aktif
+    
+domains=Alan Adı
+payments=Ödeme ve Borçlar
+automation=Otomasyon
+
+[SetupEmailTemplates]
+order=Sipariş Mailleri
+finance=Finans İşlemleri
+domain=Domain Uyarıları
+support=Destek Mailleri
+user=Kullanıcı Mailleri
+welcome=Hesap Açılış Mailleri
+custom=Özel Mailler
+AddNewTemplate=Yeni Şablon Ekle
+
+[General]
+ModuleCmd_create=Hesabı Oluştur
+ModuleCmd_suspend=Askıya Al
+ModuleCmd_unsuspend=Askıdan Al
+ModuleCmd_terminate=Sunucudan Sil
+ModuleCmd_start=Başlat
+ModuleCmd_stop=Durdur
+ModuleCmd_reboot=Reboot
+ModuleCmd_boot=Boot
+ModuleCmd_poweroff=Power Off
+ModuleCmd_update=Güncelle
+
+[License]
+free=Ücretsiz
+monthly=Aylık
+owned=Ömür Boyu
+nobrand=Markasız
+trial=Deneme
+       
+

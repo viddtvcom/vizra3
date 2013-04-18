@@ -1,0 +1,59 @@
+.hl li {
+    height: 100px;
+}
+
+.hl li li {
+    height: auto;
+}
+
+/* tab */
+.tabs-nav {
+    /* auto clear */
+    display: inline-block;
+}
+
+.tabs-nav .tabs-disabled {
+    position: relative; /* fixes opacity */
+    filter: alpha(opacity=40);
+}
+
+.tabs-nav .tabs-disabled a span {
+    _height: 19px; /* for some reason the height is 1px to less with opacity... */
+    min-height: 19px; /* ...in both IE 6 and 7 */
+}
+
+.domain_sorgulama ul {
+    height: 46px;
+    float: left;
+    width: 830px;
+}
+
+/* paketler */
+.pack_box {
+    width: 220px;
+    overflow: hidden;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.pb_content {
+    height: 180px;
+}
+
+.pb_content .fiyat {
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.pb_content .fiyat .onsale {
+    float: right;
+}
+
+.duyurular {
+    height: 120px;
+}
+
+.announcement_list li {
+    width: 100%;
+}

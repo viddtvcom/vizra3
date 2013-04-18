@@ -1,0 +1,124 @@
+/* ticket içeriğinin geldiği kısım */
+.ticket_content {
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.ticket_content li {
+    padding: 10px;
+    overflow: hidden;
+    background: #fdeccc;
+    border: 1px solid #f8c566;
+}
+
+.ticket_content li.liHidden {
+    margin-bottom: 15px;
+}
+
+.ticket_content li.clearfix {
+    padding: 0;
+    display: none;
+}
+
+.user_avatar {
+    width: 120px;
+    margin-right: 10px;
+    float: left;
+    text-align: center;
+}
+
+.user_avatar img {
+    border: 1px solid #C0C0C0;
+    padding: 3px;
+    margin-bottom: 5px;
+    background: #fff;
+}
+
+/* kullanıcının yazdığı içerik kısmı */
+.ticket_post {
+    width: 518px;
+    float: right;
+    position: relative;
+}
+
+.ticket_post span {
+    padding: 10px;
+    display: block;
+}
+
+.ticket_post span.response {
+    min-height: 50px;
+    color: #815400;
+    background: #fff4de;
+    border: 1px solid #f8c566;
+}
+
+.ticket_post span.ticket_post_date {
+    padding: 5px 10px;
+}
+
+.ticket_post_date {
+    font-size: 10px;
+    text-align: right;
+}
+
+/* yöneticinin yazdığı içerik kısmı */
+.ticket_content li.admin {
+    background: #F2FFEF;
+    border: 1px solid #93db83;
+}
+
+.ticket_content li.admin .ticket_post {
+    width: 520px;
+    float: right;
+}
+
+.ticket_content li.admin .response {
+    background: #e6f7e2;
+    border: 1px solid #93db83;
+    color: #296e1a;
+}
+
+.ticket_content li.files {
+    background-color: #eee;
+    border: 0;
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
+
+.ticket_content li.files #files li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.ticket_content li.files #files li a {
+    padding: 10px 15px 10px 18px;
+    float: left;
+    background: transparent url(../images/file.png) no-repeat scroll left 10px;
+}
+
+/* konuyu cevaplama kısmı */
+.ticket_content li.response {
+    border: 1px solid #D0D0D0;
+    padding-top: 10px;
+    margin-top: 0px;
+    background-color: #f2f2f2;
+    min-height: 120px;
+    height: auto !important;
+    height: 120px;
+}
+
+.ticket_content li.response .ticket_post {
+    width: 500px;
+    float: right;
+    padding: 10px;
+}
+
+.ticket_content li.response .ticket_post textarea {
+    width: 488px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 10px;
+}

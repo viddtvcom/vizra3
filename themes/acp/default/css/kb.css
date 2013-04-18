@@ -1,0 +1,160 @@
+.f1 {
+    font-size: 1.4em;
+}
+
+.f2 {
+    font-size: 1.2em;
+}
+
+.f3 {
+    font-size: 0.8em;
+}
+
+.f4 {
+    font-size: 0.7em;
+}
+
+/* başlık stilleri */
+#categories_wrapper .main_title, .kb_main_title {
+    border-bottom: 1px solid #e8edef;
+    padding-bottom: 5px;
+    margin-bottom: 7px;
+    font-size: 1.4em;
+}
+
+#categories_wrapper .main_submenu {
+    padding: 0;
+    margin: -6px 0 15px 0;
+    text-align: right;
+}
+
+.sub_title {
+    padding-bottom: 10px;
+}
+
+/* search */
+.search {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search .s_input {
+    width: 70%;
+    border: 1px solid #ccc;
+    padding: 3px;
+}
+
+.search p {
+    padding: 5px 0;
+    color: #666;
+}
+
+/* categories */
+.categories {
+    overflow: hidden;
+}
+
+.categories li {
+    width: 190px;
+    float: left;
+    padding-right: 4px;
+    min-height: 80px;
+    height: auto !important;
+    height: 80px;
+}
+
+.categories li p {
+    padding-top: 5px;
+}
+
+.categories li h3 {
+    background: url(../images/ico_categories.gif) no-repeat left center;
+    padding-left: 20px;
+    font-size: 1.3em;
+    font-weight: normal;
+}
+
+.categories li h3.admin {
+    background: url(../images/lock.png) no-repeat left center;
+}
+
+.categories li h3.client {
+    background: url(../images/user-red.png) no-repeat left center;
+}
+
+.categories li h3 a {
+    text-decoration: underline;
+}
+
+.categories li h3 em {
+    color: #666;
+}
+
+/* article */
+#article {
+    margin: 0px 30px;
+    padding: 10px 30px;
+    border: 1px solid #F0F0F0;
+}
+
+#article .article_title {
+    font-size: 1.7em;
+    border: 0px;
+    margin: 0;
+    padding: 0;
+}
+
+#article .description {
+    padding: 4px 0;
+}
+
+#article .description span {
+    color: #666;
+}
+
+#article .a_post {
+    line-height: 1.4em;
+    border-top: 1px solid #F3F3F3;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+#article .a_post p {
+    padding: 3px 25px 5px 25px;
+}
+
+#article .a_post h3 {
+    font-size: 1.2em;
+    padding: 10px 0 5px 0;
+}
+
+#article .a_post .foot {
+    padding: 5px 0;
+    border-top: 1px solid #F3F3F3;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* article list */
+.article_list li {
+    border-bottom: 1px solid #F3F3F3;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.article_list li h3 {
+    background: url(../images/ico_article.gif) no-repeat left center;
+    padding-left: 20px;
+    font-size: 1.3em;
+    font-weight: normal;
+}
+
+.article_list li em {
+    font-style: italic;
+    color: #666;
+    font-size: .8em;
+}
+
+.article_list li em, .article_list li p {
+    padding-left: 20px;
+}

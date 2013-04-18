@@ -1,0 +1,12 @@
+a.button, input.button {
+    padding: 0;
+}
+
+.title700 span {
+    margin-top: -22px;
+}
+
+#wrap {
+    display: table;
+    height: 100%
+}

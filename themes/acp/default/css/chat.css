@@ -1,0 +1,35 @@
+#chat {
+    margin: 4px 0 0 0;
+    font-size: 0.9em;
+}
+
+#chat img {
+    vertical-align: middle;
+}
+
+#chat input[type=text] {
+    width: 400px;
+    padding: 2px;
+}
+
+#chat_div {
+    height: 120px;
+    overflow: auto;
+    background-color: #FFFFFF;
+    padding: 3px;
+    margin: 0px;
+
+}
+
+#chat_div ul li {
+    padding: 1px 0 1px;
+}
+
+#chat_div ul li span {
+    font-weight: normal;
+    color: #000;
+}
+
+#chat_div ul li span span {
+    color: #969696;
+}

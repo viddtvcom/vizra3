@@ -1,0 +1,133 @@
+/* product-list.tpl */
+ul#product_list {
+    float: left;
+    list-style-type: none;
+}
+
+ul#product_list li {
+    border-top: 1px solid #D0D0D0;
+    padding: 6px 6px 16px 6px;
+    height: auto;
+    clear: both;
+    width: 100%;
+    margin: 9px 0;
+}
+
+ul#product_list li.first {
+    border-top: 0px;
+}
+
+ul#product_list li a {
+    text-decoration: none;
+    color: #374853;
+}
+
+ul#product_list .product_img {
+    float: left;
+    margin-right: 10px;
+}
+
+ul#product_list li h3 {
+    margin: 0 10px 0 130px;
+    background-color: #F0F0F0;
+    border-bottom: 1px solid #D0D0D0;
+    font-size: 1.2em
+}
+
+ul#product_list li p.product_desc {
+    font-size: 1em;
+    margin: 5px 1px 0 130px;
+}
+
+ul#product_list li div.center_block {
+    float: left;
+    width: 500px;
+}
+
+ul#product_list li div.right_block {
+    float: left;
+    text-align: center;
+}
+
+ul#product_list li .discount {
+    color: #da0f00;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
+}
+
+ul#product_list li .on_sale {
+    color: #da0f00;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: block;
+}
+
+ul#product_list li .reduction {
+    display: block;
+    margin-bottom: 0.3em
+}
+
+ul#product_list li .price {
+    display: block;
+    font-size: 1.4em;
+    margin-bottom: 0.2em;
+    color: #0072bc
+}
+
+ul#product_list li span.availability {
+    color: #488c40;
+    font-size: 0.9em;
+    color: #f6a720
+}
+
+/* authentication.tpl */
+
+#authentication form {
+    width: 48%;
+    height: 25em;
+    clear: none;
+    float: left;
+}
+
+#authentication form a {
+    color: #f6a720;
+}
+
+#authentication form input {
+    width: 60%;
+    margin-bottom: 9px;
+}
+
+#authentication form label {
+    color: #dd2a81;
+    padding: 4px 0;
+    float: none;
+    clear: both;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 0.3em;
+}
+
+#authentication h3 {
+    background: none;
+    border-bottom: 1px solid #D0D0D0;
+}
+
+#authentication h4 {
+    background: none;
+    color: #004080
+}
+
+input[type=button].cart, input[type=submit].cart {
+    background: #F4F8F9 url(../images/cart_add.gif) no-repeat left center;
+    margin-top: 0.5em;
+    width: auto;
+    padding-left: 25px;
+    padding-bottom: 0;
+    text-align: left;
+    border: 1px solid #E0E0E0;
+    cursor: pointer;
+
+}

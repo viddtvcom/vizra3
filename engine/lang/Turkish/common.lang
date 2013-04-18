@@ -1,0 +1,201 @@
+[General]
+
+ticketID=Bilet ID
+Free=Ücretsiz
+OnSale=İndirimde 
+OneTime=Tek Seferlik
+Language=Dil
+Operation=İşlem
+Date=Tarih
+Overview=Genel
+Currency=Kur
+Bill=Borç
+Payment Currency=Ödeme Kuru
+PaymentMethod=Ödeme Şekli
+Module=Modül
+Status=Durum
+Extension=Uzantı
+Register=Tescil
+Renewal=Yenileme
+Renew=Yenile
+Transfer=Transfer
+Setup=İlk Ödeme
+Payments=Ödemeler
+Debts=Borçlar
+Balance=Bakiye
+Total=Toplam
+Order=Sipariş
+Domain=Alan Adı
+DueDate=Son Ödeme Tarihi
+EndDate=Bitiş Tarihi
+DateCreated=Kayıt Tarihi
+DateAdded=Eklenme Tarihi
+DateRegistered=Tescil Tarihi
+DateExpires=Bitiş Tarihi
+Payment Date=Ödeme Tarihi
+Amount=Miktar
+Price=Fiyat
+Description=Açıklama
+Again=Tekrar
+None=Yok
+Paid=Ödenmiş
+Unpaid=Ödenmemiş
+PackageName=Paket Adı
+WithSelected=Seçilenleri
+AccountFlow=Hesap Akışı
+Files=Dosyalar
+FileName=Dosya Adı
+FileSize=Dosya Boyutu
+
+
+active=Aktif
+inprocess=İşlemde
+pending=Beklemede
+pending-cron=Beklemede (CRON)
+pending-payment=Ödeme Bekliyor
+completed=Tamamlanmış
+scheduled=Zamanlanmış
+error=Hata
+inactive=Kapalı
+Inactive=Kapalı
+suspended=Askıda
+Approved=Onaylandı
+PendingPayment=Ödeme Bekliyor
+PendingApproval=Onay Bekliyor
+PendingProvision=Hesap Açılışı Bekliyor
+
+
+
+Username=Kullanıcı Adı
+Password=Şifre
+Update=Güncelle
+Save=Kaydet
+Add=Ekle
+AddNew=Yeni Ekle
+Delete=Sil
+Search=Ara
+Check=Kontrol Et
+Yes=Evet
+No=Hayır
+Active=Aktif
+
+STATUS=DURUM
+Status=Durum
+Continue=Devam Et
+Automatic=Otomatik
+Manual=Manuel
+Previous=Önceki
+Next=Sonraki
+
+
+
+BILLING_CYCLES_1=Aylık
+BILLING_CYCLES_3=3 Aylık
+BILLING_CYCLES_6=6 Aylık
+BILLING_CYCLES_12=12 Aylık
+BILLING_CYCLES_24=2 Senelik
+BILLING_CYCLES_36=3 Senelik
+BILLING_CYCLES_48=4 Senelik
+BILLING_CYCLES_60=5 Senelik
+
+
+Month=Ay
+Months=Ay
+Years=Yıl
+Max Period=Maks Periyod
+
+LastLoginDate=Son Giriş Tarihi
+Logout=Çıkış
+Individual=Bireysel
+Corporate=Kurumsal
+
+Services=Servisler
+Domains=Alan Adları
+Addons=Eklentiler
+Bills=Borçlar
+
+
+DiskSpace=Disk Alanı
+TemporaryUrl=Geçici URL
+IpAddress=IP Adresi
+WebmailUrl=Webmail Adresi
+CpanelUrl=cPanel Adresi
+PanelUrl=Kontrol Panel Adresi
+
+
+
+
+[ClientDetails]
+CLIENTNUMBER=MÜŞTERİ NO
+BALANCE=BAKİYE
+ChangePassword=Şifre Değiştir
+NameSurname=Ad Soyad
+Email=E-Posta
+CompanyName=Firma Adı
+Address=Adres
+City=Şehir
+State=İlçe
+Zip=Posta Kodu
+Country=Ülke
+Phone=Telefon
+Cell=Cep Telefonu
+OldPassword=Eski Şifre
+NewPassword=Yeni Şifre
+AccountType=Hesap Tipi
+
+
+[OrderDetails]
+pending-payment=Ödeme Onayı Bekliyor
+pending-provision=Açılış Bekliyor
+active=Aktif
+suspended=Askıda
+deleted=Silinmiş
+inactive=Kapalı
+NewPassword=Yeni Şifre
+RenewOrder=Siparişi Yenile
+free=Ücretsiz Sipariş
+onetime=Tek Ödemeli
+recurring=Periyodik Ödemeli
+
+[DomainDetails]
+active=Aktif
+pending=Beklemede
+expired=Süresi Dolmuş
+deleted=Silinmiş
+intransfer=Transfer Ediliyor
+
+[TicketDetails]
+closed=Kapalı
+new=Yeni
+client-responded=Müşteri Cevapladı
+awaiting-reply=Cevap Bekleniyor
+investigating=Araştırılıyor
+AddFile=Dosya Ekle
+TICKETID=BİLET NO
+Critical=Çok Acil
+Urgent=Acil
+Normal=Normal
+Average=Orta
+Low=Düşük
+AccountOwner=Hesap Sahibi
+AddResponse=Cevabı Gönder
+Department=Departman
+Priority=Öncelik
+Subject=Konu
+Attachment=Dosya Eklentisi
+AddTicket=Bileti Oluştur
+
+
+[Messages]
+InvalidEmail=Geçersiz Email Adresi
+InvalidUserPass=Geçersiz kullanıcı adı - şifre ikilisi
+EmailNotFound=Email adresi sistemimizde bulunamadı
+InvalidOperation=Geçersiz işlem, lütfen tekrar deneyiniz
+WeHaveSentYourDetails=Bilgileriniz email adresinize gönderildi
+WeDontAcceptNewRegistrations=Şu anda yeni kayıt almamaktayız, lütfen daha sonra tekrar deneyiniz
+EmailAlreadyExists=Bu email adresi sistemizde kayıtlı
+YouMustReadAndAcceptTos=Hizmet sözleşmesini okuyup kabul etmelisiniz.
+AccountCreatedDetailsSent=Hesabınız oluşturularak, bilgileriniz email adresinize gönderildi
+
+
+

@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^(.*)\.html index.php?p=seo&link=$1 [L]

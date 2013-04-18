@@ -1,0 +1,95 @@
+[General]
+YourCartIsEmpty=Sepetinizde Ürün Bulunmuyor
+xYearsOfRegistration=Senelik Tescil
+AddToCart=Sepete Ekle
+ClickHereForDetails=Detaylar için tıklayınız
+DomainManagement=Alan Adı Yönetimi
+EmptyCart=Sepeti Boşalt
+ProcessOrder=Sipariş Ver
+NewDomainContact=Yeni Kontak Kaydı
+UpdateDomainContact=Alan Adı Kontak Kaydı Düzenleme
+NewClientRegistration=Yeni Müşteri Kaydı
+RegisteredUsers=Kayıtlı Müşteri Girişi
+YourEmail=Email Adresiniz
+YourPassword=Şifreniz
+CreateNewAccount=Yeni Hesap Oluştur
+Login=Giriş Yapın
+CantRememberPassword=Şifremi Hatırlamıyorum
+PasswordReminder=Şifre Hatırlatma
+SendMyPassword=Şifremi Gönder
+Welcome=Hoşgeldiniz
+NoFinancialHistory=Herhangi bir finansal hareketiniz bulunmuyor
+AddFunds=Kredi Ekle
+Payment=Ödeme
+YourNote=Notunuz
+NoAddonServiceForThisOrder=Siparişiniz ile ilgili bir eklenti hizmeti bulunmamaktadır.
+IWantToRegisterThisDomain=Bu alan adını tescil etmek istiyorum
+IWillUseMyExistingDomain=Daha önce satın aldığım alan adını kullanacağım
+AlreadyRegistered=Tescil Edilemez
+AvailableForRegistration=Tescil Edilebilir
+PleaseChooseAtLeastOneDomain=En az bir alan adı seçmelisiniz
+PleaseSelectAPaymentMethod=Lütfen bir ödeme şekli seçiniz
+PleasePostDetailsAboutYourPayment=Ödemenizin en kısa zamanda onaylanabilmesi için açıklamayı detaylı şekilde yapınız
+
+[Messages]
+PleaseSelectAValidDomain=Lütfen geçerli bir alan adı seçiniz
+PasswordUpdated=Şifreniz güncellendi
+PasswordsDontMatch=Şifre tekrarınız doğru değil
+NewPasswordMustBeAtLeast6Maximum16Characters=Yeni şifreniz en az 6, en çok 16 karakter olabilir
+InvalidOldPassword=Eski şifreniz doğru değil
+YourDetailsHasBeenUpdated=Bilgileriniz güncellendi
+AnErrorOccuredWhileUpdatingYourDetails=Bilgilerinizi günceller hata oluştu, lütfen işaretli alanları kontrol ediniz 
+
+
+[TopMenu]
+Support=Destek
+MyDetails=Bilgilerim
+MyOrders=Siparişlerim
+MyDomains=Alan Adlarım
+Finance=Finans
+KnowledgeBase=Bilgi Bankası
+DownloadCenter=Dosya Merkezi
+
+[Nav]
+Announcements=Duyurular
+ProductsServices=Servisler
+MyCart=Sepetim
+YourCart=Sepetiniz
+PaymentSelection=Ödeme Metodu Seçimi
+DomainRegistration=Alan Adı Tescili
+CreditCardDetails=Kredi Kartı Bilgileri
+
+[Support]
+TECHNICAL_SUPPORT=TEKNİK DESTEK
+AddNewTicket=Yeni Bilet Oluştur
+KnowledgeBase=Bilgi Bankası
+TicketsInProgress=İşlemde Olan Biletler
+RecentlyClosedTickets=Son Kapanan Biletler
+ClosedTickets=Kapalı Biletler
+AllTickets=Biletler
+ticketID=Bilet No
+TicketSubject=Konu
+LastReplier=Son Cevaplayan
+LastUpdateTime=Son Güncelleme
+
+[OrderDetails]
+ORDERNUMBER=Sipariş No
+ORDERENDS=BİTİŞ TARİHİ
+ORDERSTATUS=SİPARİŞ DURUMU
+OrderDate=Sipariş Tarihi
+Price=Ücret
+OrderStarts=Başlangıç
+OrderEnds=Bitiş
+Period=Periyod
+Attributes=Özellikler
+
+[Dashboard]
+Title=Dashboard
+PendingPayments=Onay Bekleyen Ödemeleriniz
+LastTickets=Son Biletleriniz
+ExpiringDomains=Süresi Dolmak Üzere Olan Alan Adlarınız
+ExpiringOrders=Süresi Dolmak Üzere Olan Siparişleriniz
+UnpaidBills=Ödenmemiş Borçlarınız
+
+[Finance]
+ClickHereIfPaid=Ödeme Yaptıysanız Buraya Tıklayınız

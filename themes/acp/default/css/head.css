@@ -1,0 +1,350 @@
+/* start head */
+
+#logo {
+    margin: 0;
+    padding: 0;
+    width: 301px;
+    height: 74px;
+    float: left;
+}
+
+#logo a:link,
+#logo a:visited,
+#logo a:hover,
+#logo a:active {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-indent: -3000px;
+    overflow: hidden;
+    background: url(layout/aurora/logo.png) no-repeat;
+}
+
+#header_main_menu {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+#header_main_menu_bg {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 958px;
+    height: 154px;
+    margin: 0 0 0 -479px;
+    display: block;
+    background-repeat: no-repeat;
+
+}
+
+#header {
+    padding: 43px 0 0;
+    height: 110px;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#user_details {
+    float: right;
+
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+#user_details_menu {
+    color: #000;
+    margin: 0;
+    padding: 0;
+    clear: both;
+    float: right;
+    font-size: 11px;
+
+}
+
+#user_details_menu li.welcome {
+    font-size: 12px;
+}
+
+#user_details_menu li {
+    margin: 0;
+    padding: 0 0 2px;
+    list-style: none;
+    float: right;
+    clear: both;
+}
+
+#user_access {
+    margin: 0;
+    padding: 0 0 0 20px;
+    float: left;
+    background: url(layout/aurora/user_access.gif) no-repeat left center;
+    font-size: 11px;
+    line-height: 16px;
+}
+
+#user_access li {
+    float: left;
+    width: auto;
+    padding: 0 5px 0 4px;
+    background: url(layout/aurora/user_access_li.gif) no-repeat right center;
+    clear: none;
+}
+
+#user_access a:link,
+#user_access a:visited,
+#user_access a:active {
+    color: #004b60;
+}
+
+#user_access a:hover {
+    text-decoration: underline;
+}
+
+#user_access li.first {
+    padding-left: 0;
+}
+
+#user_access li.last {
+    background: none;
+}
+
+.new_messages:link,
+.new_messages:visited,
+.new_messages:active {
+    color: #004b60;
+    text-decoration: none;
+
+}
+
+.new_messages:hover {
+    text-decoration: underline;
+    color: #004b60;
+}
+
+#server_details {
+    float: right;
+    clear: both;
+    margin: 0;
+    padding: 3px 0 0;
+    font-size: 10px;
+    color: #262626;
+
+}
+
+#server_details dl, #server_details dt, #server_details dd {
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+
+#server_details dl {
+    display: block;
+    float: right;
+    clear: both;
+    white-space: nowrap;
+}
+
+#main_menu {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 62px;
+    z-index: 1;
+}
+
+#main_menu:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+#main_menu ul {
+    margin: 0 0 0 -2px;
+    padding: 0;
+    width: 100%;
+    float: left;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline;
+}
+
+#main_menu ul ul {
+    position: absolute;
+    top: 37px;
+    left: -15px;
+    margin: 0;
+
+}
+
+#main_menu li {
+    list-style: none;
+    margin: 0;
+    margin: 0;
+    float: left;
+}
+
+#main_menu a:link,
+#main_menu a:visited,
+#main_menu a:hover,
+#main_menu a:active {
+    float: left;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: bold;
+    color: #eaeaea;
+    line-height: 33px;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+
+#main_menu .selected_lk:link,
+#main_menu .selected_lk:visited,
+#main_menu .selected_lk:hover,
+#main_menu .selected_lk:active {
+    color: #000;
+}
+
+#main_menu .l, #main_menu .r, #main_menu .m {
+    display: block;
+    width: 10px;
+    overflow: hidden;
+    float: left;
+    height: 33px;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+#main_menu em {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    float: left;
+    font-style: normal;
+}
+
+#main_menu .m {
+    width: auto;
+}
+
+#main_menu .l span,
+#main_menu .r span,
+#main_menu .m span {
+    width: 100%;
+    height: 99px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#main_menu .l span {
+    background: url(layout/aurora/mm_l.png) no-repeat;
+}
+
+#main_menu .r span {
+    background: url(layout/aurora/mm_r.png) no-repeat;
+}
+
+#main_menu .m span {
+    background: url(layout/aurora/mm_m.png) repeat-x;
+}
+
+#main_menu a:hover span span, #main_menu a.hover span span {
+    top: -33px;
+}
+
+#main_menu a.selected_lk span span {
+    top: -66px !important;
+}
+
+.sub_bg {
+    display: block;
+    height: 29px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 33px;
+    background: url(layout/aurora/submenu_bg.png) repeat-x;
+}
+
+#main_menu ul ul a:link,
+#main_menu ul ul a:visited,
+#main_menu ul ul a:active {
+    font-size: 12px;
+    color: #000;
+    line-height: 19px;
+}
+
+#main_menu ul ul a:hover {
+    text-decoration: underline;
+}
+
+#main_menu ul ul .selected_lk:link,
+#main_menu ul ul .selected_lk:visited,
+#main_menu ul ul .selected_lk:hover,
+#main_menu ul ul .selected_lk:active {
+    color: #fff;
+    text-decoration: none;
+}
+
+#main_menu ul ul .l,
+#main_menu ul ul .r,
+#main_menu ul ul .m {
+    width: 5px;
+    height: 19px;
+}
+
+#main_menu ul ul .m {
+    width: auto;
+}
+
+#main_menu ul ul .l span,
+#main_menu ul ul .r span,
+#main_menu ul ul .m span {
+    height: 19px;
+
+}
+
+#main_menu ul ul .l span {
+    background-image: url(layout/aurora/sm_l.png);
+}
+
+#main_menu ul ul .r span {
+    background-image: url(layout/aurora/sm_r.png);
+}
+
+#main_menu ul ul .m span {
+    background-image: url(layout/aurora/sm_m.png);
+}
+
+#main_menu ul ul a:link span span,
+#main_menu ul ul a:visited span span,
+#main_menu ul ul a:hover span span,
+#main_menu ul ul a:active span span {
+    top: -50px;
+}
+
+#main_menu ul ul a.selected_lk span span {
+    top: 0 !important;
+
+}
+
+#main_menu ul ul li {
+    padding: 0 0 0 15px;
+}
+
+#main_menu ul ul em {
+    padding: 0 1px;
+}
+
+/* end head */

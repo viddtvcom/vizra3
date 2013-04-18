@@ -1,0 +1,180 @@
+[General]
+ticketID=Bilet ID
+Free=Free
+OnSale=On Sale
+OneTime=One Time
+Language=Language
+Operation=Operation
+Date=Date
+Overview=Overview
+Currency=Currency
+Bill=Bill
+Payment Currency=Ödeme Kuru
+PaymentMethod=Payment Method
+Module=Module
+Status=Status
+Extension=Extension
+Register=Register
+Renewal=Renewal
+Renew=Renew
+Transfer=Transfer
+Setup=Setup
+Payments=Payments
+Debts=Debts
+Balance=Balance
+Total=Total
+Order=Order
+Domain=Domain
+DueDate=Due Date
+EndDate=End Date
+DateCreated=Date Created
+DateAdded=Date Added
+DateRegistered=Date Registered
+DateExpires=Date Expires
+Payment Date=Payment Date
+Amount=Amount
+Price=Price
+Description=Description
+Again=Again
+Paid=Paid
+Unpaid=Unpaid
+PackageName=Package Name
+WithSelected=With Selected
+AccountFlow=Account Flow
+Files=Files
+FileName=File Name
+FileSize=File Size
+   
+active=Active
+inprocess=In Process
+pending=Pending
+pending-payment=Pending Payment
+completed=Completed
+error=Error
+inactive=Inactive
+Active=Active
+Inactive=Inactive
+suspended=Suspended
+Approved=Approved
+PendingPayment=Pending Payment
+PendingApproval=Pending Approval
+PendingProvision=Pending Provision
+
+Username=Username
+Password=Password
+Update=Update
+Save=Save
+Add=Add
+AddNew=Add New
+Delete=Delete
+Search=Search
+Check=Check
+Yes=Yes
+No=No
+
+STATUS=STATUS
+Status=Status
+Continue=Continue
+Automatic=Automatic
+Manual=Manual
+Previous=Previous
+Next=Next
+
+BILLING_CYCLES_1=Monthly
+BILLING_CYCLES_3=Quarterly
+BILLING_CYCLES_6=Semi Annually
+BILLING_CYCLES_12=Annually
+BILLING_CYCLES_24=2 Years
+BILLING_CYCLES_36=3 Years
+BILLING_CYCLES_48=4 Years
+BILLING_CYCLES_60=5 Years
+
+Month=Month
+Months=Months
+Years=Year(s)
+Max Period=Max Period
+
+LastLoginDate=Last Login Date
+Logout=Logout
+Individual=Individual
+Corporate=Corporate
+Services=Services
+Domains=Domains
+Addons=Addons
+Bills=Bills
+
+
+[ClientDetails]
+CLIENTNUMBER=CLIENT NUMBER
+BALANCE=BALANCE
+ChangePassword=Change Password
+NameSurname=Name Surname
+Email=Email
+CompanyName=Company
+Address=Address
+City=City
+State=State
+Zip=Zip
+Country=Country
+Phone=Phone
+Cell=Cell Phone
+OldPassword=Old Password
+NewPassword=New Password
+AccountType=Account Type
+
+[OrderDetails]
+pending-payment=Pending Payment Approval
+pending-provision=Pending Provision
+active=Active
+suspended=Suspended
+deleted=Deleted
+inactive=Inactive
+NewPassword=New Password
+RenewOrder=Renew Order
+free=Free Order
+onetime=One Time Payment
+recurring=Recurring Payment
+
+[DomainDetails]
+active=Active
+pending=Pending
+expired=Expired
+deleted=Delete
+intransfer=In Transfer
+
+[TicketDetails]
+closed=Closed
+new=New
+client-responded=Client Responded
+awaiting-reply=Awaiting Reply
+investigating=Investigating
+AddFile=Add File
+TICKETID=TICKET ID
+Critical=Critical
+Urgent=Urgent
+Normal=Normal
+Average=Average
+Low=Low
+AccountOwner=Account Owner
+AddResponse=Add Response
+Department=Department
+Priority=Priority
+Subject=Subject
+Attachment=Attachment
+AddTicket=Add Ticket
+
+
+
+[Messages]
+InvalidEmail=Invalid Email Address
+InvalidUserPass=Invalid username password combination
+EmailNotFound=We don't have a record of that email address in our system
+InvalidOperation=Invalid operation, please try again
+WeHaveSentYourDetails=We have sent your details to your email address
+WeDontAcceptNewRegistrations=We currently dont accept new registrations, please try again later
+EmailAlreadyExists=This email already exists on our database
+YouMustReadAndAcceptTos=You must read and accept our TOS
+AccountCreatedDetailsSent=Your account has been created, and your details are sent to your email
+
+
+

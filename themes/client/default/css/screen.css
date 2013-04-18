@@ -1,0 +1,922 @@
+/* Vizra.com - 19/02/10
+
+	Table of Contents:
+	Reset
+	Typography
+	Positioning - Layout
+	Form - Button - Radius - Message
+	Login.html
+	Web_hosting.html
+
+*/
+
+/* Reset
+---------------------------------------------------------------------------------------- */
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+address, caption, cite, code, dfn, em,
+
+,
+var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+caption, th {
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+abbr, acronym {
+    border: 0;
+}
+
+:focus {
+    outline-style: none;
+}
+
+/* Typography
+---------------------------------------------------------------------------------------- */
+
+body {
+    font: 67.5% 'Segoe UI', 'Lucida Sans Unicode', Verdana, sans-serif;
+    background: url(layout/bg_body.png) repeat top;
+    color: #585858;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link, a:visited {
+    color: #000;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.8em;
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+h4 {
+    font-size: 1.4em;
+    font-weight: normal;
+}
+
+h5 {
+    font-size: 1.2em;
+}
+
+h6 {
+    font-size: 1.0em;
+}
+
+/* Positioning - Layout
+---------------------------------------------------------------------------------------- */
+
+.clear {
+    clear: both;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.vm {
+    vertical-align: middle;
+}
+
+.block {
+    display: block;
+}
+
+.tleft {
+    text-align: left;
+}
+
+.tright {
+    text-align: right;
+}
+
+.w200 {
+    width: 200px;
+}
+
+.w700 {
+    width: 700px;
+}
+
+.w25 {
+    width: 25%;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.w75 {
+    width: 75%;
+}
+
+div#wrapper {
+    width: 968px;
+    margin: auto;
+}
+
+/* header */
+div#header {
+    height: 70px;
+}
+
+div#header .logo {
+    margin-top: 25px;
+    padding-left: 20px;
+}
+
+div#header .nav_top {
+    margin-top: 30px;
+}
+
+div#header .nav_top li, div#header .nav_top li a {
+    float: left;
+}
+
+div#header .nav_top li a {
+    background-image: url(layout/bg_nav_top_sprite.png);
+    background-repeat: no-repeat;
+    display: block;
+    padding: 6px 30px 0 35px;
+    height: 20px;
+    color: #fff;
+}
+
+div#header .nav_top li a.destek {
+    background-position: 0 0;
+}
+
+div#header .nav_top li a.bilgilerim {
+    background-position: 0 -87px;
+}
+
+div#header .nav_top li a.siparislerim {
+    background-position: 0 -176px;
+}
+
+div#header .nav_top li a.finans {
+    background-position: 0 -265px;
+}
+
+/* kullanici bilgilerinin bulundugu bar */
+.user_bar {
+    margin-top: 20px;
+    line-height: 1.7em;
+    background: url(layout/bg_user_bar.png) no-repeat;
+    height: 37px;
+    width: 920px;
+    padding: 4px 24px 0;
+}
+
+.user_bar li {
+    float: left;
+    margin-right: 10px;
+    border-right: 1px solid #ffa154;
+    padding-right: 10px;
+}
+
+.user_bar a, .user_bar .last_login {
+    display: block;
+    height: 28px;
+    padding-top: 9px;
+    color: #fff;
+    float: left;
+}
+
+.user_bar a.user {
+    background: url(layout/bg_user_ico.png) no-repeat left;
+    padding-left: 25px;
+}
+
+.user_bar a.logout {
+    background: url(layout/bg_logout_ico.png) no-repeat right;
+    padding-right: 25px;
+}
+
+div#content {
+    background: url(layout/bg_content_main.png) repeat-y center center;
+    width: 920px;
+    padding: 24px;
+    overflow: hidden;
+}
+
+.content_b {
+    background: url(layout/bg_content_bottom.png) no-repeat;
+    width: 968px;
+    height: 15px;
+}
+
+/* content ana baslik stilleri*/
+.title200 {
+    width: 180px;
+    background-position: 0 0;
+}
+
+.title700 {
+    width: 680px;
+    background-position: 0 -29px;
+}
+
+.title920 {
+    width: 900px;
+    background-position: 0 -58px;
+}
+
+.title200, .title700, .title920 {
+    background-image: url(layout/bg_title_sprite.png);
+    height: 24px;
+    padding: 5px 10px 0 10px;
+    font-size: 140%;
+    color: #fff;
+    overflow: hidden;
+}
+
+.title200 a, .title700 a, .title920 a {
+    color: #fff;
+    font-size: 0.7em;
+    font-weight: normal;
+}
+
+.s_details {
+    background: #f5f5f5;
+    border: 1px solid #e5e5e5;
+    border-top: 0;
+    border-bottom: 0;
+    padding: 10px 10px 0;
+    line-height: 1.8em;
+    overflow: hidden;
+}
+
+.s_details .durum {
+    color: #ff0000;
+}
+
+.s_tabb {
+    padding: 20px 10px 0;
+    overflow: hidden;
+    background: #f5f5f5 url(layout/s_tabb_back.png) repeat-x bottom;
+    border: 1px solid #e5e5e5;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.s_tabb a {
+    padding: 5px 10px;
+    margin-right: 5px;
+    display: block;
+    float: left;
+    background: #eee;
+    border: 1px solid #e5e5e5;
+    border-bottom: 0;
+    font-size: 1.2em;
+    color: #969696;
+}
+
+.s_tabb a.selected {
+    margin-right: 5px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-bottom: 0;
+    color: #000;
+}
+
+.s_tabb li {
+    float: left
+}
+
+.nav_left, .content_right {
+    border: 1px solid #e5e5e5;
+    border-top: 0;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.nav_left li {
+    padding-bottom: 12px;
+}
+
+.nav_left a {
+    background: url(layout/bg_nav_left_ico.png) no-repeat left center;
+    padding-left: 15px;
+    display: block;
+}
+
+.content_right a {
+    color: #585858;
+}
+
+/* genel tablo stili */
+div#content .main_table {
+    width: 100%;
+    border-top: 1px solid #e5e5e5;
+    margin-bottom: 30px;
+}
+
+div#content .main_table tbody td, div#content .main_table tbody th {
+    padding: 4px;
+    border-bottom: 1px solid #e5e5e5;
+    line-height: 160%;
+}
+
+div#content .main_table tbody tr.alt td {
+    background-color: #e1f0ff;
+}
+
+div#content .main_table tbody th {
+    font-weight: bold;
+    background-color: #F0F0F0;
+}
+
+div#content .main_table thead td {
+    background: #f1f1f1 url(layout/bg_main_table_title.png) repeat-x;
+}
+
+div#content .main_table thead td h3 {
+    color: #ff4e00;
+    font-size: 1.3em;
+    padding: 8px 5px;
+    font-weight: normal;
+}
+
+.languages {
+    float: right;
+    margin-right: 20px;
+    color: #fff;
+}
+
+.languages select {
+    font-size: 1.1em;
+    padding: 2px;
+}
+
+/* footer */
+.footer {
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+}
+
+/* Form - Button - Radius - Message
+---------------------------------------------------------------------------------------- */
+
+.v1_tinput {
+    border: 1px solid #cfd2d3;
+    padding: 2px;
+    background: url(layout/bg_input.gif) repeat-x top;
+    margin-bottom: 5px;
+}
+
+.tinput_2, .tinput {
+    border: 1px solid #cfd2d3;
+    padding: 2px;
+    background: url(layout/bg_input.gif) repeat-x top;
+    margin-bottom: 5px;
+}
+
+/* button */
+a.button, .button {
+    background: #ff7200 url(layout/bg_button.gif) repeat-x top; /*display:block;*/
+    border: 1px solid #da6100;
+    padding: 2px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* radius */
+.br_5 {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.br_t_5, .s_tabb a {
+    -moz-border-radius-topleft: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-top-right-radius: 5px;
+}
+
+.br_b_5 {
+    -moz-border-radius-bottomleft: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+
+/*success message*/
+.success_message {
+    background: #dbf3d6;
+    border: 1px solid #93db83;
+    color: #296e1a;
+}
+
+/*error message*/
+.error_message {
+    background: #fdcccc;
+    border: 1px solid #f86666;
+    color: #721010;
+}
+
+/*attention message*/
+.attention_message {
+    background: #fdeccc;
+    border: 1px solid #f8c566;
+    color: #815400;
+}
+
+.success_message, .error_message, .attention_message {
+    display: block;
+    margin: 10px 0;
+    padding: 5px 10px;
+}
+
+/* Login.html
+---------------------------------------------------------------------------------------- */
+.si_su {
+    width: 100%;
+}
+
+.si_su .sign_in, .si_su .sign_up {
+    width: 50%;
+    line-height: 2em;
+}
+
+/* web_hosting.html
+---------------------------------------------------------------------------------------- */
+.hl li {
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.hl li li {
+    float: left;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.hl li li.hl_img {
+    padding: 2px; /*border:1px solid #ccc;*/
+    margin-top: 2px;
+}
+
+.hl li li.hl_price {
+    float: right;
+    line-height: 1.5em;
+    width: 120px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.hl li li.hl_title, .hl li li.hl_details {
+    display: block;
+    width: 450px;
+    margin-left: 3%;
+}
+
+.hl li li.hl_details {
+    padding: 5px 9px;
+}
+
+.hl li li .onsale {
+    color: #FF0000;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* box_search.html
+---------------------------------------------------------------------------------------- */
+.da_tarea {
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    padding: 10px;
+    width: 200px;
+    float: left;
+    margin-right: 12px;
+}
+
+.domain_uzantilari li {
+    float: left;
+    padding: 5px;
+    width: 65px;
+}
+
+.domain_uzantilari li input {
+    vertical-align: middle;
+    margin-right: 2px;
+}
+
+.pack_box {
+    background: #fff url(layout/bg_paket.png) repeat-x top;
+    border: 1px solid #ffdcbf;
+    width: 196px;
+    padding: 10px;
+    overflow: hidden;
+    float: left;
+    margin: 0 8px 20px 0;
+    min-height: 200px;
+    position: relative;
+}
+
+.pb_top {
+    margin-bottom: 10px;
+    line-height: 1.8em;
+}
+
+.pack_box h2 {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.pb_bottom {
+    margin-bottom: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 196px;
+}
+
+.pb_bottom p {
+    overflow: hidden;
+}
+
+.pb_bottom span.price {
+    font-size: 26px;
+    line-height: 26px;;
+    color: #5d9e00;
+    float: left;
+    font-weight: bold;
+    letter-spacing: -2px;
+    display: block;
+}
+
+.pb_bottom span.price2 {
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+    display: block;
+    text-decoration: line-through;
+}
+
+.pb_bottom .button {
+    float: right;
+    margin-top: 10px;
+}
+
+.pb_bottom span.ptext {
+    float: left;
+    color: #999;
+    padding-left: 5px;
+    display: block;
+}
+
+.pack_box span.onsale {
+    color: #FF0000;
+    font-size: 13px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 40px;
+    right: 0;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.green {
+    color: #00D500;
+}
+
+.red {
+    color: #FF0000;
+}
+
+#right {
+    text-align: right;
+}
+
+#center {
+    text-align: center;
+}
+
+#middle {
+    vertical-align: middle;
+    margin-bottom: 3px;
+}
+
+.announcement_list li {
+}
+
+.announcement_list li p.date {
+    color: #C0C0C0;
+    font-size: 0.9em;
+    text-align: right;
+}
+
+.announcements li #title {
+    border-bottom: 1px solid #e8edef;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    font-size: 1.7em;
+}
+
+.announcements li p {
+    font-size: 1.3em;
+    padding: 0 20px 20px 15px;
+}
+
+.announcements li #date {
+    color: #C0C0C0;
+    font-size: 1.0em;
+    text-align: right;
+}
+
+#datalist {
+    width: 100%;
+}
+
+#datalist table {
+    border: 1px solid #C0C0C0;
+    border-top: 0px;
+}
+
+#datalist h2 {
+    margin-top: 15px;
+    padding: 7px 0 5px 8px;
+    font-weight: normal;
+    font-size: 1.3em;
+    color: #000;
+    background: url(../images/header_title.gif);
+    height: 21px;
+    border: 1px solid #C0C0C0;
+    border-bottom: 0px;
+}
+
+#datalist th {
+    color: #000;
+    padding: 7px 3px;
+    font-size: 1.0em;
+    font-weight: normal;
+    background-image: url(../images/th_bg_b.gif);
+    border-top: 1px solid #C0C0C0;
+    border-bottom: 1px solid #C0C0C0;
+}
+
+#datalist td {
+    border-bottom: 1px solid #D5DEFF;
+    padding: 5px 3px;
+}
+
+#datalist tr.alt {
+    background: #e1f0ff;
+}
+
+#datalist tr.alt2 {
+    background: #ABCFF9;
+}
+
+#datalist td#center {
+    text-align: center;
+}
+
+.w_5 {
+    width: 5%;
+    text-align: center;
+}
+
+.w_10 {
+    width: 10%;
+}
+
+.w_20 {
+    width: 20%;
+}
+
+.w_45 {
+    width: 45%;
+}
+
+/* Data Display */
+#datagrid {
+    width: 100%;
+    margin: 5px 0;
+}
+
+#datagrid th {
+    padding: 5px 5px;
+    background-color: #e1f0ff;
+    border-bottom: 1px solid #D5DEFF;
+}
+
+#datagrid td {
+    padding: 5px 5px;
+    background-color: #fff;
+    border-bottom: 1px solid #D5DEFF;
+}
+
+/* form stilleri*/
+#formgrid {
+    margin-top: 10px;
+    border-top: 1px solid #fff;
+    padding: 10px 0;
+}
+
+#formgrid legend {
+    padding: 0 2px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#formgrid li {
+    border-top: 1px solid #F0F0F0;
+    padding: 5px 10px;
+    font-size: 1.2em;
+    width: 100%;
+    line-height: 1.8;
+    list-style: none;
+}
+
+#formgrid li.first {
+    border-top: 0px;
+}
+
+#formgrid label {
+    width: 170px;
+    display: inline-block;
+    float: left;
+}
+
+#formgrid div {
+    float: left;
+}
+
+#formgrid div label {
+    float: none;
+    display: inherit;
+}
+
+#formgrid span {
+    display: block;
+}
+
+#formgrid input[type=radio], #formgrid input[type=checkbox] {
+    vertical-align: middle;
+    margin: 0 0 0 10px;
+}
+
+#formgrid input[type=text], #formgrid input[type=file] {
+    border: 1px solid #ccc;
+    padding: 5px;
+    color: #666;
+}
+
+#formgrid input[type=text].error {
+    background-color: #FFDDDD;
+    border: 3px solid #FFDDDD;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+/* input */
+form.cmxform fieldset {
+    margin-bottom: 10px;
+}
+
+form.cmxform input[type=text] {
+    border: 1px solid #ccc;
+    padding: 5px;
+    color: #666;
+}
+
+form.cmxform input[type=text].error {
+    background-color: #FF8080;
+    border: 2px solid #FF8080
+}
+
+form.cmxform legend {
+    padding: 0 2px;
+    font-weight: bold;
+    _margin: 0 -7px; /* IE Win */
+}
+
+form.cmxform label {
+    display: inline-block;
+    line-height: 280%;
+    font-weight: normal;
+    width: 180px;
+    vertical-align: top;
+    color: #000000;
+    margin-right: 5px;
+}
+
+form.cmxform ol.alt li label {
+    width: 120px;
+}
+
+form.cmxform fieldset ol {
+    margin: 0;
+    padding: 0;
+}
+
+form.cmxform fieldset li {
+    list-style: none;
+    padding-left: 5px;
+    margin: 0;
+    border-bottom: 1px solid #F5F5F5;
+    line-height: 280%;
+    font-size: 1.0em;
+
+}
+
+form.cmxform fieldset li.odd {
+    background-color: #F9F9F9;
+}
+
+form.cmxform fieldset li.odd label {
+    background-color: #F5F5F5;
+}
+
+form.cmxform fieldset li span {
+    font-size: 0.9em;
+}
+
+form.cmxform fieldset input[type=text] {
+    width: 250px;
+}
+
+form.cmxform fieldset fieldset {
+    border: none;
+    margin: 3px 0 0;
+}
+
+form.cmxform fieldset fieldset legend {
+    padding: 0 0 5px;
+    font-weight: normal;
+}
+
+form.cmxform fieldset fieldset label {
+    display: block;
+    width: auto;
+}
+
+form.cmxform em {
+    font-weight: bold;
+    font-style: normal;
+    color: #f00;
+}
+
+form.cmxform fieldset fieldset label {
+    margin-left: 123px;
+}
+
+/* Width plus 3 (html space) */

@@ -1,0 +1,97 @@
+[General]
+YourCartIsEmpty=Your cart is empty
+xYearsOfRegistration=Years of Registration
+AddToCart=Add To Cart
+ClickHereForDetails=Click here for details
+DomainManagement=Domain Management
+EmptyCart=Empty Cart
+ProcessOrder=Process Order
+NewDomainContact=New Domain Contact
+UpdateDomainContact=Update Domain Contact
+NewClientRegistration=New Client Registration
+RegisteredUsers=Registered Users
+YourEmail=Your Email
+YourPassword=Your Password
+CreateNewAccount=Create New Account
+Login=Login
+CantRememberPassword=Can't Remember My Password
+PasswordReminder=Password Reminder
+SendMyPassword=Send My Password
+Welcome=Welcome
+NoFinancialHistory=No Financial History
+AddFunds=Add Funds
+Payment=Payment
+YourNote=Your Note
+NoAddonServiceForThisOrder=No addon service available for this order
+IWantToRegisterThisDomain=I want to register this domain
+IWillUseMyExistingDomain=I will use my existing domain
+AlreadyRegistered=Already Registered
+AvailableForRegistration=Available
+PleaseChooseAtLeastOneDomain=Please choose at least one domain
+PleaseSelectAPaymentMethod=Please select a payment method
+PleasePostDetailsAboutYourPayment=Please post details about your payment
+
+[Messages]
+PleaseSelectAValidDomain=Please select a valid domain
+PasswordUpdated=Your password has been updated
+PasswordsDontMatch=Passwords do not match
+NewPasswordMustBeAtLeast6Maximum16Characters=New password must be min 6, max 16 characters
+InvalidOldPassword=Invalid old password
+YourDetailsHasBeenUpdated=Your details has been updated
+AnErrorOccuredWhileUpdatingYourDetails=An error occured while updating your details 
+
+
+[TopMenu]
+Support=Support
+MyDetails=My Details
+MyOrders=My Orders
+MyDomains=My Domains
+Finance=Finance
+KnowledgeBase=Knowledge Base
+DownloadCenter=Download Center
+
+[Nav]
+Announcements=Announcements
+ProductsServices=Products & Services
+MyCart=My Cart
+YourCart=Your Cart
+PaymentSelection=Payment Selection
+DomainRegistration=Domain Registration
+CreditCardDetails=Credit Card Details
+
+
+[Support]
+TECHNICAL_SUPPORT=TECHNICAL SUPPORT
+AddNewTicket=Add New Ticket
+KnowledgeBase=Knowledge Base
+TicketsInProgress=Tickets In Progress
+RecentlyClosedTickets=Recently Closed Tickets
+ClosedTickets=Closed Tickets
+AllTickets=All Tickets
+ticketID=Ticket ID
+TicketSubject=Ticket Subject
+LastReplier=Last Replier
+LastUpdateTime=Last Update Time
+
+
+[OrderDetails]
+ORDERNUMBER=ORDERN UMBER
+ORDERENDS=ORDER ENDS
+ORDERSTATUS=ORDER STATUS
+OrderDate=Order Date
+Price=Price
+OrderStarts=Order Starts
+OrderEnds=Order Ends
+Period=Period
+Attributes=Attributes
+
+[Dashboard]
+Title=Dashboard
+PendingPayments=Pending Payments
+LastTickets=Last Tickets
+ExpiringDomains=Expiring Domains
+ExpiringOrders=Expiring Orders
+UnpaidBills=Unpaid Bills
+
+[Finance]
+ClickHereIfPaid=Click here if paid
