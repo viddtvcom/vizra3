@@ -6,9 +6,9 @@ $joins .= " INNER JOIN clients c ON (c.clientID = o.clientID OR c.clientID = ob.
 $sort = "ob.dateDue ASC";
 
 // admin settings
-$_SESSION['vadmin']->syncSetting('billSearch_bstatus', &$_GET['bstatus']);
-$_SESSION['vadmin']->syncSetting('billSearch_ostatus', &$_GET['ostatus']);
-$_SESSION['vadmin']->syncSetting('billSearch_sort', &$_GET['sort']);
+$_SESSION['vadmin']->syncSetting('billSearch_bstatus', $_GET['bstatus']);
+$_SESSION['vadmin']->syncSetting('billSearch_ostatus', $_GET['ostatus']);
+$_SESSION['vadmin']->syncSetting('billSearch_sort', $_GET['sort']);
 
 
 if ($_GET['billID'] != '') {

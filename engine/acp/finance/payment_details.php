@@ -13,7 +13,7 @@ if (! $Payment->paymentID) {
 if ($_POST["action"] == "update") {
     $Payment->replace($_POST)->update();
 } elseif ($_POST["action"] == "approve") {
-    $Payment->approve(getAdminID());
+    $Payment->approve(getAdminID(), $_POST['sendmail']);
 }
 if ($_POST) {
     redirect("?p=511&paymentID=" . $Payment->paymentID);

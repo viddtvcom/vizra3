@@ -21,9 +21,9 @@ $joins = "INNER JOIN clients c ON c.clientID = p.clientID";
 $sort = "p.dateAdded DESC";
 
 
-$_SESSION['vadmin']->syncSetting('paymentSearch_status', &$_GET['paymentStatus']);
-$_SESSION['vadmin']->syncSetting('paymentSearch_moduleID', &$_GET['moduleID']);
-
+$_SESSION['vadmin']->syncSetting('paymentSearch_status', $_GET['paymentStatus']);
+$_SESSION['vadmin']->syncSetting('paymentSearch_moduleID', $_GET['moduleID']);
+$_SESSION['vadmin']->syncSetting('paymentSearch_adminID', $_GET['adminID']);
 
 if ($_GET['paymentID'] != '') {
     redirect('?p=511&paymentID=' . $_GET['paymentID']);
@@ -31,6 +31,10 @@ if ($_GET['paymentID'] != '') {
 
 if ($_GET['moduleID'] != 'all') {
     $conditions .= " AND p.moduleID = '" . $_GET['moduleID'] . "'";
+}
+
+if ($_GET['adminID'] != 'all' && $_GET['adminID'] != '') {
+    $conditions .= " AND p.adminID = '" . $_GET['adminID'] . "'";
 }
 
 if ($_GET['paymentStatus'] == '') {
@@ -51,5 +55,8 @@ $payments = $db->query($sql . $pag['limit'], SQL_ALL);
 $core->assign('payments', $payments);
 $core->assign('modules', Module::getModuleList('payment'));
 $core->assign('titles', Module::getModuleTitles('payment'));
+
+$admins = $db->query("SELECT adminID,adminNick FROM admins WHERE status = 'active'  ORDER BY adminNick", SQL_ALL);
+$core->assign('admins', $admins);
 
 $tpl_content = 'payments';
