@@ -64,7 +64,7 @@ function displayPage($tpl)
     }
     global $core;
 
-    $GLOBALS['_VLC_TYPE'] = core::_vlc_gettype();
+    //$GLOBALS['_VLC_TYPE'] = core::_vlc_gettype();
 
     $core->display('head.tpl');
     $core->display($tpl);
