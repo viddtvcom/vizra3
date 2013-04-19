@@ -16,9 +16,9 @@ switch ($_POST['action']) {
     case 'refresh_ticket':
         $offset = ($_POST["offset"] != "") ? $_POST["offset"] : 0;
 
-        $sql = "SELECT tr.*,a.adminName,a.adminTitle 
+        $sql = "SELECT tr.*,a.adminName,a.adminTitle
                 FROM ticket_responses tr
-                    LEFT JOIN admins a ON tr.adminID = a.adminID 
+                    LEFT JOIN admins a ON tr.adminID = a.adminID
                 WHERE tr.ticketID = '" . $_GET["ticketID"] . "' AND tr.dateAdded > " . $offset . "
                 ORDER BY tr.dateAdded ASC";
         $ret = (array)$db->query($sql, SQL_ALL);
@@ -74,27 +74,28 @@ switch ($_POST['action']) {
         }
 
         if ($_POST['private'] == '1') {
-            $Ticket->addResponse($_POST['message'], getAdminID(), 1);
+            $Ticket->addResponse($_post['message'], getAdminID(), 1);
         } else {
             $Ticket->setas_awaiting_reply = $_POST['setas_awaiting_reply'];
-            $Ticket->addResponse($_POST['message'], getAdminID());
+            $Ticket->addResponse(sanitize($_POST['message'], false), getAdminID());
 
 
             $msg = '@<a target="mainframe" href="?p=212&ticketID=' . $Ticket->ticketID . '">' . $Ticket->ticketID . '</a>:';
             $msg .= ' <strong><span style="color:gray;">' . substr(
-                sanitize($_POST["message"]),
+                sanitize($_post["message"]),
                 0,
                 250
             ) . '</span></strong>';
-            $sql = "INSERT INTO chat (adminID,message,dateAdded) 
+            $sql = "INSERT INTO chat (adminID,message,dateAdded)
                     VALUES (" . getAdminID() . ",'" . $msg . "',UNIX_TIMESTAMP())";
             $db->query($sql);
         }
         echo json_encode($ret);
         exit();
 
-    case 'update_response':
-        $ret = $Ticket->updateResponse($_POST['responseID'], $_POST['response']);
+    case
+        'update_response':
+        $ret = $Ticket->updateResponse($_POST['responseID'], $_post['response']);
         $ret['id'] = $_POST['responseID'];
         echo json_encode($ret);
         exit();
