@@ -13,9 +13,10 @@ if (isset($_GET['clientID'])) {
 }
 
 $sort = "c.dateAdded DESC";
+$sort = ($_GET['sort']) ? $_GET['sort'] : "c.dateAdded DESC";
 
 // Admin Settings
-$_SESSION['vadmin']->syncSetting('clientsSearch_clientStatus', &$_GET['status']);
+$_SESSION['vadmin']->syncSetting('clientsSearch_clientStatus', $_GET['status']);
 
 
 if (isset($_GET['name_email'])) {
@@ -28,6 +29,7 @@ if (isset($_GET['status']) && $_GET['status'] != 'all') {
 }
 
 $sql = "SELECT * FROM clients c WHERE 1=1 $conditions ORDER BY $sort";
+
 
 $pag = paging($sql, 0, 20, 'c.clientID');
 $core->assign('pag', $pag);

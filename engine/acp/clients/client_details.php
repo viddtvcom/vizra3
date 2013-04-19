@@ -19,7 +19,7 @@ if ($Client->fnote != '') {
 
 if ($_GET['act'] == 'login') {
     $_SESSION['vclient'] = $Client;
-    redirect($config['HTTP_HOST']);
+    redirect($config['HTTP_HOST'] . '/?p=user');
 }
 
 $Client->loadExtras();
@@ -87,7 +87,7 @@ if ($_POST['action'] == 'Sil') {
         core::raise('Lütfen bir departman seçiniz', 'e', '');
     }
     $T = new Ticket();
-    $T->create($_POST["subject"], $_POST["response"], $_POST['priority'], $Client->clientID, $_POST["depID"]);
+    $T->create($_POST["subject"], $_post["response"], $_POST['priority'], $Client->clientID, $_POST["depID"]);
     $T->set('status', 'awaiting-reply');
     $EMT = new Email_template(6);
     $EMT->ticketID = $T->ticketID;
@@ -122,9 +122,22 @@ switch ($_GET["tab"]) {
         if (isset($_GET['orderID'])) {
 
         } else {
-            $sql = "SELECT o.*,s.service_name FROM orders o 
-                        INNER JOIN services s ON s.serviceID = o.serviceID 
-                    WHERE o.clientID = " . $Client->clientID . " AND o.parentID = 0 ORDER BY o.dateAdded DESC";
+            if ($_GET['status'] == 'valid') {
+                $conditions .= " AND o.status IN ('active', 'suspended', 'pending-provision')";
+            } elseif ($_GET['status'] != "all" && $_GET['status'] != '') {
+                $conditions .= " AND o.status = '" . $_GET['status'] . "'";
+            }
+            if ($_GET['title'] != '') {
+                $conditions .= " AND (o.title LIKE '%" . $_GET['title'] . "%' OR oa.value LIKE '%" . $_GET['title'] . "%')";
+                $joins .= " LEFT JOIN order_attrs oa ON (oa.orderID = o.orderID)";
+                $group_by = " GROUP BY o.orderID";
+            }
+            $sql = "SELECT o.* FROM orders o
+                         $joins
+                    WHERE o.clientID = " . $Client->clientID . " AND o.parentID = 0
+                    $conditions
+                    $group_by
+                    ORDER BY o.dateAdded DESC";
             $pag = paging($sql, 0, 20, 'o.orderID');
             $pag['url'] = '?p=311&tab=orders&clientID=' . $Client->clientID;
             $core->assign('pag', $pag);
@@ -177,7 +190,7 @@ switch ($_GET["tab"]) {
         break;
 
     case 'tickets':
-        $sql = "SELECT t.*, a.adminNick, d.depTitle FROM tickets t 
+        $sql = "SELECT t.*, a.adminNick, d.depTitle FROM tickets t
                  INNER JOIN departments d ON t.depID = d.depID
                  LEFT JOIN admins a ON t.adminID = a.adminID
                  WHERE t.clientID = " . $Client->clientID . " ORDER BY t.dateUpdated DESC";
