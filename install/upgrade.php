@@ -330,8 +330,7 @@ function upgrade_312()
                                                 <select name="curver">
                                                     <? foreach ($versions as $ver => $title) { ?>
                                                         <option value="<?= $ver ?>" <? if (VERSION == $ver) {
-                                                            echo 'selected'
-} ?>><?= $title ?></option>
+                                                            echo 'selected'; } ?>><?= $title ?></option>
                                                     <? } ?>
                                                 </select>
                                             <? endif; ?>
@@ -369,57 +368,3 @@ function upgrade_312()
     </div>
     </body>
     </html>
-<?php
-/*    
-function mysql_import_file($filename) 
-{ 
-  // -------------- 
-  // Open SQL file. 
-  // -------------- 
-  if (! ($fd = fopen($filename, "r")) ) { 
-    return array('st'=>false,'msg'=>'Dosya açılamadı: '.$filename); 
-  } 
-
-  // -------------------------------------- 
-  // Iterate through each line in the file. 
-  // -------------------------------------- 
-  while (!feof($fd)) { 
-
-    // ------------------------- 
-    // Read next line from file. 
-    // ------------------------- 
-    $line = fgets($fd); 
-    $stmt = "$stmt$line"; 
-
-    // ------------------------------------------------------------------- 
-    // Semicolon indicates end of statement, keep adding to the statement. 
-    // until one is reached. 
-    // ------------------------------------------------------------------- 
-    if (!preg_match("/;/", $stmt)) { 
-      continue; 
-    } 
-
-    // ---------------------------------------------- 
-    // Remove semicolon and execute entire statement. 
-    // ---------------------------------------------- 
-    $stmt = preg_replace("/;/", "", $stmt); 
-
-    // ---------------------- 
-    // Execute the statement. 
-    // ---------------------- 
-   // echo '<pre>'.$stmt.'</pre>';
-    if (!mysql_query($stmt)) {
-        $GLOBALS['errors'][] = $filename. ' dosyasında SQL Hatası: '.mysql_error (); 
-        //return array('st'=>false,'msg'=>$filename. 'dosyasında SQL Hatası: '.mysql_error ());
-    } 
-
-    $stmt = ""; 
-  } 
-
-  // --------------- 
-  // Close SQL file. 
-  // --------------- 
-  fclose($fd);
-  return array('st'=>'true');
-}
-*/
