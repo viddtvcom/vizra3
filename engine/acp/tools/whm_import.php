@@ -8,26 +8,31 @@ if ($_POST['action'] == 'list') {
 
     $MOD = Module::getInstance('cpanel');
     $MOD->setServer($_POST['serverID']);
-    $ret = $MOD->listaccts();
+    $ret = $MOD->listaccts($_POST['owner']);
+
 
     if ($ret['st']) {
         $XML = new XmlToArray($ret['raw']);
         $accs = $XML->createArray();
         $accs = $accs['listaccts']['acct'];
 
-
         foreach ($accs as $k => $a) {
-            $orderID = $db->query(
-                "SELECT  orderID FROM order_attrs WHERE setting = 'domain' AND value = '" . $a['domain'] . "'",
-                SQL_INIT,
-                'orderID'
-            );
+            $sql = "SELECT  oa.orderID
+					FROM order_attrs oa
+						INNER JOIN orders o ON o.orderID = oa.orderID
+					WHERE oa.setting = 'domain'
+						AND o.status IN ('active', 'suspended')
+						AND oa.value = '" . $a['domain'] . "'";
+            $orderID = $db->query($sql, SQL_INIT, 'orderID');
             $accs[$k]['orderID'] = $orderID;
+
+            $dns_a = dns_get_record($a['domain'], DNS_A);
+            $accs[$k]['ip'] = $dns_a[0]['ip'];
         }
         $core->assign('accs', $accs);
 
         $sql = "SELECT s.serviceID,s.service_name,spo.period FROM services s
-                    INNER JOIN service_price_options spo ON spo.serviceID = s.serviceID 
+                    INNER JOIN service_price_options spo ON spo.serviceID = s.serviceID
                 WHERE s.moduleID = 'cpanel' AND s.addon != '1' AND s.type = 'shared'";
         $services = $db->query($sql, SQL_ALL);
         $core->assign('services', $services);
@@ -44,6 +49,7 @@ if ($_POST['action'] == 'list') {
     $accs = $XML->createArray();
     $accs = $accs['listaccts']['acct'];
     $accs = array_rekey($accs, 'user');
+
     /*    debug($_POST);
         debug($accs,1);   */
     foreach ($_POST['selected'] as $k => $user) {
