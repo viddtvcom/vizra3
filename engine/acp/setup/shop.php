@@ -15,7 +15,7 @@ if ($_POST['action'] == 'update') {
     setSetting('shop_banner_size', (int)$_POST['banner'][0] . 'x' . (int)$_POST['banner'][1]);
 
     foreach ((array)$_POST['banners'] as $bannerID => $v) {
-        $sql = "UPDATE settings_banners 
+        $sql = "UPDATE settings_banners
                 SET title = '" . $_POST['title'][$bannerID] . "',
                     title_size = '" . $_POST['title_size'][$bannerID] . "',
                     title_color = '" . $_POST['title_color'][$bannerID] . "',

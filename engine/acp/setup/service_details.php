@@ -81,7 +81,7 @@ if ($_GET['act'] == 'remPrcOpt') {
             core::raise($cnt['bill'] . ' adet borç kaydı güncellendi', 'm');
         }
 
-        //debug($cnt);  
+        //debug($cnt);
 
     }
 

@@ -51,7 +51,7 @@ switch ($_GET["act"]) {
                     $val = ($obj->encrypted == '1') ? core::encrypt(
                         $_POST['_set'][$setting]
                     ) : $_POST['_set'][$setting];
-                    $sql = "INSERT INTO server_settings (serverID,setting,value,encrypted) 
+                    $sql = "INSERT INTO server_settings (serverID,setting,value,encrypted)
                             VALUES ('" . $Server->serverID . "','" . $setting . "','" . $val . "','" . $obj->encrypted . "')
                             ON DUPLICATE KEY UPDATE value = '" . $val . "'";
                     $db->query($sql);
@@ -115,7 +115,7 @@ switch ($_GET["act"]) {
         break;
 
     default:
-        $servers = $db->query("SELECT * FROM servers", SQL_ALL);
+        $servers = $db->query("SELECT * FROM servers ORDER BY status, serverName", SQL_ALL);
         $core->assign("servers", $servers);
 
         $tpl_content = "servers";

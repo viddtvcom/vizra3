@@ -11,7 +11,10 @@ if ($_POST["action"] == "update") {
             continue;
         }
         $val = ($obj->encrypted == '1') ? core::encrypt($_POST['_set'][$setting]) : $_POST['_set'][$setting];
-        $sql = "INSERT INTO settings_modules (moduleID,module_type,setting,value,encrypted) 
+
+        $val = addslashes($val);
+
+        $sql = "INSERT INTO settings_modules (moduleID,module_type,setting,value,encrypted)
                 VALUES ('" . $_GET['moduleID'] . "','" . $_GET['type'] . "','" . $setting . "','" . $val . "','" . $obj->encrypted . "')
                 ON DUPLICATE KEY UPDATE value = '" . $val . "', module_type = '" . $_GET['type'] . "'";
         $db->query($sql);

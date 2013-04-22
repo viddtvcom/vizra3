@@ -112,7 +112,7 @@ switch ($_GET["act"]) {
             $order_by = " ORDER BY sg.rowOrder,addon,s.rowOrder,sg.groupID";
         }
 
-        if ($_GET['srv_status'] == 'active') {
+        if ($_GET['srv_status'] != 'all') {
             $sql .= " AND s.status = 'active'";
         }
 

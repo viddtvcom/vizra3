@@ -31,7 +31,7 @@ if ($_POST['action'] == 'updateModuleSettings') {
         if ($Service->addon == '1' && ! $val->addon) {
             continue;
         }
-        $sql = "INSERT INTO service_attrs (serviceID,source,setting,value,clientCanSee) 
+        $sql = "INSERT INTO service_attrs (serviceID,source,setting,value,clientCanSee)
                     VALUES (" . $Service->serviceID . ",'" . $_POST['src'][$key] . "','" . $key . "','" . $_POST['srv'][$key] . "','" . $_POST['ccs'][$key] . "')
                 ON DUPLICATE KEY UPDATE value = '" . $_POST['srv'][$key] . "', clientCanSee = '" . $_POST['ccs'][$key] . "'";
         $db->query($sql);

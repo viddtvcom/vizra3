@@ -18,7 +18,7 @@ if ($_POST["action"] == "update") {
     }
 
     foreach ($_POST["currencies"] as $curID => $v) {
-        $sql = "UPDATE settings_currencies 
+        $sql = "UPDATE settings_currencies
                 SET status = '" . $_POST["status"][$curID] . "',
                     description = '" . $_POST["description"][$curID] . "',
                     code = '" . $_POST["code"][$curID] . "',

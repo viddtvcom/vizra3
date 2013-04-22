@@ -33,7 +33,7 @@ switch ($_GET['tab']) {
     default:
         $groups = (array)$db->query("SELECT DISTINCT grp FROM admin_setting_types WHERE grp != 'hidden'", SQL_ALL);
         foreach ($groups as $g) {
-            $sql = "SELECT *,ast.settingID FROM admin_setting_types ast 
+            $sql = "SELECT *,ast.settingID FROM admin_setting_types ast
                         LEFT JOIN admin_settings ase ON (ase.settingID = ast.settingID AND ase.adminID = " . getAdminID(
             ) . ")
                     WHERE grp = '" . $g["grp"] . "'  ORDER BY rowOrder ASC";
@@ -49,7 +49,7 @@ switch ($_GET['tab']) {
                         $items[$k]["values"][$val2[0]] = $val2[1];
                     }
                 }
-                //$items[$k]["selected"] = ($items[$k]["encrypted"] == "1") ? core::decrypt($items[$k]["selected"]) : $items[$k]["selected"];    
+                //$items[$k]["selected"] = ($items[$k]["encrypted"] == "1") ? core::decrypt($items[$k]["selected"]) : $items[$k]["selected"];
             }
 
             $settings[$g["grp"]] = $items;
