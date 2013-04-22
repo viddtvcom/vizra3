@@ -305,7 +305,13 @@ function bb2html($text)
     return $newtext;
 }
 
-
+/**
+ * Wraps a string with <a></a> with a given href
+ *
+ * @param mixed $text
+ * @param bool $blank
+ * @return string
+ */
 function _linkify($text, $blank = false, $title = '\\0')
 {
     if ($blank) {
@@ -338,7 +344,7 @@ function linkify($text, $blank = false, $title = '$3')
             "$1$2<a $target href=\"ftp://$3\" >" . $title . "</a>",
         $text
     );
-    //$text= preg_replace("/(^|[\n ])([a-z0-9&\-_\.]+?)@([\w\-]+\.([\w\-\.]+)+)/i", "$1<a $target href=\"mailto:$2@$3\">$2@$3</a>", $text);  
+    //$text= preg_replace("/(^|[\n ])([a-z0-9&\-_\.]+?)@([\w\-]+\.([\w\-\.]+)+)/i", "$1<a $target href=\"mailto:$2@$3\">$2@$3</a>", $text);
     return ($text);
 }
 
@@ -373,7 +379,7 @@ function debug($thing, $die = false)
 
 function debugd($thing, $die = false)
 {
-    if ($_SERVER['REMOTE_ADDR'] == '217.131.133.222') {
+    if (in_array($_SERVER['REMOTE_ADDR'], array('217.131.133.222', '78.188.5.80'))) {
         debug($thing, $die);
     }
 }
@@ -544,7 +550,7 @@ function paging($sql, $page, $rpp, $IDstr = "")
 
     $sql2 = str_replace($data, " count(DISTINCT $IDstr) AS cnt ", $sql);
     $parr["count"] = $db->query($sql2, SQL_INIT, "cnt");
-    $parr["total"] = ceil($parr["count"] / $rpp);
+    $parr["total"] = ceil((int)$parr["count"] / $rpp);
     if ($parr["count"] > $rpp) {
         $parr["limit"] = " LIMIT " . ($page - 1) * $rpp . ", " . $rpp;
     }
@@ -737,7 +743,7 @@ function finename($string, $separator = '-')
 
     "t" (ASCII 9 (0x09)), a tab.
     "n" (ASCII 10 (0x0A)), a new line (line feed).
-    "r" (ASCII 13 (0x0D)), a carriage return. 
+    "r" (ASCII 13 (0x0D)), a carriage return.
 
     */
 

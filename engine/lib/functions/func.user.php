@@ -64,7 +64,7 @@ function displayPage($tpl)
     }
     global $core;
 
-    //$GLOBALS['_VLC_TYPE'] = core::_vlc_gettype();
+    $GLOBALS['_VLC_TYPE'] = core::_vlc_gettype();
 
     $core->display('head.tpl');
     $core->display($tpl);
@@ -88,7 +88,7 @@ function getProductMenu()
     if (! $domext_count) {
         $inSQL = " AND s.groupID != 10";
     }
-    $sql = "SELECT sg.*, s.serviceID 
+    $sql = "SELECT sg.*, s.serviceID
             FROM service_groups sg LEFT JOIN services s ON (s.groupID = sg.groupID AND s.status = 'active')
             WHERE parentID = 1 
                     AND sg.status = 'active'
@@ -155,12 +155,10 @@ function getSelectedLanguage()
 
 function getAnnouncements($st)
 {
-    if ($_SESSION['announcements'] == false) {
-        global $db;
-        $_SESSION['announcements'] = $db->query(
-            "SELECT * FROM announcements WHERE status IN (" . $st . ") ORDER BY dateAdded DESC",
-            SQL_ALL
-        );
-    }
-    return $_SESSION['announcements'];
+    global $db;
+    $announcements = $db->query(
+        "SELECT * FROM announcements WHERE status IN (" . $st . ") ORDER BY dateAdded DESC",
+        SQL_ALL
+    );
+    return $announcements;
 }

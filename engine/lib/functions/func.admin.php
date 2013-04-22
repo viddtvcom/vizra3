@@ -139,7 +139,7 @@ function addServiceGroup($parentID, $status, $group_name)
 {
     global $db;
     $maxro = $db->query("SELECT MAX(rowOrder) AS maxro FROM service_groups", SQL_INIT, 'maxro');
-    $sql = "INSERT INTO service_groups (parentID,status,group_name,seolink,rowOrder) 
+    $sql = "INSERT INTO service_groups (parentID,status,group_name,seolink,rowOrder)
             VALUES ('" . $parentID . "','" . $status . "','" . $group_name . "','" . finename(
         $group_name
     ) . "'," . ($maxro + 1) . ")";
