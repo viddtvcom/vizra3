@@ -19,7 +19,7 @@ switch ($_post["action"]) {
         secure();
         $offset = ($_post["offset"] != "") ? $_post["offset"] : 0;
 
-        $sql = "SELECT tr.*,a.adminName,a.adminTitle,a.dateAdded as adateAdded 
+        $sql = "SELECT tr.*,a.adminName,a.adminTitle,a.dateAdded as adateAdded
                 FROM ticket_responses tr
                     INNER JOIN tickets t ON (t.ticketID = tr.ticketID AND t.clientID = " . getClientID() . " )
                     LEFT JOIN admins a ON tr.adminID = a.adminID 
