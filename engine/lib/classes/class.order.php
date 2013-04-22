@@ -122,7 +122,7 @@ class Order extends base
             $this->Service->setup = $this->Service->setup * (1 - $client_discount);
         }
 
-        $sql = "INSERT INTO orders (orderID,parentID,clientID,serviceID,couponID,price,paycurID,period,payType,dateAdded,dateStart,dateEnd) 
+        $sql = "INSERT INTO orders (orderID,parentID,clientID,serviceID,couponID,price,paycurID,period,payType,dateAdded,dateStart,dateEnd)
                     VALUES (" . $this->orderID . "," . $this->parentID . ",
                             " . $clientID . ",
                             " . $serviceID . "," . (int)$couponID . ",
@@ -173,7 +173,7 @@ class Order extends base
             }
             $OB->update();
         }
-        // domain bills      
+        // domain bills
         if ($this->Service->groupID == 10 && $genbill) {
             $price = $this->Domain->extensionData["priceRegister"] + ($this->Domain->extensionData["priceRenew"] * (($this->period / 12) - 1));
             $OB = $this->createBill('recurring')->dateStart($this->dateStart)
@@ -264,7 +264,7 @@ class Order extends base
             }
         }
 
-        //  Set title   
+        //  Set title
         $this->setTitle();
 
         // send mail
@@ -335,6 +335,9 @@ class Order extends base
             $EMT->send();
             // terminate module command
             $this->moduleQueueCmd('moduleCmd', array('cmd' => 'terminate'));
+
+            //$sql = "DELETE FROM order_bills WHERE orderID = '".$this->orderID."' AND status = 'unpaid";
+
         } elseif ($st == 'active' && $this->status == 'suspended') {
             $EMT = new Email_template(18);
             $EMT->orderID = $this->orderID;
@@ -425,7 +428,7 @@ class Order extends base
         global $db;
         $this->set('serverID', $this->Service->serverID);
 
-        $sql = "SELECT sa.*,sat.encrypted 
+        $sql = "SELECT sa.*,sat.encrypted
                 FROM service_attrs sa 
                     LEFT JOIN service_attr_types sat ON sat.setting = sa.setting 
                 WHERE sa.serviceID = " . $this->serviceID;
@@ -476,7 +479,7 @@ class Order extends base
     {
         global $db;
 
-        $sql = "SELECT setting,value,clientCanSee FROM order_attrs 
+        $sql = "SELECT setting,value,clientCanSee FROM order_attrs
                 WHERE value != '' AND orderID = " . $this->orderID;
         $this->attrs = $db->query($sql, SQL_KEY, 'setting');
 
@@ -498,7 +501,7 @@ class Order extends base
             return false;
         }
 
-        $sql = "SELECT setting,value FROM order_attrs 
+        $sql = "SELECT setting,value FROM order_attrs
                 WHERE value != '' AND orderID IN (" . implode(',', $this->addons) . ")";
         $attrs = $db->query($sql, SQL_ALL);
         foreach ($attrs as $data) {
@@ -606,11 +609,11 @@ class Order extends base
         if ($orderID == 'all' || $orderID == '') {
             $where = 'IN (' . implode(',', $ids) . ')';
         } else {
-            //if ($orderID == '') $orderID = $this->orderID; 
+            //if ($orderID == '') $orderID = $this->orderID;
             $where = " = '" . (int)$orderID . "'";
         }
         if (VZUSERTYPE != 'admin') {
-            $sql = "SELECT ob.* FROM order_bills ob INNER JOIN orders o ON o.orderID = ob.orderID 
+            $sql = "SELECT ob.* FROM order_bills ob INNER JOIN orders o ON o.orderID = ob.orderID
                     WHERE ob.orderID $where AND o.clientID = " . $_SESSION['vclient']->clientID . " $inSQL
                     ORDER BY ob.dateDue DESC";
         } else {
@@ -626,7 +629,7 @@ class Order extends base
         if ($unpaidOnly) {
             $inSQL = 'AND ob.status = "unpaid"';
         }
-        $sql = "SELECT * FROM order_bills ob 
+        $sql = "SELECT * FROM order_bills ob
                      INNER JOIN orders o ON (o.orderID = ob.orderID AND o.parentID = $this->orderID AND o.status NOT IN ('inactive')) 
                 WHERE 1=1 $inSQL ORDER BY ob.dateDue DESC";
         $this->addonBills = (array)$db->query($sql, SQL_ALL);
@@ -703,14 +706,15 @@ class Order extends base
 
     function getRenewPrice()
     {
-
         global $db;
-        // or is this an early renewal
-        $sql = "SELECT SUM(price) AS amount FROM orders 
+
+        /* normal yenileme fiyati */
+        $sql = "SELECT SUM(price) AS amount FROM orders
                 WHERE status IN ('active','suspended') AND (orderID = " . $this->orderID . " OR parentID = " . $this->orderID . ")";
         $amount = $db->query($sql, SQL_INIT, "amount");
+        $ret['regular'] = $amount * (1 - $this->discount);
 
-        $amount = $amount * (1 - $this->discount);
+
         return $amount;
 
     }
@@ -739,7 +743,7 @@ class Order extends base
         $title = $this->Service->service_name;
         if ($this->Service->settingID > 0) {
             global $db;
-            $sql = "SELECT value,encrypted FROM order_attrs oa INNER JOIN service_attr_types sat ON sat.setting = oa.setting 
+            $sql = "SELECT value,encrypted FROM order_attrs oa INNER JOIN service_attr_types sat ON sat.setting = oa.setting
                     WHERE sat.settingID = " . $this->Service->settingID . " AND oa.orderID = " . $this->orderID;
             $attr = $db->query($sql, SQL_INIT);
             $value = ($attr['encrypted'] == '1') ? core::decrypt($attr['value']) : $attr['value'];
@@ -824,7 +828,7 @@ class Order extends base
 
     }
 
-    function moduleRunCmd($ocmd, $data = array())
+    function moduleRunCmd($ocmd, $data = array(), $log = true)
     {
         if (! $this->isModuleLoaded) {
             $this->loadModule();
@@ -835,21 +839,31 @@ class Order extends base
 
         $cmd = 'cmd_' . $ocmd;
         if (method_exists($this->Module, $cmd)) {
-            vzrlog('<' . $ocmd . '> çalıştırılıyor...', 'info', $this->Module->Server->serverName, $this->orderID);
+            if ($log) {
+                vzrlog(
+                    '<' . $ocmd . '> çalıştırılıyor...',
+                    'info',
+                    $this->Module->Server->serverName,
+                    $this->orderID
+                );
+            }
+
             foreach ((array)$data as $key => $val) {
                 $key = str_replace($this->Service->moduleID . '_', '', $key);
                 $ndata[$key] = $val;
             }
             $result = $this->Module->$cmd($ndata);
-            if ($result['st']) {
-                vzrlog('<' . $ocmd . '> işlem başarılı', 'info', $this->Module->Server->serverName, $this->orderID);
-            } else {
-                vzrlog(
-                    '<' . $ocmd . '> işleminde hata: ' . $result['msg'],
-                    'error',
-                    $this->Module->Server->serverName,
-                    $this->orderID
-                );
+            if ($log) {
+                if ($result['st']) {
+                    vzrlog('<' . $ocmd . '> işlem başarılı', 'info', $this->Module->Server->serverName, $this->orderID);
+                } else {
+                    vzrlog(
+                        '<' . $ocmd . '> işleminde hata: ' . $result['msg'],
+                        'error',
+                        $this->Module->Server->serverName,
+                        $this->orderID
+                    );
+                }
             }
             return $result;
         } else {
