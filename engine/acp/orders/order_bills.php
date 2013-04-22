@@ -20,6 +20,15 @@ if ($_GET["act"] == "payBill") {
 } elseif ($_POST['action'] == 'genbill') {
     $ret = $Order->createNextBill(0, 'unpaid');
     if ($ret) {
+        $sql = "SELECT orderID FROM orders WHERE parentID = $Order->orderID AND status IN ('active', 'suspended')";
+        $addons = $db->query($sql, SQL_KEY, 'orderID');
+        if ($addons) {
+            foreach ($addons as $addonID) {
+                $Addon = new Order($addonID);
+                $Addon->createNextBill(0, 'unpaid');
+            }
+        }
+
         core::raise('Borç kaydı oluşturuldu', 'm');
     }
 
