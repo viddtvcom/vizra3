@@ -53,7 +53,7 @@ class Payment extends base
         parent::update();
     }
 
-    function approve($approverID = 0)
+    function approve($approverID = 0, $sendmail = true)
     {
         if ($this->paymentStatus == 'paid') {
             return false;
@@ -79,7 +79,11 @@ class Payment extends base
             $Queue = new Queue($jobID);
             $Queue->process();
         }
-        $this->sendmail();
+
+        if ($sendmail) {
+            $this->sendmail();
+        }
+
 
         /* modul komisyonu varsa onu dus */
         if ($this->moduleID != '') {

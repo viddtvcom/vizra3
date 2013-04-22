@@ -197,7 +197,7 @@ class Cart
                             break;
                         }
                     }
-                    $data['diff'] = floor(($Parent->dateEnd - time()) / (60 * 60 * 24));
+                    $data['diff'] = ceil(($Parent->dateEnd - time()) / (60 * 60 * 24));
                     $data['payPrice'] = ($data["fullPrice"] / $days) * $data['diff'];
                     $data["prorated"] = $data['payPrice'];
                 } else {

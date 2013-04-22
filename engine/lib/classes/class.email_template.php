@@ -104,7 +104,9 @@ class Email_template extends base
             'to'        => $this->Client->email,
             'body'      => $this->textreplace($this->body),
             'fromName'  => $this->fromName,
-            'fromEmail' => $this->fromEmail
+            'fromEmail' => $this->fromEmail,
+            'clientID'  => $this->clientID,
+            'orderID'   => $this->orderID
         );
         if ($this->copyTo != '') {
             $data['cc'] = $this->copyTo;

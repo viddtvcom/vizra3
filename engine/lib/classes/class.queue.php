@@ -110,7 +110,7 @@ class Queue extends base
         }
 
         // hicbiri olmadiysa mecburen direk yap
-        if (QUEUE_MODE == 'direct' || ! define('QUEUE_MODE')) {
+        if (QUEUE_MODE == 'direct' || ! defined('QUEUE_MODE')) {
             $this->process();
         }
 
@@ -149,6 +149,7 @@ class Queue extends base
 
     function do_sendmail()
     {
+        global $db;
         $params = $this->params_decoded;
         core::mailsender(
             $params['subject'],
@@ -160,7 +161,20 @@ class Queue extends base
             $params['bcc']
         );
 
+        $insert = array(
+            'clientID'        => $params['clientID'],
+            'orderID'         => $params['orderID'],
+            'dateAdded'       => time(),
+            'mail_to'         => $params['to'],
+            'mail_subject'    => $params['subject'],
+            'mail_body'       => $params['body'],
+            'delivery_result' => ($result) ? 'sent' : 'failed',
+        );
+
+        $db->insert('logs_emails', $insert);
+
         $this->destroy();
+
     }
 
     function do_sendmsn()

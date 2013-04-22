@@ -203,7 +203,7 @@ class Service extends base
         global $db;
         $sql = "SELECT s.* FROM services s
                 INNER JOIN service_groups sg ON s.groupID = sg.groupID
-                LEFT JOIN service_groups sg2 ON sg.groupID = sg2.parentID
+                LEFT JOIN service_groups sg2 ON sg.groupID = sg2.addonparentID
                 LEFT JOIN service_price_options spo ON spo.serviceID = s.serviceID  
             WHERE s.status = 'active'
                 AND s.paycurID = " . $this->paycurID . "

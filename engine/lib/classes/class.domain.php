@@ -95,14 +95,14 @@ class Domain extends base
             return false;
         }
 
-        $res = $this->Registrar->register(&$this, $period);
+        $res = $this->Registrar->register($this, $period);
         if ($res["st"]) {
             $this->set("status", "active");
             $Order = new Order($this->orderID);
             $Order->setStatus('active');
 
             if (method_exists($this->Registrar, 'refresh')) {
-                $this->Registrar->refresh(&$this);
+                $this->Registrar->refresh($this);
             }
 
             $EMT = new Email_template(10);
@@ -124,7 +124,7 @@ class Domain extends base
         if (! $this->Registrar || ! method_exists($this->Registrar, 'renew')) {
             return false;
         }
-        $res = $this->Registrar->renew(&$this, $period);
+        $res = $this->Registrar->renew($this, $period);
         if ($res["st"]) {
             $this->set("status", "active");
             $Order = new Order($this->orderID);
@@ -143,7 +143,7 @@ class Domain extends base
         if (! $this->Registrar || ! method_exists($this->Registrar, 'refresh')) {
             return false;
         }
-        $res = $this->Registrar->refresh(&$this);
+        $res = $this->Registrar->refresh($this);
         return $res;
     }
 
@@ -168,7 +168,7 @@ class Domain extends base
     {
         $this->loadModule();
         if (method_exists($this->Registrar, 'getAuthCode')) {
-            $ret = $this->Registrar->getAuthCode(&$this);
+            $ret = $this->Registrar->getAuthCode($this);
             if ($ret['st']) {
                 if ($send2client) {
                     $EMT = new Email_template(22);
@@ -189,7 +189,7 @@ class Domain extends base
     {
         $this->loadModule();
         if (method_exists($this->Registrar, 'lock')) {
-            $ret = $this->Registrar->lock(&$this);
+            $ret = $this->Registrar->lock($this);
             if ($ret['st']) {
                 $this->set('locked', '1');
                 return array('st' => true);
@@ -205,7 +205,7 @@ class Domain extends base
     {
         $this->loadModule();
         if (method_exists($this->Registrar, 'unlock')) {
-            $ret = $this->Registrar->unlock(&$this);
+            $ret = $this->Registrar->unlock($this);
             if ($ret['st']) {
                 $this->set('unlocked', '1');
                 return array('st' => true);
@@ -251,7 +251,7 @@ class Domain extends base
             return array('st' => true);
         }
         $contacts = array_merge($old, $new);
-        $res = $this->Registrar->setDomainContacts(&$this, $contacts);
+        $res = $this->Registrar->setDomainContacts($this, $contacts);
         return $res;
     }
 

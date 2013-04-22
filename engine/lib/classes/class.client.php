@@ -46,7 +46,8 @@ class Client extends base
             'dateLogin',
             'ipReg',
             'ipLogin',
-            'isVip'
+            'isVip',
+            'balance'
         );
         $this->fields_allowed = array(
             'name',
@@ -138,8 +139,7 @@ class Client extends base
     function getCell()
     {
         $calling_code = getCountry($this->country, 'calling_code');
-        $cell = '+' . $calling_code . str_replace(' ', '', $this->cell);
-        return $cell;
+        return '+' . $calling_code . str_replace(' ', '', $this->cell);
     }
 
     function loadExtras($client = false)
@@ -239,14 +239,15 @@ class Client extends base
         global $db;
         $sql = "SELECT o.*,s.service_name FROM orders o
                 INNER JOIN services s ON s.serviceID = o.serviceID 
-            WHERE o.clientID = " . $this->clientID . " AND o.parentID = 0";
+            WHERE o.clientID = " . $this->clientID . " AND o.parentID = 0 AND o.status != 'deleted'
+            ";
 
         if ($t == 'wod') {
             $sql .= " AND s.groupID != 10";
         } elseif ($t == 'd') {
             $sql .= " AND s.groupID = 10";
         }
-        $sql .= " ORDER BY o.dateAdded DESC";
+        $sql .= " ORDER BY o.title ASC";
         $orders = $db->query($sql, SQL_ALL);
         return $orders;
     }

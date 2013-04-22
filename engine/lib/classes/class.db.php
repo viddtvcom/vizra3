@@ -29,8 +29,20 @@ class DB
 
     function connect($host, $db, $user, $pass)
     {
-        $this->link = mysql_connect($host, $user, $pass, true);
+        $this->link = mysql_pconnect($host, $user, $pass);
         mysql_select_db($db, $this->link);
+    }
+
+    function pconnect($host, $db, $users, $pass)
+    {
+        $this->link = mysql_pconnect($host, $users, $pass);
+        if ($this->link) {
+            mysql_select_db($db, $this->link);
+            return true;
+        } else {
+            throw new Exception('Sunucuya bağlanılamadı, lütfen daha sonra tekrar deneyiniz');
+        }
+
     }
 
     function vconnect()
@@ -62,11 +74,11 @@ class DB
         }
 
         $result = mysql_query($query, $this->link);
-        if (mysql_errno() != 0) {
+        if (mysql_errno($this->link) != 0) {
             // mysql error
             $this->errorMsg = mysql_error($this->link);
             $this->success = false;
-            if (DEBUG == true) {
+            if ($this->debug || DEBUG == true) {
                 debug(array($query, $this->errorMsg));
                 debugTrace();
             } else {
@@ -141,6 +153,38 @@ class DB
             debug($ret);
         }
         return $ret;
+    }
+
+    function insert($table, $data)
+    {
+        $data = $this->escape($data);
+        $names = array_keys($data);
+        $names = implode('`, `', $names);
+
+        $values = array_values($data);
+        $values = implode("', '", $values);
+
+        $sql = "INSERT INTO `$table` (`$names`) VALUES ('$values')";
+
+        $this->query($sql);
+
+        return $this->lastInsertID();
+    }
+
+    function escape($input)
+    {
+        if (is_array($input)) {
+            foreach ($input as $var => $val) {
+                $output[$var] = $this->escape($val);
+            }
+        } else {
+            if (get_magic_quotes_gpc()) {
+                $input = stripslashes($input);
+            }
+
+            $output = mysql_real_escape_string($input);
+        }
+        return $output;
     }
 
 

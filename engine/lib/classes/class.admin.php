@@ -95,7 +95,7 @@ class Admin extends base
         $this->settings[$setting] = $value;
     }
 
-    function syncSetting($setting, $value)
+    function syncSetting($setting, &$value)
     {
 
         if ($this->settings[$setting] != '' && $value == '') {
@@ -217,6 +217,7 @@ class Admin extends base
         $qreps = $db->query("SELECT * FROM admin_qreps WHERE adminID = " . $this->adminID . " ORDER BY reply", SQL_ALL);
         return $qreps;
     }
+
 
     static function loginWithCookie()
     {
