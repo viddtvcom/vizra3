@@ -22,6 +22,13 @@ if ($_POST["action"] == "update") {
     $EM->send();
     core::raise('Email gönderildi: ' . $EM->title, 'm', '');
 
+} elseif ($_POST["action"] == "close") {
+
+    $sql = "DELETE FROM order_bills WHERE orderID = '" . $Order->orderID . "' AND status = 'unpaid'";
+    $db->query($sql);
+    $Order->set('status', 'inactive');
+
+    core::raise('Kapatıldı Silindi', 'm');
 }
 
 

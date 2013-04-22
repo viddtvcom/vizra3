@@ -1,15 +1,30 @@
 <?php
 
-/*if ($_GET["act"] == 'truncate_orders') {
-    $db->query("TRUNCATE TABLE orders");
-    $db->query("TRUNCATE TABLE domains");
-    $db->query("TRUNCATE TABLE order_attrs");
-    $db->query("TRUNCATE TABLE order_bills");
-    $db->query("TRUNCATE TABLE order_attrs");
-    $db->query("TRUNCATE TABLE payments");
-}  */
+if ($_POST['action'] == 'Sunucudan Sil') {
+    if (! $_POST['selected']) {
+        core::raise('En az bir sipariş seçmelisiniz', 'e', '?p=410');
+    }
+    foreach ($_POST['selected'] as $orderID) {
+        $Order = new Order($orderID);
 
-if ($_POST['action'] == 'Sil') {
+        $Order->setStatus('inactive');
+
+        core::raise($orderID . ' nolu sipariş (' . $Order->title . ') siliniyor', 'm');
+    }
+    redirect('?p=410');
+} elseif ($_POST['action'] == 'Askıya Al') {
+    if (! $_POST['selected']) {
+        core::raise('En az bir sipariş seçmelisiniz', 'e', '?p=410');
+    }
+    foreach ($_POST['selected'] as $orderID) {
+        $Order = new Order($orderID);
+
+        $Order->setStatus('suspended');
+
+        core::raise($orderID . ' nolu sipariş (' . $Order->title . ') askıya alınıyor', 'm');
+    }
+    redirect('?p=410');
+} elseif ($_POST['action'] == 'Sil') {
     if (! $_POST['selected']) {
         core::raise('En az bir sipariş seçmelisiniz', 'e', '?p=410');
     }
@@ -34,11 +49,14 @@ if (isset($_GET['orderID'])) {
 
 $joins = " INNER JOIN clients c ON c.clientID = o.clientID";
 $joins .= " INNER JOIN services s ON s.serviceID = o.serviceID";
-$conditions = " AND o.parentID = 0";
+//$conditions = " AND o.parentID = 0";
 $sort = "o.dateAdded DESC";
 
 // Sorting
-$asort = array("ASC" => "DESC", "DESC" => "ASC");
+$asort = array(
+    "ASC"  => "DESC",
+    "DESC" => "ASC"
+);
 $xsort = explode("-", $_GET["sort"]);
 $sort_dir = (isset($xsort[1])) ? $xsort[1] : "ASC";
 
@@ -46,10 +64,10 @@ $core->assign('sort_dir', $sort_dir);
 $core->assign('asort', $asort[$sort_dir]);
 
 // Admin Settings
-$_SESSION['vadmin']->syncSetting('ordersSearch_orderStatus', &$_GET['status']);
-$_SESSION['vadmin']->syncSetting('ordersSearch_serviceID', &$_GET['serviceID']);
-$_SESSION['vadmin']->syncSetting('ordersSearch_groupID', &$_GET['groupID']);
-$_SESSION['vadmin']->syncSetting('ordersSearch_ending', &$_GET['ending']);
+$_SESSION['vadmin']->syncSetting('ordersSearch_orderStatus', $_GET['status']);
+$_SESSION['vadmin']->syncSetting('ordersSearch_serviceID', $_GET['serviceID']);
+$_SESSION['vadmin']->syncSetting('ordersSearch_groupID', $_GET['groupID']);
+$_SESSION['vadmin']->syncSetting('ordersSearch_ending', $_GET['ending']);
 
 
 if ($_GET['status'] != "all" && $_GET['status'] != '') {
@@ -73,11 +91,16 @@ if ($_GET['ending'] != '' && $_GET['ending'] != 'all') {
     }
 }
 if ($_GET['title'] != '') {
-    $conditions .= " AND o.title LIKE '%" . $_GET['title'] . "%'";
+    $conditions .= " AND (o.title LIKE '%" . $_GET['title'] . "%' OR oa.value LIKE '%" . $_GET['title'] . "%')";
+    $joins .= " LEFT JOIN order_attrs oa ON (oa.orderID = o.orderID)";
+    $group_by = " GROUP BY o.orderID";
 }
 
 
-$sql = "SELECT o.*,c.name,c.type AS clientType, c.company ,s.service_name FROM orders o $joins WHERE  1 = 1 $conditions ORDER BY $sort";
+$sql = "SELECT o.*,c.name,c.type AS clientType, c.company,c.balance ,s.service_name
+		FROM orders o $joins
+		WHERE  1 = 1 $conditions $group_by
+		ORDER BY $sort";
 
 $pag = paging($sql, 0, 30, 'o.orderID');
 $core->assign('pag', $pag);

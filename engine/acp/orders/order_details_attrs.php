@@ -1,4 +1,8 @@
 <?php
+$Order->loadAttrs();
+$Order->loadAddonAttrs();
+$_DOMAIN = $Order->attrs['domain']['value'];
+
 
 if ($_POST['action'] == 'setModset') {
     $val = ($_POST['value'] == 'true') ? '1' : '0';
@@ -19,7 +23,7 @@ if ($_POST['action'] == 'setModset') {
             $val = core::encrypt($val);
         }
 
-        $sql = "SELECT SUM(value) AS aosum FROM order_attrs oa 
+        $sql = "SELECT SUM(value) AS aosum FROM order_attrs oa
                     INNER JOIN orders o ON (o.orderID = oa.orderID AND o.parentID = " . $Order->orderID . ")
                 WHERE setting = '" . $set . "' AND o.status = 'active'";
         // addon sum
@@ -29,9 +33,11 @@ if ($_POST['action'] == 'setModset') {
         }
 
         // update
-        $db->query(
-            "UPDATE order_attrs SET value = '" . $val . "' WHERE setting = '" . $set . "' AND orderID = " . $Order->orderID
-        );
+        $sql = "INSERT INTO order_attrs (orderID, setting, value, clientCanSee) VALUES (" . $Order->orderID . ", '" . $set . "', '" . $val . "', '0')
+				ON DUPLICATE KEY UPDATE value = '" . $val . "'";
+        //$sql = "UPDATE order_attrs SET value = '".$val."' WHERE setting = '".$set."' AND orderID = ".$Order->orderID;
+
+        $db->query($sql);
     }
     $Order->setTitle();
 
@@ -44,6 +50,7 @@ if ($_POST['action'] == 'setModset') {
         core::raise('Sunucu seçilmemiş', 'e', 'rt');
     } else {
         $result = $Order->moduleRunCmd($_POST["moduleCmd"], $_POST["inputs"]);
+        //$result = $Order->moduleQueueCmd($_POST["moduleCmd"],$_POST["inputs"]);
         $lang_cmd = lang('ModuleCmd_' . $_POST["moduleCmd"]);
         if ($result['st'] == true) {
             core::raise($lang_cmd . ' > Başarılı', 'm', 'rt');
@@ -61,10 +68,6 @@ if ($_POST['action'] == 'setModset') {
     }
 
 }
-
-
-$Order->loadAttrs();
-$Order->loadAddonAttrs();
 
 
 if ($Order->Service->moduleID) {

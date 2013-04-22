@@ -15,6 +15,12 @@ if ($Order->parentID) {
     redirect('?p=411&tab=addons&orderID=' . $Order->parentID);
 }
 
+preg_match("/\((.*)\)/", $Order->title, $matches);
+
+if ($matches[1]) {
+    $core->assign('order_domain', $matches[1]);
+}
+
 
 switch ($_GET['subtab']) {
     case 'domain':
@@ -61,9 +67,9 @@ $tpl_content = "order_details";
 /*$page_title .= ' <img src="'.$config["turl"].'/images/status_'.$Order->Client->status.'.png" width="11" id="middle">';
 $page_title .= ' <a href="?p=311&clientID='.$Order->clientID.'">'.$Order->Client->name.'</a>';
 $page_title .= ' &raquo; <a href="index.php?p=411&act=order_details&orderID='.$Order->orderID.'">'.$Order->orderID.' : '.$Order->title.'</a>';   */
-    
-    
 
 
-    
-    
+
+
+
+

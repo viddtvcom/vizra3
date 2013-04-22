@@ -14,7 +14,7 @@ if ($_POST["action"] == "add") {
 
         $Domain->orderID = $Order->orderID;
         $Domain->update();
-        //$Domain->refresh();         
+        //$Domain->refresh();
     } else {
         $Order->create($_POST["serviceID"], $_POST["clientID"], $_POST["period"]);
         $Order->set('serverID', $_POST['serverID']);
