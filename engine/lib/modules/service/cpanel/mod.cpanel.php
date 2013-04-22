@@ -30,6 +30,7 @@ class mod_cpanel extends ServiceModule
     {
         $str = str_replace('{$user}', $this->attrs['username'], $str);
         $str = str_replace('{$pass}', $this->attrs['password'], $str);
+        $str = str_replace('{$domain}', $this->attrs['domain'], $str);
         $str = str_replace('{$server_hostname}', $this->Server->hostname, $str);
         $str = str_replace('{$server_mainip}', $this->Server->mainIp, $str);
         $str = str_replace('{$customer_domain}', $this->attrs['domain'], $str);
@@ -207,9 +208,9 @@ class mod_cpanel extends ServiceModule
         return $ret;
     }
 
-    function listaccts()
+    function listaccts($owner = '')
     {
-        $req = 'listaccts';
+        $req = 'listaccts?viewall=1searchtype=owner&search=' . $owner;
         $ret = $this->whmreq($req);
         return $ret;
     }

@@ -6,7 +6,6 @@ if (! $_POST) {
 
 // read the post from PayPal system and add 'cmd'
 $req = 'cmd=_notify-validate';
-
 foreach ($_POST as $key => $value) {
     $value = urlencode(stripslashes($value));
     $req .= "&$key=$value";
@@ -40,7 +39,7 @@ if (! $fp) {
         $res = fgets($fp, 1024);
 
         if (strcmp($res, "VERIFIED") == 0
-                && ($this->get('paypal_email') == $receiver_email || $this->get('paypal_email') == $_POST['business'])
+                && $this->get('paypal_email') == $receiver_email
                 && $payment_status == 'Completed'
         ) {
             // check that txn_id has not been previously processed
@@ -54,8 +53,10 @@ if (! $fp) {
                 debuglog($Payment, 'mod_paypal');
             }
 
-        } else if (strcmp($res, "INVALID") == 0) {
-            debuglog($res, 'mod_paypal');
+        } else {
+            if (strcmp($res, "INVALID") == 0) {
+                debuglog($res, 'mod_paypal');
+            }
         }
     }
     fclose($fp);

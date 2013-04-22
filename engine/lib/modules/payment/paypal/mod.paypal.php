@@ -6,10 +6,20 @@ class mod_paypal extends PaymentModule
     function getHtml($parms)
     {
         global $config;
+
+        // musterinin odeme islemini yaptiktan sonra donecegi adres
         $parms["return_url"] = $config['HTTP_HOST'] . "?p=user&s=finance";
+
+        // musterinin odeme islemini iptal ettikten sonra donecegi adres
+        $parms["cancel_url"] = $config['HTTP_HOST'] . "?p=user&s=finance";
+
+        // PAYPAL'in odeme sonucunu callback yapacagi adres
         $parms["notify_url"] = $config['HTTP_HOST'] . 'callback.php?mod=paypal';
 
+        // odeme kur kodu
         $parms["currency_code"] = $config['CURTABLE'][$parms['paycurID']]['code'];
+
+        // sandbox / production secimi
         $paypal_url = ($this->get('test_mode') == '1') ? 'www.sandbox.paypal.com' : 'www.paypal.com';
 
         $html = '<form action="https://' . $paypal_url . '/cgi-bin/webscr" method="post" style="margin:0px;padding:0px" id="paypalform">

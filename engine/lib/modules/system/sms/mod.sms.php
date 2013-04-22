@@ -243,5 +243,76 @@ class mod_sms extends SystemModule
 
     }
 
+    function gw_kaynaksms($mesaj, $gsm)
+    {
+        $user = $this->get('username');
+        $pass = $this->get('password');
+        $origin = $this->get('originator');
+        $gsm = str_replace('+90', '', $gsm);
+
+        $xml = '<?xml version="1.0" encoding="iso-8859-9"?>
+		<mainbody>
+			<header>
+				<company>KAYNAKSMS</company>
+		        <usercode>' . $user . '</usercode>
+		        <password>' . $pass . '</password>
+				<startdate></startdate>
+				<stopdate></stopdate>
+			    <type>1:n</type>
+		        <msgheader>' . $origin . '</msgheader>
+		        </header>
+				<body>
+				<msg><![CDATA[' . $mesaj . ']]></msg>
+				<no>' . $gsm . '</no>
+				</body>
+		</mainbody>';
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'http://api.kaynaksms.com/xmlbulkhttppost.asp');
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, Array("Content-Type: text/xml"));
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
+        $result = curl_exec($ch);
+
+        debug($result);
+
+        vzrlog(str_replace($this->get('password'), '*******', $xml), 'info', 'Kaynak SMS (request)');
+        vzrlog($result, 'info', 'Kaynak SMS (response)');
+    }
+
+    function gw_kaynaksms2($mesaj, $gsm)
+    {
+        $user = $this->get('username');
+        $pass = $this->get('password');
+        $origin = $this->get('originator');
+        $gsm = str_replace('+90', '', $gsm);
+
+        $mesaj = mb_convert_encoding($mesaj, 'iso-8859-9', 'utf8');
+
+        $url = "http://api.kaynaksms.com/bulkhttppost.asp?";
+        $veri = "usercode=" . $user . "&password=" . $pass;
+        $veri .= "&message=" . urlencode($mesaj) . "&gsmno=" . $gsm;
+        if ($origin != '') {
+            $veri .= "&msgheader=" . $origin;
+        }
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url . $veri);
+        //curl_setopt($ch, CURLOPT_POST, 1);
+        //curl_setopt($ch, CURLOPT_POSTFIELDS, $veri);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $content = curl_exec($ch);
+        curl_close($ch);
+
+
+        if ($this->debug) {
+            vzrlog(str_replace($this->get('password'), '*******', $veri), 'info', 'Kaynak SMS (request)');
+            vzrlog($content, 'info', 'Kaynak SMS (response)');
+        }
+    }
+
 
 } // end of class
