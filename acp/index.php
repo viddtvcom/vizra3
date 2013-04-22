@@ -28,7 +28,7 @@ if ($_SESSION['vadmin']->settings['staticChatWindow'] . $_SESSION['vadmin']->set
 }
 
 if ($_SESSION['vadmin']->settings['staticProbesColumn'] == '1') {
-    $sql = "SELECT sp.*, ss.*, s.serverName,s.serverID FROM servers s  
+    $sql = "SELECT sp.*, ss.*, s.serverName,s.serverID FROM servers s
                 LEFT JOIN server_probes sp ON s.serverID = sp.serverID
                 LEFT JOIN server_settings ss ON (ss.serverID = s.serverID 
                                                     AND ss.setting = 'load_monitor' 

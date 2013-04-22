@@ -13,7 +13,7 @@ if (isset($_GET['a'])) {
 switch ($_POST['action']) {
 
     case 'getServices':
-        $sql = "SELECT serviceID,service_name FROM services s INNER JOIN service_groups sg ON sg.groupID = s.groupID 
+        $sql = "SELECT serviceID,service_name FROM services s INNER JOIN service_groups sg ON sg.groupID = s.groupID
                 WHERE s.addon != '1'";
         if ($_POST['groupID'] != 'all') {
             $sql .= " AND (s.groupID = " . $_POST['groupID'] . " OR sg.parentID = " . $_POST['groupID'] . ")";
@@ -30,7 +30,7 @@ switch ($_POST['action']) {
             );
         }
 
-        $sql = "SELECT loadavg,s.serverID 
+        $sql = "SELECT loadavg,s.serverID
                 FROM servers s 
                     INNER JOIN server_settings ss ON (ss.serverID = s.serverID AND ss.setting = 'load_monitor' AND ss.value = '1')";
         $ret['loads'] = $db->query($sql, SQL_ALL);
@@ -47,7 +47,7 @@ switch ($_POST['action']) {
             $inSQL = " AND t.adminID = -1";
         }
 
-        $sql = "SELECT t.*, c.name as clientName,c.type as clientType,c.company, a.adminNick, d.depTitle 
+        $sql = "SELECT t.*, c.name as clientName,c.type as clientType,c.company, a.adminNick, d.depTitle
                 FROM tickets t 
                     INNER JOIN departments d ON t.depID = d.depID
                     LEFT JOIN admins a ON t.adminID = a.adminID
@@ -71,7 +71,7 @@ switch ($_POST['action']) {
         break;
 
     case 'get_logs':
-        $sql = "SELECT sl.* FROM logs_sys sl 
+        $sql = "SELECT sl.* FROM logs_sys sl
                 WHERE sl.dateAdded > " . (int)$_POST["offset"] . " AND  sl.dateAdded > " . (time(
         ) - 60 * 60 * 32) . " ORDER BY sl.dateAdded ASC";
         $messages = $db->query($sql, SQL_ALL);
@@ -90,7 +90,7 @@ switch ($_POST['action']) {
         exit();
 
     case 'get_messages':
-        $sql = "SELECT c.*,a.adminNick FROM chat c INNER JOIN admins a ON c.adminID = a.adminID 
+        $sql = "SELECT c.*,a.adminNick FROM chat c INNER JOIN admins a ON c.adminID = a.adminID
                 WHERE c.dateAdded > " . ($_POST["offset"]) . " AND c.dateAdded > " . (time(
         ) - (60 * 60 * 32)) . " ORDER BY c.dateAdded ASC LIMIT 150";
         $messages = $db->query($sql, SQL_ALL);
