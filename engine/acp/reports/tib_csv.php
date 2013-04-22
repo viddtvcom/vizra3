@@ -21,11 +21,11 @@ if ($_POST['action'] == 'hosting') {
         if ($acc['value'] == '') {
             continue;
         }
-        $content .= $acc['value'] . ',' . $acc['name'] . ',0' . str_replace(
+        $content .= $acc['value'] . ';' . $acc['name'] . ',0' . str_replace(
             ' ',
             '',
             $acc['phone']
-        ) . ',' . $acc['email'] . ',' . date('d-m-Y', $acc['dateStart']) . ',' . date('d-m-Y', $acc['dateEnd']) . "\n";
+        ) . ';' . $acc['email'] . ';' . date('d-m-Y', $acc['dateStart']) . ';' . date('d-m-Y', $acc['dateEnd']) . "\n";
     }
 
     $filename = date('Y-m-d', time()) . "-hostinglistesi.csv";
