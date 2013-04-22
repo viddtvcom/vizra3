@@ -36,14 +36,17 @@ if ($_POST) {
         core::raise('Test maili ' . $_POST['test_email'] . ' adresine gönderildi', 'm', '?p=640');
 
     } else {
-        $ts = time() + (int)$_POST['start_after'] * 60;
+        $start_time = time() + (int)$_POST['start_after'] * 60;
+        $offset = 0;
+        $pause_mcount = (int)$_POST['pause_mcount'];
+
         foreach ($clients as $cl) {
-            if ((int)$_POST['pause_mcount'] > 0 && (int)$_POST['pause_time']) {
-                $cnt ++;
-                if ($cnt % (int)$_POST['pause_mcount'] == 0) {
+            if ($pause_mcount > 0 && (int)$_POST['pause_time'] > 0) {
+                $message_count ++;
+                if ($message_count % $pause_mcount == 0) {
                     $offset = (int)$_POST['pause_time'] * 60;
+                    $start_time += $offset;
                 }
-                $ts += $offset;
             }
             $tpl = $_POST['body'];
             $tpl = str_replace('{$vurl}', $config['HTTP_HOST'], $tpl);
@@ -64,7 +67,8 @@ if ($_POST) {
                 'body'    => $tpl
             );
 
-            Queue::createJob('sendmail')->setParams($data)->setDateFire($ts)->setStatus('scheduled')->update()->start();
+            Queue::createJob('sendmail')->setParams($data)->setDateFire($start_time)->setStatus('scheduled')->update(
+            )->start();
         }
 
         core::raise('Mail gönderim bilgileri kaydedildi', 'm', '?p=615');
