@@ -45,7 +45,21 @@ switch ($_get["a"]) {
                     $Order->addonOrders = $Order->loadAddonOrders();
                     /*                    $sql = "SELECT * FROM services WHERE status = 'active' AND  addon = '1' AND groupID = ".$Order->Service->groupID;
                                         $addonServices = $db->query($sql,SQL_ALL);*/
-                    $core->assign('addonServices', $Order->Service->getAddons($Order->payType));
+
+                    $addons = $Order->Service->getAddons();
+                    foreach ($addons as $k => $ao) {
+                        $aob = Service::newInstance($ao['serviceID'], false)->objectFromArray($ao);
+                        $aob->getPriceOptions();
+                        $price = array_slice($aob->priceOptions, 0, 1, true);
+                        list ($addons[$k]['period'], $addons[$k]['price']) = each($price);
+                    }
+
+                    /*if (isAdmin())
+
+                    else
+                    $core->assign('addonServices', $Order->Service->getAddons($Order->payType));*/
+
+                    $core->assign('addonServices', $addons);
                 }
                 break;
 
@@ -94,7 +108,7 @@ switch ($_get["a"]) {
                     }
                 }
                 $core->assign('srv', $AllAttrs);
-
+                $core->assign('userCmds', $Order->moduleUserCmds);
 
                 break;
 
@@ -125,7 +139,7 @@ switch ($_get["a"]) {
                 }
                 if ($Domain->hasModule) {
                     $contact_types = $Domain->getContactTypes();
-                    $sql = "SELECT * FROM client_contacts cc 
+                    $sql = "SELECT * FROM client_contacts cc
                                 INNER JOIN domain_contacts dc ON (dc.contactID = cc.contactID) 
                             WHERE (cc.clientID = " . CLIENTID . ")  AND dc.domainID = " . $Domain->domainID;
                     $contact_details = $db->query($sql, SQL_ALL, 'type');

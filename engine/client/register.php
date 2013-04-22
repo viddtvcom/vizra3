@@ -24,6 +24,7 @@ if ($_post["action"] == "validate") {
                     && ! preg_match('/^[a-zA-ZçÇşŞöÖğĞüÜıİ. ]{6,40}$/', $_post['name']))
     ) {
         $errors['name'] = true;
+        core::raise('Geçersiz Ad Soyad', 'e');
     }
 
     if ($_post['type'] == 'corporate') {
@@ -31,6 +32,7 @@ if ($_post["action"] == "validate") {
                 || $_post['company'] == ''
         ) {
             $errors['company'] = true;
+            core::raise('Geçersiz Firma Adı', 'e');
         }
     }
 
@@ -41,18 +43,21 @@ if ($_post["action"] == "validate") {
             || $_post['address'] == ''
     ) {
         $errors['address'] = true;
+        core::raise('Geçersiz Adres', 'e');
     }
 
     if (VZR_USER_FIELDS_VALIDATE != 'false' && ! preg_match('/^[a-zA-ZçÇşŞöÖğĞüÜıİ]{3,50}$/', $_post['city'])
             || $_post['city'] == ''
     ) {
         $errors['city'] = true;
+        core::raise('Geçersiz Şehir', 'e');
     }
 
     if (VZR_USER_FIELDS_VALIDATE != 'false' && ! preg_match('/^[a-zA-ZçÇşŞöÖğĞüÜıİ]{3,50}$/', $_post['state'])
             || $_post['state'] == ''
     ) {
         $errors['state'] = true;
+        core::raise('Geçersiz İlçe', 'e');
     }
 
     if ($_post['zip'] == '') {
@@ -65,9 +70,11 @@ if ($_post["action"] == "validate") {
     if (isset($_country['calling_code_regex'])) {
         if (! @preg_match('/' . $_country['calling_code_regex'] . '$/', $_post['phone'])) {
             $errors['phone'] = true;
+            core::raise('Geçersiz Telefon', 'e');
         }
         if (! @preg_match('/' . $_country['calling_code_regex'] . '$/', $_post['cell'])) {
             $errors['cell'] = true;
+            core::raise('Geçersiz Cep Telefonu', 'e');
         }
     }
 
@@ -106,6 +113,7 @@ if ($_post["action"] == "validate") {
 
         $Client->set('password', core::encrypt($Client->password));
         $Client->set('ipReg', getenv(REMOTE_ADDR));
+        $Client->set('notes', $_SESSION["ref"]);
 
         core::raise('AccountCreatedDetailsSent', 'm');
         redirect("?p=user&s=login&email");

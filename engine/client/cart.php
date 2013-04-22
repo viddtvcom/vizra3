@@ -88,7 +88,7 @@ switch ($_get["s"]) {
             }
 
             //debuglog($price_options);
-            //echo $Service->serviceID;            
+            //echo $Service->serviceID;
 
             $param["service_name"] = $_post["service_name"];
             $param["description"] = $_post["description"];

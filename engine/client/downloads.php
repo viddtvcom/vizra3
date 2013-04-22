@@ -11,7 +11,7 @@ if ($_get['act'] == 'search') {
         if (! getClientID()) {
             $vis[] = 'client';
         }
-        $sql = "SELECT dcf.* FROM dc_files dcf INNER JOIN dc_cats dcc ON dcc.catID = dcf.catID 
+        $sql = "SELECT dcf.* FROM dc_files dcf INNER JOIN dc_cats dcc ON dcc.catID = dcf.catID
                 WHERE (dcf.description LIKE '%" . $_post['query'] . "%' OR dcf.title LIKE '%" . $_post['query'] . "%' OR dcf.origname LIKE '%" . $_post['query'] . "%')
                     AND dcc.visibility NOT IN ('" . implode("','", $vis) . "')";
         $files = $db->query($sql, SQL_KEY, 'fileID');

@@ -7,7 +7,7 @@ switch ($_get["a"]) {
 
     case 'viewTicket':
         $T = new Ticket($_get["tID"]);
-        if (! $T->ticketID) {
+        if (! $T->ticketID || $T->clientID != CLIENTID) {
             core::raise("##TicketDetails%TicketNotFound", "e");
             redirect("?p=user&s=support");
         }

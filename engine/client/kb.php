@@ -12,7 +12,7 @@ if ($_get['act'] == 'search') {
         if (! getClientID()) {
             $vis[] = 'client';
         }
-        $sql = "SELECT * FROM kb_entries ke INNER JOIN kb_cats kc ON kc.catID = ke.catID 
+        $sql = "SELECT * FROM kb_entries ke INNER JOIN kb_cats kc ON kc.catID = ke.catID
                 WHERE body LIKE '%" . $_post['query'] . "%' AND kc.visibility NOT IN ('" . implode("','", $vis) . "')";
         $entries = $db->query($sql, SQL_KEY, 'entryID');
         $core->assign('entries', $entries);

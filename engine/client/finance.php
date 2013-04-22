@@ -73,7 +73,7 @@ switch ($_get['tab']) {
     default:
         /*        if ($status != "") $where = "AND ob.status = '".$status."'";
                 if ($dateOffset != "") {$dateOffset = 'AND ob.dateDue < UNIX_TIMESTAMP(ADDDATE(CURDATE(),INTERVAL '.$dateOffset.' DAY))';}*/
-        $sql = "SELECT ob.*,o.title FROM order_bills ob  
+        $sql = "SELECT ob.*,o.title FROM order_bills ob
                     LEFT JOIN orders o ON ob.orderID = o.orderID
                 WHERE (o.clientID = " . $_SESSION['vclient']->clientID . " OR ob.clientID = " . $_SESSION['vclient']->clientID . " )
                 ORDER BY ob.status DESC,ob.dateDue ASC";

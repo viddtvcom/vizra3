@@ -119,9 +119,18 @@ if ($_post['action'] == 'gateway') {
     $_SESSION['payparms']['cardExpMonth'] = $_post['cardExpMonth'];
     $_SESSION['payparms']['cardExpYear'] = $_post['cardExpYear'];
     $_SESSION['payparms']['cardCV2'] = $_post['cv2'];
+    $_SESSION['payparms']['cardHolder'] = $_post['cardHolder'];
 
 
     $MOD = Module::getInstance($_SESSION['payparms']['moduleID']);
+
+    if ($MOD->get('use3d')) {
+        $_3ds_params = $MOD->get3DSecureParams($_SESSION['payparms']);
+
+        postform($_3ds_params['post_url'], $_3ds_params['post_data']);
+    }
+
+
     $ret = $MOD->process($_SESSION['payparms']);
     /*
     *   Transaction sonucu basarili
@@ -134,6 +143,10 @@ if ($_post['action'] == 'gateway') {
             time(),
             $_SESSION['payparms']['amount'],
             $_SESSION['payparms']['paycurID']
+        );
+
+        $db->query(
+            "UPDATE order_ccresult SET paymentID = '" . $_SESSION['payparms']['paymentID'] . "' WHERE recID = '" . $ret['logID'] . "'"
         );
 
         if ($_SESSION['payparms']['action'] == 'renewOrder') {
@@ -152,9 +165,10 @@ if ($_post['action'] == 'gateway') {
         $tplContent = "payment_ok.tpl";
         unset($_SESSION['payparms']);
     } else {
-        core::raise($ret["msg"], 'e', '/?p=payment&a=checkout');
-        /*        ccform();
-                $tplContent = "payment_cc.tpl";*/
+        core::raise($ret["msg"], 'e');
+        //core::raise($ret["msg"], 'e', '?p=payment&a=' . $_SESSION['payparms']['action']);
+        ccform();
+        $tplContent = "payment_cc.tpl";
     }
 } else {
     unset($_SESSION['payparms']);
@@ -249,6 +263,24 @@ if ($_post['action'] == 'gateway') {
     $tplContent = 'payment.tpl';
 }
 
+
+function postform($url, $data)
+{
+    $html = '<script src="/js/jquery-1.3.2.min.js" type="text/javascript"></script>';
+    foreach ($data as $name => $value) {
+        $fields .= '<input type="hidden" name="' . $name . '" value="' . $value . '">';
+    }
+
+    echo htmlspecialchars($fields);
+
+    $fields .= '<input type="submit" value="DEVAM">';
+    $html .= '<form action="' . $url . '" method="POST" id="jPostForm">' . $fields . '</form>';
+    //$html .= '<script language="JavaScript">$(document).ready(function() {$("#jPostForm").submit();});</script>';
+
+
+    echo $html;
+    exit;
+}
 
 function ccform($use3d = false)
 {
