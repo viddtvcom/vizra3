@@ -52,10 +52,12 @@ if ($interval) {
     // bitis tarihi bugun+15'ten kücük olan siparisler
     $sql = "SELECT o.orderID
             FROM orders o
-                LEFT JOIN order_bills ob ON (ob.orderID = o.orderID AND ob.status = 'unpaid' AND ob.type = 'recurring') 
+            	INNER JOIN services s ON s.serviceID = o.serviceID
+                LEFT JOIN order_bills ob ON (ob.orderID = o.orderID AND ob.status = 'unpaid' AND ob.type = 'recurring')
             WHERE ob.billID IS NULL
                 AND o.dateEnd < UNIX_TIMESTAMP(ADDDATE(CURDATE(), INTERVAL $interval DAY))
                 AND o.payType = 'recurring'
+                AND s.groupID != 10
                 AND o.status IN (" . $order_status_stack . ")";
     $orders = $db->query($sql, SQL_KEY, 'orderID');
     foreach ($orders as $orderID) {
@@ -69,8 +71,8 @@ if ($interval) {
         $cnt_genbill ++;
     }
     //
-    //   En son ödenmemiş faturasının bitiş tarihi, bugun+15'den kucuk. 2. bir odenmemis olusturulmasi gerekiyor  
-    // 
+    //   En son ödenmemiş faturasının bitiş tarihi, bugun+15'den kucuk. 2. bir odenmemis olusturulmasi gerekiyor
+    //
     $sql = "SELECT ob.orderID, MAX(ob.dateEnd)
             FROM order_bills ob INNER JOIN orders o ON (o.orderID = ob.orderID AND o.status IN (" . $order_status_stack . "))
             WHERE ob.status = 'unpaid' AND ob.type = 'recurring'
@@ -98,15 +100,13 @@ if (getSetting('automation_suspend_enabled') == '1') {
     $suspend_by_balance = getSetting('automation_suspend_by_balance');
     $interval = (int)getSetting('automation_suspend_days');
     $sql = "SELECT DISTINCT(o.orderID) FROM orders o
-                INNER JOIN order_bills ob ON (ob.orderID = o.orderID 
-                                                AND ob.status = 'unpaid'
-                                                AND UNIX_TIMESTAMP() > UNIX_TIMESTAMP(ADDDATE(FROM_UNIXTIME(ob.dateDue), INTERVAL $interval DAY))
-                                                )
+                INNER JOIN order_bills ob ON (ob.orderID = o.orderID AND ob.status = 'unpaid')
                 INNER JOIN clients c ON c.clientID = o.clientID 
             WHERE
                 o.status = 'active'
                 AND o.autoSuspend = '1' 
                 AND c.autoSuspend = '1'
+                AND UNIX_TIMESTAMP() > UNIX_TIMESTAMP(ADDDATE(FROM_UNIXTIME(ob.dateDue), INTERVAL $interval DAY))
             ";
     // AND ob.dateDue < UNIX_TIMESTAMP() AND ob.dateDue < UNIX_TIMESTAMP(ADDDATE(CURDATE(), INTERVAL $interval DAY))
 
@@ -137,12 +137,12 @@ if (getSetting('automation_suspend_enabled') == '1') {
 if (getSetting('automation_terminate_enabled') == '1') {
     $interval = (int)getSetting('automation_terminate_days');
     $sql = "SELECT DISTINCT(o.orderID) FROM orders o
-                INNER JOIN order_bills ob ON (ob.orderID = o.orderID 
-                                                    AND ob.status = 'unpaid'
-                                                    AND UNIX_TIMESTAMP() > UNIX_TIMESTAMP(ADDDATE(FROM_UNIXTIME(ob.dateDue), INTERVAL $interval DAY))
-                                                    ) 
+                INNER JOIN order_bills ob ON (ob.orderID = o.orderID AND ob.status = 'unpaid')
             WHERE
-                o.status IN ('active', 'suspended') 
+                o.status IN ('active', 'suspended')
+                AND o.autoSuspend = '1'
+                AND c.autoSuspend = '1'
+                AND UNIX_TIMESTAMP() > UNIX_TIMESTAMP(ADDDATE(FROM_UNIXTIME(ob.dateDue), INTERVAL $interval DAY))
             ";
 
     // AND ob.dateDue < UNIX_TIMESTAMP() AND ob.dateDue < UNIX_TIMESTAMP(ADDDATE(CURDATE(), INTERVAL $interval DAY))
