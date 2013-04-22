@@ -18,7 +18,7 @@ switch ($_POST['action']) {
 
         $sql = "SELECT tr.*,a.adminName,a.adminTitle
                 FROM ticket_responses tr
-                    LEFT JOIN admins a ON tr.adminID = a.adminID
+                    LEFT JOIN admins a ON tr.adminID = a.adminID 
                 WHERE tr.ticketID = '" . $_GET["ticketID"] . "' AND tr.dateAdded > " . $offset . "
                 ORDER BY tr.dateAdded ASC";
         $ret = (array)$db->query($sql, SQL_ALL);

@@ -75,7 +75,7 @@ if ($_GET['act'] == 'search') {
                 'e'
             );
         } else {
-            $sql = "UPDATE kb_cats SET  
+            $sql = "UPDATE kb_cats SET
                     parentID = " . (int)$_POST['parentID'] . ",
                     visibility = '" . $_POST['visibility'] . "',
                     title = '" . sanitize($_POST['title']) . "',
