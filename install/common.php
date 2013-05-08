@@ -3,21 +3,18 @@ require_once('../engine/lib/functions/func.common.php');
 require_once('../engine/lib/classes/class.core.php');
 
 $versions = array(
-    '3.0.B1' => 'Vizra3 Beta1',
-    '3.0.B2' => 'Vizra3 Beta2',
-    '3.0.B3' => 'Vizra3 Beta3',
-    '3.0.B4' => 'Vizra3 Beta4',
-    '3.0.B5' => 'Vizra3 Beta5',
     '3.0.0'  => 'Vizra 3.0.0',
     '3.0.7'  => 'Vizra 3.0.7',
     '3.0.8'  => 'Vizra 3.0.8',
     '3.0.9'  => 'Vizra 3.0.9',
     '3.1.0'  => 'Vizra 3.1.0',
     '3.1.1'  => 'Vizra 3.1.1',
-    '3.1.2'  => 'Vizra 3.1.2'
+    '3.1.2'  => 'Vizra 3.1.2',
+    '3.1.3'  => 'Vizra 3.1.3',
+
 );
 
-$latest = array('version' => '3.1.3', 'title' => 'Vizra 3.1.3');
+$latest = array('version' => '3.2.0', 'title' => 'Vizra 3.2.0');
 
 $dirs = array(
     array('dir' => 'engine/config'),

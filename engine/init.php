@@ -1,16 +1,11 @@
 <?php
-define('_VLC_HOSTNAME', $_SERVER['SERVER_NAME']);
-define('_P', $_GET['p']);
-define('_MOD', $_GET['mod']);
-
-define(VVERSION, '3.1.3'); // for licensing
 require('config/config.php');
 
 if (DEBUG == true) {
     error_reporting(E_ALL ^ E_NOTICE);
     @ini_set('display_errors', 'on');
 } else {
-    error_reporting(E_ALL ^ (E_NOTICE ^ E_WARNING));
+    error_reporting(E_ALL ^ (E_NOTICE ^ E_WARNING ^ E_STRICT));
 }
 
 

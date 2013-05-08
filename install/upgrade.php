@@ -39,11 +39,8 @@ if ($_POST) {
         fputs($fp, "define('ENCRYPT_SALT','" . ENCRYPT_SALT . "');\n\n");
         fputs($fp, "define('BASEDIR','" . BASEDIR . "');\n");
         fputs($fp, "define('BASEHOST','" . BASEHOST . "');\n");
-        fputs($fp, "define('VERSION','" . $latest['version'] . "');\n");
+        fputs($fp, "define('VVERSION','" . $latest['version'] . "');\n");
         fputs($fp, "define('DEMO',false);\n");
-
-        $LICENSE = defined('LICENSE') ? LICENSE : $_POST['license'];
-        fputs($fp, "define('LICENSE','" . $LICENSE . "');\n");
 
         $USE_SSL_ACP = defined('USE_SSL_ACP') ? USE_SSL_ACP : '0';
         $USE_SSL_UCP = defined('USE_SSL_UCP') ? USE_SSL_UCP : '0';

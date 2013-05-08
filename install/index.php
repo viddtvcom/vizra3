@@ -66,8 +66,7 @@ if ($_POST) {
 
                 fputs($fp, "define('DEBUG',false);\n");
 
-                fputs($fp, "define('VERSION','" . $latest['version'] . "');\n");
-                fputs($fp, "define('LICENSE','');\n");
+                fputs($fp, "define('VVERSION','" . $latest['version'] . "');\n");
                 fputs($fp, "define('DBHOST','" . $_POST['dbhost'] . "');\n");
                 fputs($fp, "define('DBNAME','" . $_POST['dbname'] . "');\n");
                 fputs($fp, "define('DBUSER','" . $_POST['dbuser'] . "');\n");

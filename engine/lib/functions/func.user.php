@@ -20,7 +20,6 @@ function getClientID()
     return $_SESSION["vclient"]->clientID;
 }
 
-/* @return Order */
 function getClientOrder($orderID)
 {
     $Order = new Order($orderID);
@@ -32,7 +31,6 @@ function getClientOrder($orderID)
     }
 }
 
-/* @return Domain */
 function getClientDomain($domainID)
 {
     $Domain = new Domain($domainID);
@@ -44,7 +42,6 @@ function getClientDomain($domainID)
     }
 }
 
-/* @return Contact */
 function getClientContact($contactID)
 {
     $Contact = new Contact($contactID);
@@ -63,8 +60,6 @@ function displayPage($tpl)
         return false;
     }
     global $core;
-
-    $GLOBALS['_VLC_TYPE'] = core::_vlc_gettype();
 
     $core->display('head.tpl');
     $core->display($tpl);

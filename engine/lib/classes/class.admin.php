@@ -105,9 +105,8 @@ class Admin extends base
         }
     }
 
-    function update()
+    function update($exclude = array())
     {
-        $exclude = array();
         if ($this->adminPassword == "") {
             $exclude = array("adminPassword");
         } else {
