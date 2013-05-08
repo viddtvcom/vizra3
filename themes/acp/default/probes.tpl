@@ -32,39 +32,38 @@
 </div>
 
 {literal}
-    <script type="text/javascript">
-        var timestamp = 0;
-        var chatTimer;
-        getProbes();
+<script type="text/javascript">
+var timestamp = 0;
+var chatTimer;
+getProbes();
 
-        function getProbes() {
-            $.post('ajax.php', {action: 'getProbes'}, function (data) {
-                if (data) {
-                    if (data['probes']) {
-                        var probes = data['probes'];
-                        var count = probes.length;
-                        for (var i = 0; i < count; i++) {
-                            $('#' + probes[i].probe).attr('src', turl + '/images/' + probes[i].status);
-                        }
-                    }
-                    if (data['loads']) {
-                        var loads = data['loads'];
-                        count = loads.length;
-                        for (var i = 0; i < count; i++) {
-                            var larr = loads[i]['loadavg'].split(':');
-                            var serverID = loads[i]['serverID'];
-                            $('#' + serverID + '_avg1').html(larr[0]);
-                            $('#' + serverID + '_avg5').html(larr[1]);
-                            $('#' + serverID + '_avg15').html(larr[2]);
-                        }
-                    }
+function getProbes() {
+    $.post('ajax.php', {action: 'getProbes'}, function (data) {
+        if (data) {
+            if (data['probes']) {
+                var probes = data['probes'];
+                var count = probes.length;
+                for (var i = 0; i < count; i++) {
+                    $('#' + probes[i].probe).attr('src', turl + '/images/' + probes[i].status);
                 }
-
-            }, "json");
-            chatTimer = setTimeout('getProbes();', 20000);
-            //$("span[title]").tooltip('#tooltip');
-            //$("img[title]").tooltip('#tooltip');
+            }
+            if (data['loads']) {
+                var loads = data['loads'];
+                count = loads.length;
+                for (var i = 0; i < count; i++) {
+                    var larr = loads[i]['loadavg'].split(':');
+                    var serverID = loads[i]['serverID'];
+                    $('#' + serverID + '_avg1').html(larr[0]);
+                    $('#' + serverID + '_avg5').html(larr[1]);
+                    $('#' + serverID + '_avg15').html(larr[2]);
+                }
+            }
         }
 
-    </script>
-{/literal}
+    }, "json");
+    chatTimer = setTimeout('getProbes();', 20000);
+    //$("span[title]").tooltip('#tooltip');
+    //$("img[title]").tooltip('#tooltip');
+}
+
+</script>{/literal}

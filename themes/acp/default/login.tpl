@@ -7,8 +7,8 @@
     <link media="screen" rel="stylesheet" type="text/css" href="{$turl}css/login.css"/>
     <!--[if lte IE 6]>
     <link media="screen" rel="stylesheet" type="text/css" href="{$turl}css/login-ie.css"/><![endif]-->
-    <link media="screen" rel="stylesheet" type="text/css" href="{$turl}css/login-blue.css"/>
-    <script src="{$vurl}js/jquery.min.js" type="text/javascript"></script>
+    <!--    <link media="screen" rel="stylesheet" type="text/css" href="{$turl}css/login-dark.css"  />-->
+    <script src="{$vurl}js/jquery-1.3.2.min.js" type="text/javascript"></script>
     <script language="JavaScript">
         {literal}$(document).ready(function () {{/literal}
             {if $smarty.get.p == '1'}

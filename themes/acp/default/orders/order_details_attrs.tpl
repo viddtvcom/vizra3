@@ -12,7 +12,7 @@
     <input type="hidden" name="action" value="update_attrs">
     <fieldset>
         <ol>
-            <li class='odd'>
+            <li>
                 <label>Sunucu</label>
                 <select name="serverID">
                     <option value="0">Yok</option>
@@ -21,6 +21,25 @@
                                 {if $s.serverID == $Order->serverID}selected{/if}>{$s.serverName}</option>
                     {/foreach}
                 </select>
+            </li>
+
+            <li class='odd'>
+                <label>SLMail</label>
+                <select name="slmail">
+                    <option value="0">Yok</option>
+                    <option value="1" {if $Order->slmail == '1'}selected{/if}>v1 - postfix</option>
+                    <option value="2" {if $Order->slmail == '2'}selected{/if}>v2 - dione</option>
+                </select>
+                {if $slmail_status == 'notfound' || $slmail_status == ''}
+                    <input type="checkbox" name="slmail_create" value="1">
+                    Oluştur
+                {elseif $slmail_status == 'active'}
+                    <input type="checkbox" name="slmail_disable" value="1">
+                    Askıya Al
+                {elseif $slmail_status == 'disabled'}
+                    <input type="checkbox" name="slmail_enable" value="1">
+                    Aktif Et
+                {/if}
             </li>
             {foreach from=$Order->moduleLinks item=link key=label}
                 <li  {cycle values=",class='odd'"}>

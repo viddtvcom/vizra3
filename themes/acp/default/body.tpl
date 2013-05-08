@@ -1,4 +1,4 @@
-{k}    {if $smarty.get.m == 'compact'}
+tpl{k}    {if $smarty.get.m == 'compact'}
     {include file=$tpl_content}
 {else}
     <div class="iframe_sidebar">

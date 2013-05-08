@@ -105,8 +105,7 @@
         <!-- /Article List -->
     {else}
         {if !$file}
-            <hr>
-            Bu kategoride dosya bulunmuyor{/if}
+            <hr>Bu kategoride dosya bulunmuyor{/if}
     {/if}
 
     {if $smarty.get.act == 'add_cat'}

@@ -1,5 +1,4 @@
 <h3>Yeni Alan Ekle</h3>
-<br/>
 <form method="post" class="cmxform" style="width:100%;">
     <input type="hidden" name="action" value="add">
     <fieldset>
@@ -74,9 +73,3 @@
     </fieldset>
     <p align="right"><input type="submit" value="Ekle"/></p>
 </form>
-<br/>
-<ul class="system_messages">
-    <li class="blue"><span class="ico"></span><strong class="system_title">
-            engine/lib/extend/class.attrs.php dosyasına kendi doğrulama fonksiyonlarınızı ekleyebilirsiniz.
-        </strong></li>
-</ul>

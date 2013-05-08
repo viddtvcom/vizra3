@@ -11,12 +11,12 @@
                                     {if $smarty.post.serverID == $s.serverID}selected{/if}>{$s.serverName}</option>
                         {/foreach}
                     </select>
+                    Reseller: <input type="text" name="owner" size="16" value="{$smarty.post.owner}">
                     <input type="submit" value="Hesapları listele"/>
                 </li>
             </ol>
         </fieldset>
     </form>
-
     {if $accs}
     <form method="post">
         <input type="hidden" name="action" value="import">
@@ -41,6 +41,7 @@
                         {else}
                             {$a.domain}
                         {/if}
+                        <br> (ip: {$a.ip}) (<a href="http://intodns.com/{$a.domain}" target="_intodns">DNS</a>)
                     </td>
                     <td>{$a.user}</td>
                     <td>{$a.plan}</td>

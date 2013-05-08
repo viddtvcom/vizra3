@@ -23,8 +23,7 @@
                         </li>
                     {/section}
                     {if $pag.total - $pag.cpage >  7}
-                        <li>[...]</li>
-                    {/if}
+                        <li>[...]</li>{/if}
 
                     <li><a id="{$pag.total}" href="#{$pag.total}"
                            {if $pag.cpage == $pag.total}class="current_page"{/if}>
@@ -44,29 +43,29 @@
 {/if}
 {literal}
 <script language="JavaScript">
-    $(document).ready(function () {
-        $("#paging > li").each(function () {
-            $(this).children(':first').click(function () {
-                loadpage($(this).attr("id"));
-                return false;
-            });
-        });
-        function loadpage(p) {
-            var filter = '';
-            $(".filter").each(function () {
-                if ($(this).val() != '') {
-                    filter += '&' + $(this).attr('name') + '=' + $(this).val();
-                }
-            });
-            window.location = '{/literal}{if $pag.url != ""}{$pag.url}{else}?p={$smarty.get.p}{/if}{literal}&page=' + p + filter;
-        }
-
-        $("#butfilter").click(function () {
-            loadpage(1);
+$(document).ready(function () {
+    $("#paging > li").each(function () {
+        $(this).children(':first').click(function () {
+            loadpage($(this).attr("id"));
             return false;
         });
-
     });
+    function loadpage(p) {
+        var filter = '';
+        $(".filter").each(function () {
+            if ($(this).val() != '') {
+                filter += '&' + $(this).attr('name') + '=' + $(this).val();
+            }
+        });
+        window.location = '{/literal}{if $pag.url != ""}{$pag.url}{else}?p={$smarty.get.p}{/if}{literal}&page=' + p + filter;
+    }
+
+    $("#butfilter").click(function () {
+        loadpage(1);
+        return false;
+    });
+
+});
 </script>{/literal}
 
 

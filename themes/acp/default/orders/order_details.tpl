@@ -1,6 +1,15 @@
 <div class="order_overview">
     <div><img src="{$turl}images/status_{$Order->status}.png" hspace="4" id="middle">
-        <span>{$Order->orderID}</span> {$Order->title}  </div>
+        <span>{$Order->orderID}</span> {$Order->title}
+
+        {if $order_domain}
+            <a href="http://www.{$order_domain}" target="_www">[ www ]</a>
+            |
+            <a href="http://intodns.com/{$order_domain}" target="_intodns">[ intodns ]</a>
+            |
+            <a href="http://whois.domaintools.com/{$order_domain}" target="_whois">[ whois ]</a>
+        {/if}
+    </div>
 </div>
 
 <div class="table_tabs_menu">
@@ -55,16 +64,14 @@
                 <td>
 
                     {if $subtab == 'general' || $subtab == ''}
-                        <script src="{$vurl}js/jquery-ui.min.js" type="text/javascript"></script>
                         <form method="post" class="cmxform" style="width:99%;">
                             <input type="hidden" name="action" value="update">
                             <fieldset>
                                 <ol>
                                     <li>
                                         <label>Müşteri:</label>
-                                        <img src="{$turl}/images/status_{$Order->Client->status}.png" id="middle"
-                                             width="12"> <a
-                                                href="?p=311&clientID={$Order->clientID}">{$Order->Client->name}</a>
+                                        <img src="{$turl}/images/status_{$Order->Client->clientStatus}.png" id="middle">
+                                        <a href="?p=311&clientID={$Order->clientID}">{$Order->Client->name}</a>
                                     </li>
                                     {if $Order->parentID}
                                         <li>
@@ -195,21 +202,31 @@
                         </form>
                         <br/>
                         <br/>
-                        {literal}
-                            <script language="JavaScript">
-                                $(document).ready(function () {
-                                    $("#dateStart,#dateEnd").datepicker({dateFormat: 'dd-mm-yy'});
+                        <br/>
+                        <br/>
+                        <br/>
+                        <form method="post">
+                            <input type="hidden" name="action" value="close">
 
-                                    $('#never_expires').click(function () {
-                                        if (!$(this).is(':checked')) {
-                                            $('#dateEnd').show();
-                                        } else {
-                                            $('#dateEnd').hide();
-                                        }
-                                    });
-                                });
-                            </script>
-                        {/literal}
+                            <p align="right"><input type="submit" value="Siparişi Kapat Borçları Sil" align="right"/>
+                            </p>
+                        </form>
+                        </form>
+                        {literal}
+                        <script language="JavaScript">
+                        $(document).ready(function () {
+                            $("#dateStart,#dateEnd").datepicker({dateFormat: 'dd-mm-yy'});
+
+                            $('#never_expires').click(function () {
+                                if (!$(this).is(':checked')) {
+                                    $('#dateEnd').show();
+                                } else {
+                                    $('#dateEnd').hide();
+                                }
+                            });
+                        });
+                        </script>
+                    {/literal}
 
 
                     {elseif $subtab == 'domain'}

@@ -34,19 +34,18 @@
     </form>
 
 </div>
-<script src="{$vurl}js/jquery-ui.min.js" type="text/javascript"></script>
-{literal}
-    <script language="JavaScript">
-        $(document).ready(function () {
-            $("#dateExpires").datepicker({dateFormat: 'dd-mm-yy'});
 
-            $('#never_expires').click(function () {
-                if (!$(this).is(':checked')) {
-                    $('#dateExpires').show();
-                } else {
-                    $('#dateExpires').hide();
-                }
-            });
-        });
-    </script>
-{/literal}
+{literal}
+<script language="JavaScript">
+$(document).ready(function () {
+    $("#dateExpires").datepicker({dateFormat: 'dd-mm-yy'});
+
+    $('#never_expires').click(function () {
+        if (!$(this).is(':checked')) {
+            $('#dateExpires').show();
+        } else {
+            $('#dateExpires').hide();
+        }
+    });
+});
+</script>{/literal}

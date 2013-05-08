@@ -33,14 +33,13 @@
 </form>
 
 {literal}
-    <script language="JavaScript">
-        $(document).ready(function () {
-            $('form input:radio').click(function () {
-                $('.hidden').hide();
-                $('.' + $(this).val()).fadeIn();
-            });
-        });
-    </script>
-{/literal}
+<script language="JavaScript">
+$(document).ready(function () {
+    $('form input:radio').click(function () {
+        $('.hidden').hide();
+        $('.' + $(this).val()).fadeIn();
+    });
+});
+</script>{/literal}
 
 

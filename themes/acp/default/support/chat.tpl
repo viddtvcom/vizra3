@@ -1,53 +1,52 @@
 {literal}
-    <script type="text/javascript">
-        var timestamp = 0;
-        var licount = 0;
-        var lock = false;
-        var gm_lock = false;
-        getMessages();
-        setInterval('getMessages();', 5000);
+<script type="text/javascript">
+var timestamp = 0;
+var licount = 0;
+var lock = false;
+var gm_lock = false;
+getMessages();
+setInterval('getMessages();', 5000);
 
-        $(document).ready(function () {
-            $("#text_frm").ajaxForm({
-                beforeSubmit: function () {
-                    if ($("#message").val() == "" || lock == true) {
-                        return false;
-                    } else {
-                        lock = true;
-                        return true;
-                    }
-                },
-                success: function () {
-                    $("#message").val('');
-                    lock = false;
-                    getMessages();
-                }
-            });
-        });
-
-
-        function getMessages() {
-            $.post('ajax.php', {action: 'get_messages', offset: timestamp}, function (data) {
-                if (data) {
-                    var count = data.length;
-                    if (!count) return false;
-                    for (var i = 0; i < count; i++) {
-                        if ($('#msg_' + data[i].messageID).length > 0) continue;
-
-                        line = '<li id="msg_' + data[i].messageID + '">';
-                        line += '<span><span>[' + data[i].timestamp + ']</span> ' + data[i].adminNick + ':</span> ' + data[i].message + '</li>';
-                        $("#chat_ul").append(line);
-                        if (licount++ > 150) {
-                            $("#chat_div li:first-child").remove();
-                        }
-                    }
-                    $("#chat_div").scrollTop($("#chat_div")[0].scrollHeight);
-                    timestamp = data[count - 1].dateAdded;
-                }
-            }, "json");
+$(document).ready(function () {
+    $("#text_frm").ajaxForm({
+        beforeSubmit: function () {
+            if ($("#message").val() == "" || lock == true) {
+                return false;
+            } else {
+                lock = true;
+                return true;
+            }
+        },
+        success: function () {
+            $("#message").val('');
+            lock = false;
+            getMessages();
         }
-    </script>
-{/literal}
+    });
+});
+
+
+function getMessages() {
+    $.post('ajax.php', {action: 'get_messages', offset: timestamp}, function (data) {
+        if (data) {
+            var count = data.length;
+            if (!count) return false;
+            for (var i = 0; i < count; i++) {
+                if ($('#msg_' + data[i].messageID).length > 0) continue;
+
+                line = '<li id="msg_' + data[i].messageID + '">';
+                line += '<span><span>[' + data[i].timestamp + ']</span> ' + data[i].adminNick + ':</span> ' + data[i].message + '</li>';
+                $("#chat_ul").append(line);
+                if (licount++ > 150) {
+                    $("#chat_div li:first-child").remove();
+                }
+            }
+            $("#chat_div").scrollTop($("#chat_div")[0].scrollHeight);
+            timestamp = data[count - 1].dateAdded;
+        }
+    }, "json");
+}
+</script>{/literal}
 <style type="text/css" media="all">@import "{$turl}/css/chat.css";</style>
 <div id="chat">
     <div id="chat_div" style="height: {if $smarty.get.h}{$smarty.get.h}{else}400{/if}px; background-color: #FFF;">

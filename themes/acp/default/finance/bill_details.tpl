@@ -1,4 +1,3 @@
-<script src="{$vurl}js/jquery-ui.min.js" type="text/javascript"></script>
 <div class="bill_form">
     <form method="post" class="cmxform" id='bill_form' action="?p=516&billID={$OrderBill->billID}">
         <input type="hidden" name="action" value="update" id="action">

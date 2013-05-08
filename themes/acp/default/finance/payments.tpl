@@ -9,9 +9,19 @@
     <form method="post" class="cmxform" id="filterform">
         <fieldset style="width: 40%; float: left;">
             <ol class='alt'>
-                <li><label>Ödeme No:</label> <input type="text" name="paymentID" class="filter" style="width: 80px;"
-                                                    maxlength="7"></li>
-                <li>&nbsp;</li>
+                <li><label>Ödeme No:</label>
+
+                    <input type="text" name="paymentID" class="filter" style="width: 80px;" maxlength="7">
+                </li>
+                <li><label>Onaylayan</label>
+                    <select name="adminID" class="filter" id="adminID">
+                        <option value='all' {if $smarty.get.adminID == 'all'}selected{/if}>Hepsi</option>
+                        {foreach from=$admins item=a}
+                            <option value="{$a.adminID}"
+                                    {if $a.adminID  == $smarty.get.adminID }selected{/if}>{$a.adminNick}</option>
+                        {/foreach}
+                    </select>
+                </li>
             </ol>
         </fieldset>
         <fieldset style="width: 50%; float: left;">
@@ -57,8 +67,10 @@
             <input type="hidden" name="send_mail" id="send_mail">
             <table cellpadding="0" cellspacing="0" width="100%">
                 <tr>
-                    <th width="16"><input type="checkbox" name="sel"
-                                          onclick="$('.mcheck').attr('checked',$(this).attr('checked'))"></th>
+                    <th width="16">
+                        <input type="checkbox" name="sel"
+                               onclick="$('.mcheck').attr('checked',$(this).attr('checked'))">
+                    </th>
                     <th width="16"></th>
                     <th width="50" id="center">Ödeme No</th>
                     <th>Müşteri</th>
@@ -69,7 +81,9 @@
                 </tr>
                 {foreach from=$payments item=p}
                     <tr {cycle values=",class='alt'"}>
-                        <td><input type="checkbox" name="selected[]" class="mcheck" value="{$p.paymentID}"></td>
+                        <td>
+                            <input type="checkbox" name="selected[]" class="mcheck" value="{$p.paymentID}">
+                        </td>
                         <td><img src="{$turl}images/{if $p.paymentStatus == 'paid'}ok{else}stop{/if}.png"></td>
                         <td id="center"><a href="?p=511&paymentID={$p.paymentID}">{$p.paymentID}</a></td>
                         <td>
@@ -84,7 +98,9 @@
                 <tr>
                     <td></td>
                     <td colspan="2">Seçili Ödemeleri:</td>
-                    <td colspan="10"><input id="butDelete" type="submit" name="action" value="Sil"></td>
+                    <td colspan="10">
+                        <input id="butDelete" type="submit" name="action" value="Sil">
+                    </td>
                 </tr>
             </table>
         </form>

@@ -145,7 +145,6 @@
 {/if}
 
 
-<script src="{$vurl}js/jquery-ui.min.js" type="text/javascript"></script>
 <script language="JavaScript">
     var dID = '{$Domain->domainID}';
     {literal}

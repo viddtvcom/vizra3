@@ -4,6 +4,7 @@
             <tr>
                 <th width="20"></th>
                 <th scope="col">Sunucu</th>
+                <th width="100">Ana Ip</th>
                 <th width="20"></th>
             </tr>
             {foreach from=$servers item=s}
@@ -11,6 +12,7 @@
                     <td><img src="{$turl}images/led_{if $s.status == 'active'}green{else}white{/if}.png" width="13">
                     </td>
                     <td><a href="?p=125&act=server_details&serverID={$s.serverID}">{$s.serverName}</a></td>
+                    <td>{$s.mainIp}</td>
                     <td align="center"><a href="?p=125&act=del&serverID={$s.serverID}"
                                           onclick="return confirm('Emin misiniz?');"><img
                                     src="{$turl}images/ico_delete.png"></a></td>

@@ -1,37 +1,36 @@
 <script src="{$vurl}js/jquery.blockui.js" type="text/javascript"></script>
 {literal}
-    <script language="JavaScript">
-        $(document).ready(function () {
-            $.blockUI.defaults.overlayCSS.opacity = 0.8;
-            $.blockUI.defaults.overlayCSS.backgroundColor = '#FFF';
-            function checkModuleSetting(moduleID) {
-                if (moduleID == '') {
-                    $('.modulevis').hide();
-                } else {
-                    $('.modulevis').show();
-                }
-            }
+<script language="JavaScript">
+$(document).ready(function () {
+    $.blockUI.defaults.overlayCSS.opacity = 0.8;
+    $.blockUI.defaults.overlayCSS.backgroundColor = '#FFF';
+    function checkModuleSetting(moduleID) {
+        if (moduleID == '') {
+            $('.modulevis').hide();
+        } else {
+            $('.modulevis').show();
+        }
+    }
 
-            $("#moduleID").change(function () {
-                checkModuleSetting($(this).val());
-            });
-            checkModuleSetting($("#moduleID").val());
+    $("#moduleID").change(function () {
+        checkModuleSetting($(this).val());
+    });
+    checkModuleSetting($("#moduleID").val());
 
-            $(".controller").change(function () {
-                $('.' + $(this).attr('id')).block({ message: null });
-                $('.' + $(this).val()).unblock();
-            });
+    $(".controller").change(function () {
+        $('.' + $(this).attr('id')).block({ message: null });
+        $('.' + $(this).val()).unblock();
+    });
 
-            $(".controller").each(function () {
-                $('.' + $(this).attr('id')).block({ message: null });
-                $('.' + $(this).val()).unblock();
-            });
+    $(".controller").each(function () {
+        $('.' + $(this).attr('id')).block({ message: null });
+        $('.' + $(this).val()).unblock();
+    });
 
 
-            //$(".cmxform input[title]").tooltip('#tooltip');
-        });
-    </script>
-{/literal}
+    //$(".cmxform input[title]").tooltip('#tooltip');
+});
+</script>{/literal}
 
 
 <div id="tooltip">&nbsp;</div>

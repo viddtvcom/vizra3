@@ -17,13 +17,12 @@
     <br/>
 {/foreach}
 
-{literal}
+    {literal}
     <script language="JavaScript">
-        $(document).ready(function () {
-            $('.inserter').click(function () {
-                $('.wysiwyg2').wysiwyg('insertHtml', $(this).html());
-                return false;
-            });
+    $(document).ready(function () {
+        $('.inserter').click(function () {
+            $('.wysiwyg2').wysiwyg('insertHtml', $(this).html());
+            return false;
         });
-    </script>
-{/literal}
+    });
+    </script>{/literal}

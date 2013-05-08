@@ -73,9 +73,3 @@
     </fieldset>
     <p align="right"><input type="submit" value="##Update##"/></p>
 </form>
-<br/>
-<ul class="system_messages">
-    <li class="blue"><span class="ico"></span><strong class="system_title">
-            engine/lib/extend/class.attrs.php dosyasına kendi doğrulama fonksiyonlarınızı ekleyebilirsiniz.
-        </strong></li>
-</ul>

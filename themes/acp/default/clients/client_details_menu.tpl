@@ -7,7 +7,8 @@
         </a>
     </li>
     <li>
-        <a {if $tab == 'orders'}class="selected_lk"{/if} href="?p=311&clientID={$client->clientID}&tab=orders">
+        <a {if $tab == 'orders'}class="selected_lk"{/if}
+           href="?p=311&clientID={$client->clientID}&tab=orders&status=valid">
             <span class="l"><span></span></span><span class="m"><em>Siparişler</em><span></span></span><span
                     class="r"><span></span></span>
         </a>

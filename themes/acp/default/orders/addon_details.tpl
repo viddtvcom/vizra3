@@ -61,28 +61,22 @@
     </form>
 </div>
 {literal}
-    <script language="JavaScript">
-        $('#addon_form').ajaxForm({
-            dataType: 'json',
-            success: processJson
-        });
-        function processJson(data) {
-            if (data.st) {
-                $('#st_img').html('<img id=ok_img src=' + turl + 'images/ok.png>');
-                $('#ok_img').fadeOut(5000);
-            } else {
-                $('#st_img').html('<img src=' + turl + 'images/stop2.png>');
-            }
-        }
-        $('#status').change(function () {
-            $("#updateOnServer").show();
-        });
-
-
-        $(document).ready(function () {
-            doParentIframe();
-        });
-    </script>
-{/literal}
+<script language="JavaScript">
+$('#addon_form').ajaxForm({
+    dataType: 'json',
+    success: processJson
+});
+function processJson(data) {
+    if (data.st) {
+        $('#st_img').html('<img id=ok_img src=' + turl + 'images/ok.png>');
+        $('#ok_img').fadeOut(5000);
+    } else {
+        $('#st_img').html('<img src=' + turl + 'images/stop2.png>');
+    }
+}
+$('#status').change(function () {
+    $("#updateOnServer").show();
+});
+</script>{/literal}
 
 

@@ -1,13 +1,12 @@
 {literal}
-    <script language="JavaScript">
-        $(document).ready(function () {
-            $("#groupID").change(function () {
-                var groupID = $(this).val();
-                window.location = 'index.php?p=120&groupID=' + groupID;
-            });
-        });
-    </script>
-{/literal}
+<script language="JavaScript">
+$(document).ready(function () {
+    $("#groupID").change(function () {
+        var groupID = $(this).val();
+        window.location = 'index.php?p=120&groupID=' + groupID;
+    });
+});
+</script>{/literal}
 <div id="selectbox">
     <label>Servis Grubu: </label>
     <select id="groupID">

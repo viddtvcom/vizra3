@@ -45,12 +45,11 @@
     <p align="right"><input type="submit" value="Güncelle" align="right"/></p>
 </form>
 
-{literal}
+    {literal}
     <script language="JavaScript">
-        $(document).ready(function () {
-            $('.wysiwyg2').wysiwyg();
-        });
-    </script>
-{/literal}
+    $(document).ready(function () {
+        $('.wysiwyg2').wysiwyg();
+    });
+    </script>{/literal}
 <link rel="stylesheet" href="{$vurl}/js/jwysiwyg/jquery.wysiwyg.css" type="text/css"/>
 <script type="text/javascript" src="{$vurl}/js/jwysiwyg/jquery.wysiwyg.js"></script>

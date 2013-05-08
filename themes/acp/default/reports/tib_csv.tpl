@@ -34,11 +34,10 @@
 </form>
 
 {literal}
-    <script language="JavaScript">
-        $(document).ready(function () {
-            $('#services option').each(function () {
-                $(this).attr("selected", "selected");
-            });
-        });
-    </script>
-{/literal}
+<script language="JavaScript">
+$(document).ready(function () {
+    $('#services option').each(function () {
+        $(this).attr("selected", "selected");
+    });
+});
+</script>{/literal}

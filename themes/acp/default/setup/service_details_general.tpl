@@ -1,17 +1,16 @@
 {literal}
-    <script language="JavaScript">
-        $(document).ready(function () {
-            $("#notifyOnOrder").change(function () {
-                if ($(this).attr('checked')) {
-                    $("#notifyOnOrderLI").show();
-                } else {
-                    $("#notifyOnOrderLI").hide();
-                }
+<script language="JavaScript">
+$(document).ready(function () {
+    $("#notifyOnOrder").change(function () {
+        if ($(this).attr('checked')) {
+            $("#notifyOnOrderLI").show();
+        } else {
+            $("#notifyOnOrderLI").hide();
+        }
 
-            });
-        });
-    </script>
-{/literal}
+    });
+});
+</script>{/literal}
 <img src="{$vurl}?p=image&t=service&f={$Service->getAvatarName()}&w=300&h=200" style="float:right;">
 <h3>Genel Servis Detayları</h3>
 
@@ -112,12 +111,11 @@
 </form>
 
 
-{literal}
+    {literal}
     <script language="JavaScript">
-        $(document).ready(function () {
-            $('.wysiwyg2').wysiwyg();
-        });
-    </script>
-{/literal}
+    $(document).ready(function () {
+        $('.wysiwyg2').wysiwyg();
+    });
+    </script>{/literal}
 <link rel="stylesheet" href="{$vurl}/js/jwysiwyg/jquery.wysiwyg.css" type="text/css"/>
 <script type="text/javascript" src="{$vurl}/js/jwysiwyg/jquery.wysiwyg.js"></script>

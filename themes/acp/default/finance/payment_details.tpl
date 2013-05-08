@@ -29,6 +29,10 @@
                 {/if}
             </li>
             <li class="odd">
+                <label>Mail:</label>
+                <input type="checkbox" value="1" name="sendmail" checked="checked"> Müşteriye mail gönder.
+            </li>
+            <li class="odd">
                 <label>Modül:</label>
                 <select name="moduleID">
                     <option value=''>Yok</option>

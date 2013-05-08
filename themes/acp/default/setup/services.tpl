@@ -13,9 +13,10 @@
                 </li>
                 <li><label>Servis Durumu:</label>
                     <select id="srv_status">
-                        <option value="">Bütün Servisler</option>
-                        <option value="active" {if $smarty.get.srv_status == "active" }selected{/if}>Sadece Aktif
-                            Servisler
+                        <option value="all">Bütün Servisler</option>
+                        <option value="active"
+                                {if $smarty.get.srv_status == "active" || $smarty.get.srv_status == "" }selected{/if}>
+                            Sadece Aktif Servisler
                         </option>
                     </select>
                 </li>
@@ -99,15 +100,14 @@
 {/foreach}
 
 
-{literal}
+    {literal}
     <script language="JavaScript">
-        $(document).ready(function () {
-            $("#groupID, #srv_status, #order_type").change(function () {
-                var groupID = $('#groupID').val();
-                var srv_status = $('#srv_status').val();
-                var order_type = $('#order_type').val();
-                window.location = 'index.php?p=115&groupID=' + groupID + '&srv_status=' + srv_status + '&order_type=' + order_type;
-            });
+    $(document).ready(function () {
+        $("#groupID, #srv_status, #order_type").change(function () {
+            var groupID = $('#groupID').val();
+            var srv_status = $('#srv_status').val();
+            var order_type = $('#order_type').val();
+            window.location = 'index.php?p=115&groupID=' + groupID + '&srv_status=' + srv_status + '&order_type=' + order_type;
         });
-    </script>
-{/literal}
+    });
+    </script>{/literal}

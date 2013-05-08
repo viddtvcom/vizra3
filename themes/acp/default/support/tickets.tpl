@@ -6,6 +6,8 @@
             <ol class='alt'>
                 <li><label>Bilet Durumu:</label>
                     <select id="show_tickets">
+
+                        <option value="3" {if $show_tickets == 3}selected{/if}>Bütün Biletleri Göster</option>
                         <option value="0" {if $show_tickets == 0}selected{/if}>Atanmamış Biletleri Göster</option>
                         <option value="1" {if $show_tickets == 1}selected{/if}>Sadece Bana Atanmış Biletleri Göster
                         </option>

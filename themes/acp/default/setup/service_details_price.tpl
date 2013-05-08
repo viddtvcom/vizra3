@@ -113,18 +113,17 @@
 </form>
 
 {literal}
-    <script language="JavaScript">
-        $(document).ready(function () {
-            $('#uo_check').click(function () {
-                if ($(this).attr('checked') == true) {
-                    if (confirm('Bu servise bağlı bütün sipariş ücretleri güncellenecek. Emin misiniz?')) {
-                        $('#payment_p').slideDown();
-                    }
-                }
-                else {
-                    $('#payment_p').slideUp();
-                }
-            });
-        });
-    </script>
-{/literal}
+<script language="JavaScript">
+$(document).ready(function () {
+    $('#uo_check').click(function () {
+        if ($(this).attr('checked') == true) {
+            if (confirm('Bu servise bağlı bütün sipariş ücretleri güncellenecek. Emin misiniz?')) {
+                $('#payment_p').slideDown();
+            }
+        }
+        else {
+            $('#payment_p').slideUp();
+        }
+    });
+});
+</script>{/literal}

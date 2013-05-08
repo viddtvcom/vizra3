@@ -1,4 +1,3 @@
-<script src="{$vurl}js/jquery-ui.min.js" type="text/javascript"></script>
 {literal}
 <script type="text/javascript">
     $(document).ready(function () {

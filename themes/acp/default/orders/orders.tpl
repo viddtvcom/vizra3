@@ -2,50 +2,50 @@
     <div id="filterbox">
         {literal}
         <script language="JavaScript">
-            $(document).ready(function () {
-                $("#groupID").change(function () {
-                    var selID = $(this).val();
-                    if (selID == '') {
-                        $("#serviceID").html('<option value="all">Bütün Servisler</option>');
-                    } else {
-                        loadselect(selID);
-                    }
-                });
-
-                function loadselect(selID, selected) {
-                    $.post('ajax.php', {groupID: selID, action: 'getServices'},
-                            function (data) {
-                                if (!data) {
-                                    $("#serviceID").html('<option value="all">Bütün Servisler</option>');
-                                    return;
-                                }
-                                var options = '<option value="all">Bütün Servisler</option>';
-                                for (var i = 0; i < data.length; i++) {
-                                    options += '<option value="' + data[i].serviceID + '"';
-                                    if (data[i].serviceID == selected) options += ' selected';
-                                    options += '>' + data[i].service_name + '</option>';
-                                }
-                                $("#serviceID").html(options);
-                            }, 'json');
+        $(document).ready(function () {
+            $("#groupID").change(function () {
+                var selID = $(this).val();
+                if (selID == '') {
+                    $("#serviceID").html('<option value="all">Bütün Servisler</option>');
+                } else {
+                    loadselect(selID);
                 }
-
-                if ($("#groupID").val() != '') {
-                    loadselect($("#groupID").val(), '{/literal}{$smarty.get.serviceID}{literal}');
-                }
-
-                $('#butDelete').click(function () {
-                    var any = false;
-                    $('[name*=selected]').each(function () {
-                        if ($(this).is(':checked')) any = true;
-                    });
-                    if (!any) {
-                        alert('En az bir sipariş seçmelisiniz');
-                        return any;
-                    }
-                    $('#send_mail').val(confirm('Müşteri email göndermek istiyor musunuz?'));
-                    return confirm('Seçili siparişler SİLİNECEK. Emin misiniz?');
-                });
             });
+
+            function loadselect(selID, selected) {
+                $.post('ajax.php', {groupID: selID, action: 'getServices'},
+                        function (data) {
+                            if (!data) {
+                                $("#serviceID").html('<option value="all">Bütün Servisler</option>');
+                                return;
+                            }
+                            var options = '<option value="all">Bütün Servisler</option>';
+                            for (var i = 0; i < data.length; i++) {
+                                options += '<option value="' + data[i].serviceID + '"';
+                                if (data[i].serviceID == selected) options += ' selected';
+                                options += '>' + data[i].service_name + '</option>';
+                            }
+                            $("#serviceID").html(options);
+                        }, 'json');
+            }
+
+            if ($("#groupID").val() != '') {
+                loadselect($("#groupID").val(), '{/literal}{$smarty.get.serviceID}{literal}');
+            }
+
+            $('#butDelete').click(function () {
+                var any = false;
+                $('[name*=selected]').each(function () {
+                    if ($(this).is(':checked')) any = true;
+                });
+                if (!any) {
+                    alert('En az bir sipariş seçmelisiniz');
+                    return any;
+                }
+                $('#send_mail').val(confirm('Müşteri email göndermek istiyor musunuz?'));
+                return confirm('Seçili siparişler SİLİNECEK. Emin misiniz?');
+            });
+        });
         </script>{/literal}
         <form method="post" class="cmxform" id="filterform">
             <fieldset style="width: 40%; float: left;">
@@ -121,10 +121,11 @@
                         <tr class="{cycle values="first,second"}">
                             <td><input type="checkbox" name="selected[]" class="mcheck" value="{$o.orderID}"></td>
                             <td><img src="{$turl}images/{$icons[$o.status]}" title="##OrderDetails%{$o.status}##"></td>
-                            <td id="center"><a href="?p=311&tab=orders&orderID={$o.orderID}">{$o.orderID}</a></td>
+                            <td id="center"><a
+                                        href="?p=311&tab=orders&orderID={$o.orderID}&subtab=attrs">{$o.orderID}</a></td>
                             <td>
-                                <a href="?p=311&clientID={$o.clientID}">{if $o.clientType == 'individual'}{$o.name}{else}{$o.company}{/if}</a>
-                            </td>
+                                <a href="?p=311&clientID={$o.clientID}">{if $o.clientType == 'individual'}{$o.name}{else}{$o.company}{/if}
+                                    ({$o.balance})</a></td>
                             <td><a href="?p=311&tab=orders&orderID={$o.orderID}">{$o.title}</a></td>
                             <td id="right">{format_date date=$o.dateAdded mode=datetime}</td>
                             <td id="right">{format_date date=$o.dateEnd}</td>
@@ -133,7 +134,13 @@
                     <tr>
                         <td></td>
                         <td colspan="2">Seçili Siparişleri:</td>
-                        <td colspan="10"><input id="butDelete" type="submit" name="action" value="Sil"></td>
+                        <td colspan="10">
+                            <input id="butDelete" type="submit" name="action" value="Sil">
+                            <input id="butSuspend" type="submit" name="action" value="Askıya Al">
+                            <input id="butTerminate" type="submit" name="action" value="Sunucudan Sil">
+                            {*
+                                          *}
+                        </td>
                     </tr>
                 </table>
             </form>

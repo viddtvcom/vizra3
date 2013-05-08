@@ -7,8 +7,7 @@
                     <span class="ico"></span>
                     <strong class="system_title">
                         {foreach from=$errors item=e}
-                            {$e}
-                            <br/>
+                            {$e}<br/>
                         {/foreach}
                     </strong>
                 </li>
@@ -19,8 +18,7 @@
                     <span class="ico"></span>
                     <strong class="system_title">
                         {foreach from=$messages item=m}
-                            {$m}
-                            <br/>
+                            {$m}<br/>
                         {/foreach}
                     </strong>
                 </li>
@@ -31,8 +29,7 @@
                     <span class="ico"></span>
                     <strong class="system_title">
                         {foreach from=$warnings item=w}
-                            {$w}
-                            <br/>
+                            {$w}<br/>
                         {/foreach}
                     </strong>
                 </li>

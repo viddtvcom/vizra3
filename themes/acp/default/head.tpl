@@ -17,11 +17,12 @@
     <link media="screen" rel="stylesheet" type="text/css" href="{$turl}css/admin-ie.css"/><![endif]-->
 
     <script src="{$vurl}js/jquery.min.js" type="text/javascript"></script>
+    <script src="{$vurl}js/jquery-ui.min.js" type="text/javascript"></script>
     <script src="{$vurl}js/jquery.form.js" type="text/javascript"></script>
     <script src="{$vurl}js/jquery.facebox.js" type="text/javascript"></script>
 
 
-    <script src="{$vurl}js/iframex.js" type="text/javascript"></script>
+    <script src="{$vurl}js/iframe.js" type="text/javascript"></script>
     <script src="{$vurl}js/common.js" type="text/javascript"></script>
 
 

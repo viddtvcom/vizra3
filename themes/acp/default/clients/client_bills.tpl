@@ -51,36 +51,35 @@
 </div>
 {include file="paging.tpl"}
 
-{literal}
+    {literal}
     <script language="JavaScript">
-        $(document).ready(function () {
-            $('.stbut').click(function () {
-                var billID = $(this).attr('rel');
-                var init = $(this).children(':first').attr('rel');
-                $('[id^=bill]').hide();
-                $('.bill_form').remove();
-                $('.stimg').attr('src', turl + 'images/plus.png');
-                if (init == 'open') {
-                    $(this).children(':first').attr('rel', '');
-                } else {
-                    $('.stimg').attr('rel', '');
-                    $(this).children(':first').attr('src', turl + 'images/minus.png').attr('rel', 'open');
-                    $('#bill_' + billID).show().children(':first').load('?p=516&m=compact&billID=' + billID);
-                }
-                return false;
-            });
-
-            $('.but_send').click(function () {
-                if (!confirm('Borç kaydı müşteriye email ile gönderilecek. Emin  misiniz?')) return false;
-                var billID = $(this).attr('rel');
-                $.post("ajax.php", { action: "sendBillToClient", billID: billID },
-                        function (data) {
-                            raise_msg(billID + ' nolu borç kaydı gönderildi', 'green');
-                        }, "json");
-            });
+    $(document).ready(function () {
+        $('.stbut').click(function () {
+            var billID = $(this).attr('rel');
+            var init = $(this).children(':first').attr('rel');
+            $('[id^=bill]').hide();
+            $('.bill_form').remove();
+            $('.stimg').attr('src', turl + 'images/plus.png');
+            if (init == 'open') {
+                $(this).children(':first').attr('rel', '');
+            } else {
+                $('.stimg').attr('rel', '');
+                $(this).children(':first').attr('src', turl + 'images/minus.png').attr('rel', 'open');
+                $('#bill_' + billID).show().children(':first').load('?p=516&m=compact&billID=' + billID);
+            }
+            return false;
         });
-    </script>
-{/literal}
+
+        $('.but_send').click(function () {
+            if (!confirm('Borç kaydı müşteriye email ile gönderilecek. Emin  misiniz?')) return false;
+            var billID = $(this).attr('rel');
+            $.post("ajax.php", { action: "sendBillToClient", billID: billID },
+                    function (data) {
+                        raise_msg(billID + ' nolu borç kaydı gönderildi', 'green');
+                    }, "json");
+        });
+    });
+    </script>{/literal}
 
 
 

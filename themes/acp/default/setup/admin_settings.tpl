@@ -37,54 +37,54 @@
     <script language="JavaScript">
         var origsrc;
     </script>
-    {literal}
+        {literal}
         <script language="JavaScript">
-            new AjaxUpload('upload_button', {
-                // Location of the server-side upload script
-                // NOTE: You are not allowed to upload files to another domain
-                action: '?p=112',
-                // File upload name
-                name: 'avatar',
-                // Additional data to send
-                data: {
-                    action: 'uploadAvatar'
-                },
-                // Submit file after selection
-                autoSubmit: true,
-                // The type of data that you're expecting back from the server.
-                // HTML (text) and XML are detected automatically.
-                // Useful when you are using JSON data as a response, set to "json" in that case.
-                // Also set server response type to text/html, otherwise it will not work in IE6
-                responseType: "json",
-                // Fired after the file is selected
-                // Useful when autoSubmit is disabled
-                // You can return false to cancel upload
-                // @param file basename of uploaded file
-                // @param extension of that file
-                onChange: function (file, extension) {
-                },
-                // Fired before the file is uploaded
-                // You can return false to cancel upload
-                // @param file basename of uploaded file
-                // @param extension of that file
-                onSubmit: function (file, extension) {
-                    origsrc = $("#upload_button").attr('src');
-                    $("#upload_button").attr('src', 'images/loading.gif');
-                },
-                // Fired when file upload is completed
-                // WARNING! DO NOT USE "FALSE" STRING AS A RESPONSE!
-                // @param file basename of uploaded file
-                // @param response server response
-                onComplete: function (file, r) {
-                    if (r.st) {
-                        var ts = Math.round(new Date().getTime() / 1000);
-                        var src = $("#upload_button").attr('src');
-                        $("#upload_button").attr('src', origsrc + '&' + ts);
-                    } else {
-                        alert(r.msg);
-                    }
+        new AjaxUpload('upload_button', {
+            // Location of the server-side upload script
+            // NOTE: You are not allowed to upload files to another domain
+            action: '?p=112',
+            // File upload name
+            name: 'avatar',
+            // Additional data to send
+            data: {
+                action: 'uploadAvatar'
+            },
+            // Submit file after selection
+            autoSubmit: true,
+            // The type of data that you're expecting back from the server.
+            // HTML (text) and XML are detected automatically.
+            // Useful when you are using JSON data as a response, set to "json" in that case.
+            // Also set server response type to text/html, otherwise it will not work in IE6
+            responseType: "json",
+            // Fired after the file is selected
+            // Useful when autoSubmit is disabled
+            // You can return false to cancel upload
+            // @param file basename of uploaded file
+            // @param extension of that file
+            onChange: function (file, extension) {
+            },
+            // Fired before the file is uploaded
+            // You can return false to cancel upload
+            // @param file basename of uploaded file
+            // @param extension of that file
+            onSubmit: function (file, extension) {
+                origsrc = $("#upload_button").attr('src');
+                $("#upload_button").attr('src', 'images/loading.gif');
+            },
+            // Fired when file upload is completed
+            // WARNING! DO NOT USE "FALSE" STRING AS A RESPONSE!
+            // @param file basename of uploaded file
+            // @param response server response
+            onComplete: function (file, r) {
+                if (r.st) {
+                    var ts = Math.round(new Date().getTime() / 1000);
+                    var src = $("#upload_button").attr('src');
+                    $("#upload_button").attr('src', origsrc + '&' + ts);
+                } else {
+                    alert(r.msg);
                 }
-            });
+            }
+        });
         </script>
     {/literal}
 
