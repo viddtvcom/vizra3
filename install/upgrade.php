@@ -67,49 +67,6 @@ if ($_POST) {
     }
 }
 
-function upgrade_30B3()
-{
-    mysql_import_file('upgrade_30b3.sql');
-    global $db;
-    $db->query("UPDATE payments SET paymentStatus = 'pending-payment' WHERE paymentStatus = ''");
-}
-
-function upgrade_30B4()
-{
-    mysql_import_file('upgrade_30b4.sql');
-    global $db;
-    $groups = $db->query("SELECT * FROM service_groups ORDER BY parentID,groupID ASC", SQL_ALL);
-    foreach ($groups as $g) {
-        $db->query("UPDATE service_groups SET rowOrder = " . (int)$cnt ++ . " WHERE groupID = " . $g['groupID']);
-    }
-}
-
-function upgrade_30B5()
-{
-    mysql_import_file('upgrade_30b5.sql');
-    global $db, $config;
-
-    // set service group seo links
-    $groups = $db->query("SELECT * FROM service_groups", SQL_ALL);
-    foreach ($groups as $g) {
-        $db->query(
-            "UPDATE service_groups SET seolink='" . finename($g['group_name']) . "' WHERE groupID = " . $g['groupID']
-        );
-    }
-
-    // set service seo links
-    $services = $db->query("SELECT * FROM services WHERE addon != '1' AND groupID != 10", SQL_ALL);
-    foreach ($services as $s) {
-        $db->query(
-            "UPDATE services SET seolink='" . finename($s['service_name']) . "' WHERE serviceID = " . $s['serviceID']
-        );
-    }
-
-    if (! is_writable($config['DOWNLOADS_DIR'])) {
-        $GLOBALS['errors'][] = $config['DOWNLOADS_DIR'] . " dizinine yazma hakkı vermeniz gerekmektedir";
-    }
-}
-
 function upgrade_300()
 {
     mysql_import_file('upgrade_300.sql');
