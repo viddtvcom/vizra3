@@ -77,7 +77,7 @@
         if (moduleID != '') $('#submenu_ul_' + moduleID).show();
 
         if ($('#mainframe').length > 0) {
-            $('#mainframe').iframeAutoHeight();
+            //$('#mainframe').iframeAutoHeight();
         }
 
     });
