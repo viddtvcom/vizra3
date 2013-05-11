@@ -187,6 +187,11 @@ function upgrade_312()
     mysql_import_file('upgrade_312.sql');
 }
 
+function upgrade_320()
+{
+    mysql_import_file('upgrade_320.sql');
+}
+
 
 ?>
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
