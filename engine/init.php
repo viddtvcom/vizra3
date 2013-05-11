@@ -2,7 +2,7 @@
 require('config/config.php');
 
 if (DEBUG == true) {
-    error_reporting(E_ALL ^ E_NOTICE);
+    error_reporting(E_ALL ^ E_NOTICE  ^ E_STRICT);
     @ini_set('display_errors', 'on');
 } else {
     error_reporting(E_ALL ^ (E_NOTICE ^ E_WARNING ^ E_STRICT));

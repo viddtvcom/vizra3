@@ -161,6 +161,9 @@ class Client extends base
         if (count($extras) > 0) {
             $this->extras = $extras;
             foreach ($values as $key => $value) {
+                if (!is_object($this->extras[$key])) {
+                    $this->extras[$key] = new stdClass();
+                }
                 if ($client && $this->extras[$key]->visibility == 'hidden') {
                     unset($this->extras[$key]);
                     continue;
