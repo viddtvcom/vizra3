@@ -10,6 +10,11 @@ foreach ($dirs as $k => $d) {
     }
 }
 
+//
+if (! defined('VVERSION')) {
+    define('VVERSION', VERSION);
+
+}
 
 // JSON CHECK
 if (! function_exists('json_encode')) {
@@ -23,6 +28,7 @@ if ($_POST) {
     if (! $fp) {
         die('Yazmak için engine/config/config.php dosyası açılamadı, yükseltme başarısız oldu');
     } else {
+
         fputs($fp, "<?php\n");
         $DEBUG = (DEBUG != true) ? 'false' : 'true';
         fputs($fp, "define('DEBUG'," . $DEBUG . ");\n\n");
@@ -194,136 +200,137 @@ function upgrade_320()
 
 
 ?>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-            "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="tr" lang="tr">
-    <head>
-        <title>Vizra3</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <link rel="stylesheet" type="text/css" href="../themes/client/default/css/screen.css" charset="utf-8"/>
-        <!--[if IE 6]>
-        <link rel="stylesheet" type="text/css" href="../themes/client/default/css/ie6.css" charset="utf-8"/><![endif]-->
-    </head>
-    <body>
-    <div id="wrapper">
-        <div id="header">
-            <h1 class="left logo"><a href="http://www.vizra.com" target="_blank"><img
-                            src="../themes/client/default/images/vizra_logo.png" alt="Vizra"/></a></h1>
-            <ul class="nav_top right"></ul>
-        </div>
-        <div class="user_bar"></div>
-        <div id="content">
-            <div class="left w200">
-                <h2 class="title200">Uyarılar</h2>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="tr" lang="tr">
+<head>
+    <title>Vizra3</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="../themes/client/default/css/screen.css" charset="utf-8"/>
+    <!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" href="../themes/client/default/css/ie6.css" charset="utf-8"/><![endif]-->
+</head>
+<body>
+<div id="wrapper">
+    <div id="header">
+        <h1 class="left logo"><a href="http://www.vizra.com" target="_blank"><img
+                        src="../themes/client/default/images/vizra_logo.png" alt="Vizra"/></a></h1>
+        <ul class="nav_top right"></ul>
+    </div>
+    <div class="user_bar"></div>
+    <div id="content">
+        <div class="left w200">
+            <h2 class="title200">Uyarılar</h2>
 
-                <div class="content_left">
-                    <?
-                    if ($GLOBALS['errors']) {
-                        foreach ($GLOBALS['errors'] as $err) {
-                            echo '<span class="error_message br_5">';
-                            echo $err . '<br>';
-                            echo '</span>';
-                        }
+            <div class="content_left">
+                <?
+                if ($GLOBALS['errors']) {
+                    foreach ($GLOBALS['errors'] as $err) {
+                        echo '<span class="error_message br_5">';
+                        echo $err . '<br>';
+                        echo '</span>';
                     }
-                    ?>
-                </div>
+                }
+                ?>
             </div>
-            <div class="right w700">
+        </div>
+        <div class="right w700">
 
 
-                <? if (VERSION == $latest['version']) { ?>
-                    <span class="attention_message br_5">
+            <? if (VVERSION == $latest['version']) { ?>
+                <span class="attention_message br_5">
         Şu an en son sürümü kullanmaktasınız, sıfırdan kurulum yapmak için config.php dosyanızı yedeğini aldıktan sonra siliniz.
     </span>
 
-                <? } elseif ($upgraded) { ?>
-                    <?
-                    if ($GLOBALS['warnings']) {
-                        echo '<span class="attention_message br_5"> ';
-                        foreach ($GLOBALS['warnings'] as $wrn) {
-                            echo $wrn . '<br>';
-                        }
-                        echo '</span>';
+            <? } elseif ($upgraded) { ?>
+                <?
+                if ($GLOBALS['warnings']) {
+                    echo '<span class="attention_message br_5"> ';
+                    foreach ($GLOBALS['warnings'] as $wrn) {
+                        echo $wrn . '<br>';
                     }
-                    ?>
-                    <span class="success_message br_5">
+                    echo '</span>';
+                }
+                ?>
+                <span class="success_message br_5">
         Yükseltme tamamlandı. Lütfen güvenlik için install klasörünü siliniz.
         <br/><br/>
         <a href="../acp">Yönetim paneline girmek için tıklayınız</a>
         <br/>
         </span>
-                <? } else { ?>
+            <? } else { ?>
 
-                    <? if ($error) { ?>
-                        <br/><h2 class="title700">Dizin Yazma Ayarları</h2>
-                        <div class="content_right">
+                <? if ($error) { ?>
+                    <br/><h2 class="title700">Dizin Yazma Ayarları</h2>
+                    <div class="content_right">
             <span class="attention_message br_5"> 
                 Aşağıdaki dizinlerin, Web Sunucunuz tarafından yazılabilir olması gerekmektedir.
             </span>
 
-                            <form method="post" class="cmxform">
-                                <fieldset>
-                                    <ol>
-                                        <? foreach ($dirs as $d) { ?>
-                                            <li><label><?= $d['dir'] ?></label> <strong><? if ($d['st']){ ?><font
-                                                            color='green'>OK<? } else { ?> <font
-                                                                color='red'>HATA<? } ?></font></strong></li>
-                                        <? } ?>
-                                    </ol>
-                                </fieldset>
-                            </form>
-                        </div>
-                        <span class="error_message br_5">
+                        <form method="post" class="cmxform">
+                            <fieldset>
+                                <ol>
+                                    <? foreach ($dirs as $d) { ?>
+                                        <li><label><?= $d['dir'] ?></label> <strong><? if ($d['st']){ ?><font
+                                                        color='green'>OK<? } else { ?> <font
+                                                        color='red'>HATA<? } ?></font></strong></li>
+                                    <? } ?>
+                                </ol>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <span class="error_message br_5">
         Kuruluma devam edebilmek için yukarıdaki hataları gidermeniz gerekmektedir
         </span>
-                    <? } else { ?>
+                <? } else { ?>
 
-                        <h2 class="title700">Yükseltme Ayarları</h2>
-                        <div class="content_right">
-                            <form method="post" class="cmxform">
-                                <fieldset>
-                                    <ol>
-                                        <li>
-                                            <label>Kullandığınız Sürüm</label>
-                                            <? if (false): ?>
-                                                <select name="curver">
-                                                    <? foreach ($versions as $ver => $title) { ?>
-                                                        <option value="<?= $ver ?>" <? if (VERSION == $ver) {
-                                                            echo 'selected'; } ?>><?= $title ?></option>
-                                                    <? } ?>
-                                                </select>
-                                            <? endif; ?>
-                                            <input type="hidden" name="curver" value="<?= VERSION ?>">
-                                            <?= $versions[VERSION] ?>
+                    <h2 class="title700">Yükseltme Ayarları</h2>
+                    <div class="content_right">
+                        <form method="post" class="cmxform">
+                            <fieldset>
+                                <ol>
+                                    <li>
+                                        <label>Kullandığınız Sürüm</label>
+                                        <? if (false): ?>
+                                            <select name="curver">
+                                                <? foreach ($versions as $ver => $title) { ?>
+                                                    <option value="<?= $ver ?>" <? if (VVERSION == $ver) {
+                                                        echo 'selected';
+                                                    } ?>><?= $title ?></option>
+                                                <? } ?>
+                                            </select>
+                                        <? endif; ?>
+                                        <input type="hidden" name="curver" value="<?= VVERSION ?>">
+                                        <?= $versions[VVERSION] ?>
+                                    </li>
+                                    <li><label>Son Sürüm:</label>
+                                        <?= $latest['title'] ?>
+                                    </li>
+                                    <?php if (! defined('LICENSE')) { ?>
+                                        <li><label>Lisans Anahtarı</label>
+                                            <input type="text" name="license">
                                         </li>
-                                        <li><label>Son Sürüm:</label>
-                                            <?= $latest['title'] ?>
-                                        </li>
-                                        <?php if (! defined('LICENSE')) { ?>
-                                            <li><label>Lisans Anahtarı</label>
-                                                <input type="text" name="license">
-                                            </li>
-                                        <? } ?>
+                                    <? } ?>
 
-                                    </ol>
-                                    <p align="right">
-                                        <input type="submit" value="Yükselt">
-                                    </p>
-                                </fieldset>
-                            </form>
-                        </div>
-
-                    <? } ?>
-
+                                </ol>
+                                <p align="right">
+                                    <input type="submit" value="Yükselt">
+                                </p>
+                            </fieldset>
+                        </form>
+                    </div>
 
                 <? } ?>
-                <br/><br/><br/><br/><br/><br/>
-            </div>
+
+
+            <? } ?>
+            <br/><br/><br/><br/><br/><br/>
         </div>
-        <div class="content_b">&nbsp;</div>
     </div>
-    <div class="footer">
-        &copy; Vizra
-    </div>
-    </body>
-    </html>
+    <div class="content_b">&nbsp;</div>
+</div>
+<div class="footer">
+    &copy; Vizra
+</div>
+</body>
+</html>
