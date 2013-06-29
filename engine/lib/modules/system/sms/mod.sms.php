@@ -70,6 +70,53 @@ class mod_sms extends SystemModule
 
     }
 
+    function gw_iletimerkezi($text, $to)
+    {
+        $username = $this->get('username');
+        $password = $this->get('password');
+        $origin = urlencode($this->get('originator'));
+        $text = urlencode($text);
+        $to = ltrim($to, '+90');
+
+        $url = "http://api.iletimerkezi.com/v1/send-sms/get/";
+        $url .= "?username=" . $username . "&password=" . $password . "&receipents=" . $to . "&text=" . $text . "&sender=" . $origin;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $content = curl_exec($ch);
+        curl_close($ch);
+        if ($this->debug) {
+            vzrlog(str_replace($this->get('password'), '*******', $url), 'info', 'IletiMerkezi(request)');
+            vzrlog($content, 'info', 'IletiMerkezi(response)');
+        }
+
+        if(preg_match('/<status>(.*?)<code>(.*?)<\/code>(.*?)<message>(.*?)<\/message>(.*?)<\/status>/si', $content, $result_matches)) {
+            $status_code = $result_matches[2];
+            $status_message = $result_matches[4];
+
+            if($status_code == '200') {
+                return true;
+            } else {
+                vzrlog(
+                    'SMS gönderme hatası, No:<' . $to . '> Mesaj:<' . urldecode($text) . '> Hata: <' . $status_code. ': ' .$status_message. '>',
+                    'error',
+                    'IletiMerkezi'
+                );
+
+                return false;
+            }
+        } else {
+            vzrlog(
+                'SMS gönderme hatası, No:<' . $to . '> Mesaj:<' . urldecode($text) . '> Hata: <Geçici hata, lütfen servis sağlayıcısı ile iletişime geçin>',
+                'error',
+                'IletiMerkezi'
+            );
+
+            return false;
+        }
+    }
+
     function gw_smsalsat($mesaj, $gsm)
     {
         $user = $this->get('username');

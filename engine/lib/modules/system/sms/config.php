@@ -6,6 +6,7 @@ $sys['type'] = Setting::type('hidden')->val('sms')->width(200);
 
 $sys['gateway'] = Setting::type('combobox')->lab('SMS Gateway')
         ->opt('clickatell', 'Clickatell')
+        ->opt('iletimerkezi', 'Ileti Merkezi')
         ->opt('smsalsat', 'SmsAlSat')
         ->opt('toplusmsyolla', 'TopluSmsYolla')
         ->opt('pusulasms', 'Pusula SMS')
